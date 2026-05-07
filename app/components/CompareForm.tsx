@@ -1,0 +1,49 @@
+"use client";
+
+import { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
+
+export default function CompareForm() {
+  const [a, setA] = useState("");
+  const [b, setB] = useState("");
+  const router = useRouter();
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    const trimA = a.trim();
+    const trimB = b.trim();
+    if (!trimA || !trimB) return;
+    const slug = `${trimA.toLowerCase().replace(/ /g, "-")}-vs-${trimB.toLowerCase().replace(/ /g, "-")}`;
+    router.push(`/compare/${encodeURIComponent(slug)}?a=${encodeURIComponent(trimA)}&b=${encodeURIComponent(trimB)}`);
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row sm:gap-2">
+      <input
+        type="text"
+        placeholder="e.g. iPhone 16"
+        value={a}
+        onChange={(e) => setA(e.target.value)}
+        className="flex-1 rounded-xl border border-gray-700 bg-gray-900 px-4 py-3.5 text-white placeholder-gray-500 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
+        required
+      />
+      <div className="flex items-center justify-center text-sm font-bold text-violet-400 sm:px-1">
+        VS
+      </div>
+      <input
+        type="text"
+        placeholder="e.g. Samsung Galaxy S25"
+        value={b}
+        onChange={(e) => setB(e.target.value)}
+        className="flex-1 rounded-xl border border-gray-700 bg-gray-900 px-4 py-3.5 text-white placeholder-gray-500 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
+        required
+      />
+      <button
+        type="submit"
+        className="rounded-xl bg-violet-600 px-6 py-3.5 font-semibold text-white transition-colors hover:bg-violet-500 active:bg-violet-700"
+      >
+        Compare →
+      </button>
+    </form>
+  );
+}
