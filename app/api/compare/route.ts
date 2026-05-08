@@ -1,12 +1,34 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { Redis } from "@upstash/redis";
+
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL!,
+  token: process.env.KV_REST_API_TOKEN!,
+});
+
+const CACHE_TTL = 60 * 60 * 24 * 7; // 7 days
 
 export async function POST(request: Request) {
-  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
   const { a, b } = await request.json();
 
   if (!a || !b) {
     return Response.json({ error: "Both items are required" }, { status: 400 });
   }
+
+  const cacheKey = `compare:${a.toLowerCase().trim()}:${b.toLowerCase().trim()}`;
+
+  // Check cache first
+  try {
+    const cached = await redis.get(cacheKey);
+    if (cached) {
+      return Response.json({ ...cached as object, cached: true });
+    }
+  } catch {
+    // Cache miss or Redis error — continue to AI generation
+  }
+
+  // Generate with AI
+  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
   const prompt = `You are an expert analyst. Compare "${a}" vs "${b}" in a structured, unbiased, and helpful way.
 
@@ -46,6 +68,14 @@ Include 5-7 relevant categories. Scores are out of 10. Be specific, factual, and
 
     const text = message.content[0].type === "text" ? message.content[0].text : "";
     const data = JSON.parse(text);
+
+    // Store in cache
+    try {
+      await redis.set(cacheKey, data, { ex: CACHE_TTL });
+    } catch {
+      // Cache write failed — still return the result
+    }
+
     return Response.json(data);
   } catch (err) {
     console.error("Compare API error:", err);
