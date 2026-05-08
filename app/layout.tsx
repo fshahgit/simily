@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Simily — Compare Anything with AI",
   description: "AI-powered comparisons for products, tools, concepts, and more. Make smarter decisions instantly.",
   keywords: "compare, vs, comparison, AI, product comparison",
+  verification: {
+    google: "kbKSsucdTXLe-T6hCQ6D92bxINmZU9YhUT5i2gQdOko",
+  },
   openGraph: {
     title: "Simily — Compare Anything with AI",
     description: "AI-powered comparisons for products, tools, concepts, and more.",
