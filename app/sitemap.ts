@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://simily.org";
+const BASE_URL = "https://www.simily.org";
 
 const popularComparisons = [
   { a: "iPhone 16", b: "Samsung Galaxy S25" },
