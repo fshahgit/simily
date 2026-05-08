@@ -1,8 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
 export async function POST(request: Request) {
+  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
   const { a, b } = await request.json();
 
   if (!a || !b) {
@@ -48,7 +47,8 @@ Include 5-7 relevant categories. Scores are out of 10. Be specific, factual, and
     const text = message.content[0].type === "text" ? message.content[0].text : "";
     const data = JSON.parse(text);
     return Response.json(data);
-  } catch {
+  } catch (err) {
+    console.error("Compare API error:", err);
     return Response.json({ error: "Failed to generate comparison" }, { status: 500 });
   }
 }
