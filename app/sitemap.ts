@@ -55,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const comparisonPages: MetadataRoute.Sitemap = popularComparisons.map(({ a, b }) => {
     const slug = `${a.toLowerCase().replace(/ /g, "-")}-vs-${b.toLowerCase().replace(/ /g, "-")}`;
     return {
-      url: `${BASE_URL}/compare/${slug}?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`,
+      url: `${BASE_URL}/compare/${slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
