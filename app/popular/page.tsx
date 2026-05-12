@@ -12,34 +12,78 @@ const categories = [
     name: "📱 Tech & Gadgets",
     comparisons: [
       { a: "iPhone 16", b: "Samsung Galaxy S25" },
+      { a: "iPhone", b: "Google Pixel" },
       { a: "iPad", b: "Samsung Galaxy Tab" },
       { a: "Mac", b: "Windows" },
-      { a: "AirPods Pro", b: "Sony WH-1000XM5" },
       { a: "iPhone", b: "Android" },
+      { a: "AirPods Pro", b: "Sony WH-1000XM5" },
+    ],
+  },
+  {
+    name: "🤖 AI Tools",
+    comparisons: [
+      { a: "ChatGPT", b: "Claude" },
+      { a: "Gemini", b: "ChatGPT" },
+      { a: "Perplexity", b: "ChatGPT" },
+      { a: "Midjourney", b: "DALL-E" },
+      { a: "Cursor", b: "GitHub Copilot" },
+    ],
+  },
+  {
+    name: "✏️ Code Editors",
+    comparisons: [
+      { a: "VS Code", b: "Cursor" },
+      { a: "VS Code", b: "JetBrains" },
+      { a: "Cursor", b: "GitHub Copilot" },
+      { a: "Vim", b: "Neovim" },
     ],
   },
   {
     name: "💻 Programming & Dev",
     comparisons: [
       { a: "React", b: "Vue" },
+      { a: "React", b: "Angular" },
+      { a: "Svelte", b: "React" },
+      { a: "Next.js", b: "Nuxt.js" },
+      { a: "Tailwind", b: "Bootstrap" },
       { a: "Python", b: "JavaScript" },
       { a: "TypeScript", b: "JavaScript" },
-      { a: "React", b: "Next.js" },
+      { a: "Go", b: "Rust" },
       { a: "MySQL", b: "PostgreSQL" },
+      { a: "MongoDB", b: "PostgreSQL" },
+      { a: "Firebase", b: "Supabase" },
       { a: "Docker", b: "Kubernetes" },
       { a: "GitHub", b: "GitLab" },
+      { a: "Vercel", b: "Netlify" },
       { a: "AWS", b: "Google Cloud" },
+      { a: "npm", b: "pnpm" },
     ],
   },
   {
     name: "🛠️ Tools & Software",
     comparisons: [
       { a: "Notion", b: "Obsidian" },
+      { a: "Trello", b: "Notion" },
+      { a: "Jira", b: "Linear" },
+      { a: "Asana", b: "Monday.com" },
+      { a: "ClickUp", b: "Asana" },
       { a: "Figma", b: "Adobe XD" },
+      { a: "Figma", b: "Canva" },
       { a: "Slack", b: "Microsoft Teams" },
       { a: "Zoom", b: "Google Meet" },
+      { a: "Gmail", b: "Outlook" },
+      { a: "Chrome", b: "Firefox" },
+      { a: "1Password", b: "Bitwarden" },
+      { a: "NordVPN", b: "ExpressVPN" },
       { a: "WordPress", b: "Webflow" },
       { a: "Shopify", b: "WooCommerce" },
+    ],
+  },
+  {
+    name: "🎮 Gaming",
+    comparisons: [
+      { a: "PS5", b: "Xbox Series X" },
+      { a: "Nintendo Switch", b: "Steam Deck" },
     ],
   },
   {
@@ -47,7 +91,7 @@ const categories = [
     comparisons: [
       { a: "Netflix", b: "Disney+" },
       { a: "Spotify", b: "Apple Music" },
-      { a: "ChatGPT", b: "Claude" },
+      { a: "YouTube", b: "TikTok" },
     ],
   },
   {
@@ -109,7 +153,7 @@ export default function PopularPage() {
         <h3 className="text-xl font-bold text-white">Don't see what you need?</h3>
         <p className="mt-2 text-gray-400">Compare anything — just type two things and our AI does the rest.</p>
         <Link
-          href="/compare"
+          href="/"
           className="mt-6 inline-block rounded-xl bg-violet-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-violet-500"
         >
           Start a Comparison →

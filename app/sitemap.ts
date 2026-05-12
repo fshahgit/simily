@@ -2,32 +2,75 @@ import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://www.simily.org";
 
-const popularComparisons = [
+const allComparisons = [
+  // Tech & Gadgets
   { a: "iPhone 16", b: "Samsung Galaxy S25" },
-  { a: "React", b: "Vue" },
-  { a: "Notion", b: "Obsidian" },
-  { a: "Keto Diet", b: "Intermittent Fasting" },
-  { a: "Python", b: "JavaScript" },
-  { a: "Netflix", b: "Disney+" },
-  { a: "Mac", b: "Windows" },
-  { a: "ChatGPT", b: "Claude" },
-  { a: "iPhone", b: "Android" },
-  { a: "Spotify", b: "Apple Music" },
-  { a: "WordPress", b: "Webflow" },
-  { a: "React", b: "Next.js" },
-  { a: "MySQL", b: "PostgreSQL" },
-  { a: "AWS", b: "Google Cloud" },
-  { a: "Shopify", b: "WooCommerce" },
-  { a: "TypeScript", b: "JavaScript" },
-  { a: "LinkedIn", b: "Indeed" },
-  { a: "Zoom", b: "Google Meet" },
-  { a: "Figma", b: "Adobe XD" },
-  { a: "Docker", b: "Kubernetes" },
-  { a: "Tesla Model 3", b: "BMW 3 Series" },
+  { a: "iPhone", b: "Google Pixel" },
   { a: "iPad", b: "Samsung Galaxy Tab" },
+  { a: "Mac", b: "Windows" },
+  { a: "iPhone", b: "Android" },
   { a: "AirPods Pro", b: "Sony WH-1000XM5" },
-  { a: "Slack", b: "Microsoft Teams" },
+
+  // AI Tools
+  { a: "ChatGPT", b: "Claude" },
+  { a: "Gemini", b: "ChatGPT" },
+  { a: "Perplexity", b: "ChatGPT" },
+  { a: "Midjourney", b: "DALL-E" },
+  { a: "Cursor", b: "GitHub Copilot" },
+
+  // Code Editors
+  { a: "VS Code", b: "Cursor" },
+  { a: "VS Code", b: "JetBrains" },
+  { a: "Vim", b: "Neovim" },
+
+  // Programming & Dev
+  { a: "React", b: "Vue" },
+  { a: "React", b: "Angular" },
+  { a: "Svelte", b: "React" },
+  { a: "Next.js", b: "Nuxt.js" },
+  { a: "Tailwind", b: "Bootstrap" },
+  { a: "Python", b: "JavaScript" },
+  { a: "TypeScript", b: "JavaScript" },
+  { a: "Go", b: "Rust" },
+  { a: "MySQL", b: "PostgreSQL" },
+  { a: "MongoDB", b: "PostgreSQL" },
+  { a: "Firebase", b: "Supabase" },
+  { a: "Docker", b: "Kubernetes" },
   { a: "GitHub", b: "GitLab" },
+  { a: "Vercel", b: "Netlify" },
+  { a: "AWS", b: "Google Cloud" },
+  { a: "npm", b: "pnpm" },
+
+  // Tools & Software
+  { a: "Notion", b: "Obsidian" },
+  { a: "Trello", b: "Notion" },
+  { a: "Jira", b: "Linear" },
+  { a: "Asana", b: "Monday.com" },
+  { a: "ClickUp", b: "Asana" },
+  { a: "Figma", b: "Adobe XD" },
+  { a: "Figma", b: "Canva" },
+  { a: "Slack", b: "Microsoft Teams" },
+  { a: "Zoom", b: "Google Meet" },
+  { a: "Gmail", b: "Outlook" },
+  { a: "Chrome", b: "Firefox" },
+  { a: "1Password", b: "Bitwarden" },
+  { a: "NordVPN", b: "ExpressVPN" },
+  { a: "WordPress", b: "Webflow" },
+  { a: "Shopify", b: "WooCommerce" },
+
+  // Gaming
+  { a: "PS5", b: "Xbox Series X" },
+  { a: "Nintendo Switch", b: "Steam Deck" },
+
+  // Entertainment
+  { a: "Netflix", b: "Disney+" },
+  { a: "Spotify", b: "Apple Music" },
+  { a: "YouTube", b: "TikTok" },
+
+  // Health & Lifestyle
+  { a: "Keto Diet", b: "Intermittent Fasting" },
+  { a: "Tesla Model 3", b: "BMW 3 Series" },
+  { a: "LinkedIn", b: "Indeed" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -39,12 +82,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${BASE_URL}/compare`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/popular`,
       lastModified: new Date(),
       changeFrequency: "weekly",
@@ -52,7 +89,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const comparisonPages: MetadataRoute.Sitemap = popularComparisons.map(({ a, b }) => {
+  const comparisonPages: MetadataRoute.Sitemap = allComparisons.map(({ a, b }) => {
     const slug = `${a.toLowerCase().replace(/ /g, "-")}-vs-${b.toLowerCase().replace(/ /g, "-")}`;
     return {
       url: `${BASE_URL}/compare/${slug}`,
