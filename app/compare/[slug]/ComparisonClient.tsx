@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import CompareForm from "../../components/CompareForm";
 import LogoAvatar from "../../components/LogoAvatar";
+import ShareButton from "../../components/ShareButton";
 
 interface Category {
   name: string;
@@ -110,6 +111,7 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
         </div>
         <h1 className="sr-only">{a} vs {b}</h1>
         <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">{data.summary}</p>
+        <ShareButton a={a} b={b} />
       </div>
 
       {/* Winner banner */}
