@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import CompareForm from "../../components/CompareForm";
+import LogoAvatar from "../../components/LogoAvatar";
 
 interface Category {
   name: string;
@@ -87,29 +88,52 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 space-y-10">
-      {/* Title */}
-      <div className="text-center space-y-3">
-        <h1 className="text-3xl font-bold text-white sm:text-4xl">
-          <span className="text-violet-300">{a}</span>
-          <span className="mx-3 text-gray-500">vs</span>
-          <span className="text-violet-300">{b}</span>
-        </h1>
-        <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">{data.summary}</p>
+      {/* Title with logos */}
+      <div className="text-center space-y-4">
+        <div className="flex items-center justify-center gap-4 sm:gap-6">
+          {/* Item A */}
+          <div className="flex flex-col items-center gap-2 min-w-0">
+            <LogoAvatar name={a} size={64} />
+            <span className="text-lg font-bold text-violet-300 leading-tight text-center">{a}</span>
+          </div>
+          {/* VS badge */}
+          <div className="flex flex-col items-center gap-1 flex-shrink-0">
+            <span className="rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-xs font-bold text-gray-400 tracking-widest">
+              VS
+            </span>
+          </div>
+          {/* Item B */}
+          <div className="flex flex-col items-center gap-2 min-w-0">
+            <LogoAvatar name={b} size={64} />
+            <span className="text-lg font-bold text-violet-300 leading-tight text-center">{b}</span>
+          </div>
+        </div>
+        <h1 className="sr-only">{a} vs {b}</h1>
+        <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">{data.summary}</p>
       </div>
 
       {/* Winner banner */}
       <div className="rounded-2xl border border-violet-500/30 bg-violet-500/10 p-6 text-center">
-        <p className="text-xs uppercase tracking-widest text-violet-400 font-semibold mb-1">Overall Winner</p>
-        <p className="text-2xl font-bold text-white">{data.winner}</p>
-        <p className="mt-1 text-sm text-gray-400">{data.winnerReason}</p>
+        <p className="text-xs uppercase tracking-widest text-violet-400 font-semibold mb-3">Overall Winner</p>
+        <div className="flex items-center justify-center gap-3">
+          <LogoAvatar name={data.winner} size={40} />
+          <p className="text-2xl font-bold text-white">{data.winner}</p>
+        </div>
+        <p className="mt-2 text-sm text-gray-400">{data.winnerReason}</p>
       </div>
 
       {/* Category scores */}
       <div className="rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden">
         <div className="grid grid-cols-3 border-b border-gray-800 px-6 py-3 text-sm font-semibold text-gray-400">
-          <span>{a}</span>
+          <div className="flex items-center gap-2">
+            <LogoAvatar name={a} size={22} />
+            <span className="truncate">{a}</span>
+          </div>
           <span className="text-center">Category</span>
-          <span className="text-right">{b}</span>
+          <div className="flex items-center justify-end gap-2">
+            <span className="truncate text-right">{b}</span>
+            <LogoAvatar name={b} size={22} />
+          </div>
         </div>
         {data.categories.map((cat) => (
           <div key={cat.name} className="grid grid-cols-3 items-center gap-4 border-b border-gray-800 px-6 py-4 last:border-0">
@@ -136,7 +160,10 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
           { label: b, pros: data.bPros, cons: data.bCons },
         ].map((item) => (
           <div key={item.label} className="rounded-2xl border border-gray-800 bg-gray-900 p-6 space-y-4">
-            <h3 className="font-bold text-white text-lg">{item.label}</h3>
+            <div className="flex items-center gap-3">
+              <LogoAvatar name={item.label} size={36} />
+              <h3 className="font-bold text-white text-lg">{item.label}</h3>
+            </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-green-400 font-semibold mb-2">Pros</p>
               <ul className="space-y-1.5">

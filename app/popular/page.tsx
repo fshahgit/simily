@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import LogoAvatar from "../components/LogoAvatar";
 
 export const metadata: Metadata = {
   title: "Popular Comparisons — Simily",
@@ -64,12 +65,14 @@ function ComparisonCard({ a, b }: { a: string; b: string }) {
   return (
     <Link
       href={`/compare/${slug}?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`}
-      className="group flex items-center gap-3 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3.5 transition-all hover:border-violet-500/50 hover:bg-gray-800"
+      className="group flex items-center gap-2.5 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3 transition-all hover:border-violet-500/50 hover:bg-gray-800"
     >
+      <LogoAvatar name={a} size={28} />
       <span className="flex-1 text-sm font-medium text-gray-200 group-hover:text-white truncate">{a}</span>
       <span className="shrink-0 rounded-full bg-violet-500/10 px-2 py-0.5 text-xs font-bold text-violet-400">VS</span>
       <span className="flex-1 text-right text-sm font-medium text-gray-200 group-hover:text-white truncate">{b}</span>
-      <span className="shrink-0 text-gray-600 group-hover:text-violet-400 transition-colors">→</span>
+      <LogoAvatar name={b} size={28} />
+      <span className="shrink-0 text-gray-600 group-hover:text-violet-400 transition-colors ml-1">→</span>
     </Link>
   );
 }
