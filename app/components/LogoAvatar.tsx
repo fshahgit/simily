@@ -13,10 +13,13 @@ export default function LogoAvatar({ name, size = 40, className = "" }: LogoAvat
   const logoUrl = getLogoUrl(name);
   const [imgError, setImgError] = useState(false);
 
+  const radius = size <= 24 ? "rounded-md" : "rounded-xl";
+  const padding = size <= 24 ? "p-0.5" : "p-1.5";
+
   if (logoUrl && !imgError) {
     return (
       <div
-        className={`rounded-xl bg-white flex items-center justify-center overflow-hidden flex-shrink-0 shadow-sm ${className}`}
+        className={`${radius} bg-white flex items-center justify-center overflow-hidden flex-shrink-0 shadow-sm ${className}`}
         style={{ width: size, height: size }}
       >
         <img
@@ -24,7 +27,7 @@ export default function LogoAvatar({ name, size = 40, className = "" }: LogoAvat
           alt={`${name} logo`}
           width={size}
           height={size}
-          className="object-contain p-1.5"
+          className={`object-contain ${padding}`}
           onError={() => setImgError(true)}
         />
       </div>
@@ -36,12 +39,12 @@ export default function LogoAvatar({ name, size = 40, className = "" }: LogoAvat
   const colorClass = getInitialsColor(name);
   return (
     <div
-      className={`${colorClass} rounded-xl flex items-center justify-center flex-shrink-0 ${className}`}
+      className={`${colorClass} ${radius} flex items-center justify-center flex-shrink-0 ${className}`}
       style={{ width: size, height: size }}
     >
       <span
         className="text-white font-bold leading-none"
-        style={{ fontSize: Math.round(size * 0.36) }}
+        style={{ fontSize: Math.round(size * 0.38) }}
       >
         {initials}
       </span>

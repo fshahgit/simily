@@ -46,13 +46,17 @@ export default function Home() {
               <Link
                 key={slug}
                 href={`/compare/${slug}?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`}
-                className="group flex flex-col items-center gap-2 rounded-xl border border-gray-800 bg-gray-900 px-4 py-4 text-center text-sm transition-all hover:border-violet-500/50 hover:bg-gray-800"
+                className="group flex flex-col items-center gap-1.5 rounded-xl border border-gray-800 bg-gray-900 px-4 py-4 text-center text-sm transition-all hover:border-violet-500/50 hover:bg-gray-800"
               >
-                <LogoAvatar name={a} size={36} />
-                <span className="font-medium text-gray-200 group-hover:text-white leading-tight">{a}</span>
+                <div className="flex items-center justify-center gap-1.5">
+                  <LogoAvatar name={a} size={20} />
+                  <span className="font-medium text-gray-200 group-hover:text-white">{a}</span>
+                </div>
                 <span className="text-xs text-violet-400 font-bold">VS</span>
-                <span className="font-medium text-gray-200 group-hover:text-white leading-tight">{b}</span>
-                <LogoAvatar name={b} size={36} />
+                <div className="flex items-center justify-center gap-1.5">
+                  <LogoAvatar name={b} size={20} />
+                  <span className="font-medium text-gray-200 group-hover:text-white">{b}</span>
+                </div>
               </Link>
             );
           })}
