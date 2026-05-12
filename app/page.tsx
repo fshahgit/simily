@@ -54,6 +54,15 @@ export default function Home() {
             );
           })}
         </div>
+        <div className="mt-8 text-center">
+          <Link
+            href="/popular"
+            className="inline-flex items-center gap-2 rounded-xl border border-gray-700 bg-gray-900 px-6 py-3 text-sm font-semibold text-gray-300 transition-all hover:border-violet-500/50 hover:bg-gray-800 hover:text-white"
+          >
+            View All Comparisons
+            <span className="text-violet-400">→</span>
+          </Link>
+        </div>
       </section>
 
       {/* How it works */}
