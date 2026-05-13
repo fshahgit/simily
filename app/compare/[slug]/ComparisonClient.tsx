@@ -14,6 +14,11 @@ interface Category {
   winner: string;
 }
 
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
 interface ComparisonData {
   summary: string;
   winner: string;
@@ -24,6 +29,38 @@ interface ComparisonData {
   bPros: string[];
   bCons: string[];
   verdict: { chooseA: string; chooseB: string };
+  faqs?: FAQ[];
+}
+
+function FaqAccordion({ faqs }: { faqs: FAQ[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  return (
+    <div className="divide-y divide-gray-800">
+      {faqs.map((faq, i) => (
+        <div key={i}>
+          <button
+            className="flex w-full items-center justify-between gap-4 py-4 text-left"
+            onClick={() => setOpenIndex(openIndex === i ? null : i)}
+          >
+            <span className="text-sm font-semibold text-gray-200 group-hover:text-white pr-2">
+              {faq.question}
+            </span>
+            <span className={`flex-shrink-0 text-violet-400 transition-transform duration-200 ${openIndex === i ? "rotate-45" : ""}`}>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </span>
+          </button>
+          {openIndex === i && (
+            <p className="pb-4 text-sm text-gray-400 leading-relaxed">
+              {faq.answer}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+  );
 }
 
 function ScoreBar({ score }: { score: number }) {
@@ -202,6 +239,36 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
           <p className="text-gray-300 text-sm"><span className="text-white font-semibold">{b}:</span> {data.verdict.chooseB}</p>
         </div>
       </div>
+
+      {/* FAQ section */}
+      {data.faqs && data.faqs.length > 0 && (
+        <>
+          {/* FAQ JSON-LD for Google rich results */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: data.faqs.map((faq) => ({
+                  "@type": "Question",
+                  name: faq.question,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: faq.answer,
+                  },
+                })),
+              }),
+            }}
+          />
+          <div className="rounded-2xl border border-gray-800 bg-gray-900 px-6 py-2">
+            <h2 className="pt-4 pb-2 text-lg font-bold text-white">
+              Frequently Asked Questions
+            </h2>
+            <FaqAccordion faqs={data.faqs} />
+          </div>
+        </>
+      )}
 
       {/* New comparison CTA */}
       <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6">

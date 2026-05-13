@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "Both items are required" }, { status: 400 });
   }
 
-  const cacheKey = `compare:${a.toLowerCase().trim()}:${b.toLowerCase().trim()}`;
+  const cacheKey = `compare:v2:${a.toLowerCase().trim()}:${b.toLowerCase().trim()}`;
 
   // Check cache first
   try {
@@ -54,15 +54,23 @@ Return a JSON object with this exact structure:
   "verdict": {
     "chooseA": "One sentence: who should choose ${a}",
     "chooseB": "One sentence: who should choose ${b}"
-  }
+  },
+  "faqs": [
+    {
+      "question": "A specific question someone would search for when choosing between ${a} and ${b}",
+      "answer": "A helpful, direct answer in 2-3 sentences"
+    }
+  ]
 }
 
-Include 5-7 relevant categories. Scores are out of 10. Be specific, factual, and useful. Return only valid JSON, no markdown.`;
+Include 5-7 relevant categories. Scores are out of 10.
+Include exactly 5 FAQs. Questions should mirror real search queries like "Is ${a} better than ${b}?", "Which is cheaper?", "Can I switch from one to the other?", "Which is better for beginners?", etc. Answers should be concrete and useful.
+Be specific, factual, and useful. Return only valid JSON, no markdown.`;
 
   try {
     const message = await client.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: 2000,
+      max_tokens: 2500,
       messages: [{ role: "user", content: prompt }],
     });
 
