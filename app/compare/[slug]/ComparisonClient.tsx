@@ -278,37 +278,87 @@ export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?
         </div>
       </div>
 
-      {/* Category scores — stacked bars */}
+      {/* Category scores */}
       <div className="rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden">
-        <div className="border-b border-gray-800 px-6 py-3">
-          <span className="text-sm font-semibold text-gray-400">Category Breakdown</span>
-        </div>
-        {data.categories.map((cat) => (
-          <div key={cat.name} className="border-b border-gray-800 px-6 py-4 last:border-0 space-y-3">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-gray-200">{cat.name}</p>
-              <span className="text-xs text-violet-400 bg-violet-500/10 px-2 py-0.5 rounded-full border border-violet-500/20">
-                {cat.winner} wins
-              </span>
+        {itemsCount === 2 ? (
+          // ── 2-way: original side-by-side layout ──────────────────────────
+          <>
+            <div className="grid grid-cols-3 border-b border-gray-800 px-6 py-3 text-sm font-semibold text-gray-400">
+              <div className="flex items-center gap-2">
+                <LogoAvatar name={items[0]} size={20} />
+                <span className="truncate">{items[0]}</span>
+              </div>
+              <span className="text-center">Category</span>
+              <div className="flex items-center justify-end gap-2">
+                <span className="truncate text-right">{items[1]}</span>
+                <LogoAvatar name={items[1]} size={20} />
+              </div>
             </div>
-            {cat.scores.map((entry, i) => (
-              <div key={entry.name} className="space-y-0.5">
-                <div className="flex items-center gap-2">
-                  <LogoAvatar name={entry.name} size={16} />
-                  <span className="text-xs text-gray-400 w-24 truncate shrink-0">{entry.name}</span>
-                  <div className="h-1.5 flex-1 rounded-full bg-gray-800">
-                    <div
-                      className={`h-1.5 rounded-full transition-all duration-700 ${ITEM_COLORS[i % ITEM_COLORS.length]}`}
-                      style={{ width: `${entry.score * 10}%` }}
-                    />
+            {data.categories.map((cat) => {
+              const scoreA = cat.scores[0];
+              const scoreB = cat.scores[1];
+              return (
+                <div key={cat.name} className="grid grid-cols-3 items-center gap-4 border-b border-gray-800 px-6 py-4 last:border-0">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 flex-1 rounded-full bg-gray-800">
+                        <div className="h-2 rounded-full bg-violet-500 transition-all duration-700" style={{ width: `${(scoreA?.score ?? 0) * 10}%` }} />
+                      </div>
+                      <span className="w-6 text-right text-xs font-bold text-gray-400">{scoreA?.score}</span>
+                    </div>
+                    <p className="text-xs text-gray-500">{scoreA?.note}</p>
                   </div>
-                  <span className="text-xs font-bold text-gray-400 w-4 shrink-0 text-right">{entry.score}</span>
+                  <div className="text-center">
+                    <p className="text-sm font-semibold text-gray-200">{cat.name}</p>
+                    <p className="text-xs text-violet-400 mt-0.5">{cat.winner}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 text-xs font-bold text-gray-400">{scoreB?.score}</span>
+                      <div className="h-2 flex-1 rounded-full bg-gray-800">
+                        <div className="h-2 rounded-full bg-blue-500 transition-all duration-700" style={{ width: `${(scoreB?.score ?? 0) * 10}%` }} />
+                      </div>
+                    </div>
+                    <p className="text-xs text-gray-500 text-right">{scoreB?.note}</p>
+                  </div>
                 </div>
-                <p className="text-xs text-gray-600 pl-[104px]">{entry.note}</p>
+              );
+            })}
+          </>
+        ) : (
+          // ── 3-5 items: stacked bars ───────────────────────────────────────
+          <>
+            <div className="border-b border-gray-800 px-6 py-3">
+              <span className="text-sm font-semibold text-gray-400">Category Breakdown</span>
+            </div>
+            {data.categories.map((cat) => (
+              <div key={cat.name} className="border-b border-gray-800 px-6 py-4 last:border-0 space-y-3">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold text-gray-200">{cat.name}</p>
+                  <span className="text-xs text-violet-400 bg-violet-500/10 px-2 py-0.5 rounded-full border border-violet-500/20">
+                    {cat.winner} wins
+                  </span>
+                </div>
+                {cat.scores.map((entry, i) => (
+                  <div key={entry.name} className="space-y-0.5">
+                    <div className="flex items-center gap-2">
+                      <LogoAvatar name={entry.name} size={16} />
+                      <span className="text-xs text-gray-400 w-24 truncate shrink-0">{entry.name}</span>
+                      <div className="h-1.5 flex-1 rounded-full bg-gray-800">
+                        <div
+                          className={`h-1.5 rounded-full transition-all duration-700 ${ITEM_COLORS[i % ITEM_COLORS.length]}`}
+                          style={{ width: `${entry.score * 10}%` }}
+                        />
+                      </div>
+                      <span className="text-xs font-bold text-gray-400 w-4 shrink-0 text-right">{entry.score}</span>
+                    </div>
+                    <p className="text-xs text-gray-600 pl-[104px]">{entry.note}</p>
+                  </div>
+                ))}
               </div>
             ))}
-          </div>
-        ))}
+          </>
+        )}
       </div>
 
       {/* Pros & Cons */}
