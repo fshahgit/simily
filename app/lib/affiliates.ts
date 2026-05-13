@@ -7,7 +7,7 @@
 //    Replace placeholder URLs with your real affiliate URLs
 // ─────────────────────────────────────────────────────────────────────────────
 
-const AMAZON_TAG = "simily-20"; // ← Replace with your Amazon Associates tag
+const AMAZON_TAG = "simily26-20"; // ← Replace with your Amazon Associates tag
 
 export interface AffiliateLink {
   label: string;
