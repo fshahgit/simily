@@ -2,14 +2,23 @@
 // Ordered roughly by search popularity
 const ALL_ITEMS = [
   // AI tools
-  "ChatGPT", "Claude", "Gemini", "Perplexity", "Grok", "Midjourney", "DALL-E",
-  "Cursor", "GitHub Copilot", "Copilot",
+  "ChatGPT", "Claude", "Gemini", "Perplexity", "Grok", "DeepSeek", "Midjourney", "DALL-E",
+  "Cursor", "GitHub Copilot", "Copilot", "Windsurf",
 
   // Phones & tablets
   "iPhone 16", "iPhone 16 Pro", "iPhone 15", "iPhone",
   "Samsung Galaxy S25", "Samsung Galaxy S24", "Samsung Galaxy Tab",
   "Google Pixel 9", "Google Pixel", "OnePlus 13", "Android",
+  "Redmi", "Realme", "Poco", "Nothing Phone",
   "iPad", "iPad Pro", "iPad Air",
+
+  // Indian apps & services
+  "Swiggy", "Zomato", "PhonePe", "Google Pay", "Paytm", "CRED",
+  "Flipkart", "Amazon India", "Meesho",
+  "Jio", "Airtel", "Vi",
+  "Disney+ Hotstar", "Sony LIV", "Zee5", "JioCinema",
+  "BYJU'S", "Unacademy", "Vedantu", "upGrad",
+  "Naukri", "Internshala",
 
   // Computers & OS
   "MacBook Pro", "MacBook Air", "Mac", "MacOS",

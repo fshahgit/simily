@@ -193,6 +193,54 @@ export const ALL_COMPARISONS: Comparison[] = [
   { a: "Keto Diet", b: "Intermittent Fasting" },
   { a: "Keto Diet", b: "Vegan Diet" },
   { a: "MyFitnessPal", b: "Cronometer" },
+
+  // ── India — Food & Delivery ───────────────────────────────────────────────
+  { a: "Swiggy", b: "Zomato" },
+
+  // ── India — Payments ─────────────────────────────────────────────────────
+  { a: "PhonePe", b: "Google Pay" },
+  { a: "PhonePe", b: "Paytm" },
+  { a: "Google Pay", b: "Paytm" },
+  { a: "PhonePe", b: "CRED" },
+
+  // ── India — E-commerce ───────────────────────────────────────────────────
+  { a: "Amazon", b: "Flipkart" },
+  { a: "Flipkart", b: "Meesho" },
+
+  // ── India — Telecom ──────────────────────────────────────────────────────
+  { a: "Jio", b: "Airtel" },
+  { a: "Jio", b: "Vi" },
+  { a: "Airtel", b: "Vi" },
+
+  // ── India — OTT ──────────────────────────────────────────────────────────
+  { a: "Netflix", b: "Disney+ Hotstar" },
+  { a: "Disney+ Hotstar", b: "Amazon Prime Video" },
+  { a: "Sony LIV", b: "Disney+ Hotstar" },
+  { a: "JioCinema", b: "Disney+ Hotstar" },
+  { a: "Zee5", b: "Sony LIV" },
+
+  // ── India — EdTech ───────────────────────────────────────────────────────
+  { a: "BYJU'S", b: "Unacademy" },
+  { a: "Unacademy", b: "Vedantu" },
+  { a: "upGrad", b: "Coursera" },
+  { a: "BYJU'S", b: "Vedantu" },
+
+  // ── India — Jobs ─────────────────────────────────────────────────────────
+  { a: "Naukri", b: "LinkedIn" },
+  { a: "Naukri", b: "Indeed" },
+  { a: "Internshala", b: "LinkedIn" },
+
+  // ── India — Budget Phones ────────────────────────────────────────────────
+  { a: "Redmi", b: "Realme" },
+  { a: "Poco", b: "Redmi" },
+  { a: "OnePlus", b: "Samsung Galaxy S25" },
+  { a: "Nothing Phone", b: "OnePlus" },
+  { a: "Realme", b: "Poco" },
+
+  // ── AI (trending globally + India) ───────────────────────────────────────
+  { a: "DeepSeek", b: "ChatGPT" },
+  { a: "DeepSeek", b: "Claude" },
+  { a: "DeepSeek", b: "Gemini" },
 ];
 
 export function makeSlug(a: string, b: string): string {

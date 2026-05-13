@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span className="text-gray-500 text-sm font-normal hidden sm:block">— Compare Anything</span>
             </Link>
             <nav className="flex items-center gap-4 sm:gap-6 text-sm text-gray-400">
-              <Link href="/compare" className="hover:text-white transition-colors">Compare</Link>
+              <Link href="/search" className="hover:text-white transition-colors">Search</Link>
               <Link href="/popular" className="hover:text-white transition-colors">Popular</Link>
               <Link href="/best" className="hover:text-white transition-colors font-medium text-violet-400 hover:text-violet-300">Best Of</Link>
             </nav>

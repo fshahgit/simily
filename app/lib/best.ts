@@ -164,6 +164,98 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     items: ["Webflow", "Framer", "Wix", "Squarespace", "WordPress"],
     category: "Website Builders",
   },
+
+  // ── Laptops & Hardware ────────────────────────────────────────────────────
+  {
+    slug: "best-budget-laptop",
+    title: "Best Budget Laptop",
+    description: "MacBook Air, Dell XPS, ThinkPad, and Surface Pro compared — the best laptop for your money.",
+    items: ["MacBook Air", "Dell XPS", "ThinkPad", "Surface Pro", "Chromebook"],
+    category: "Laptops & Hardware",
+  },
+  {
+    slug: "best-laptop-for-programming",
+    title: "Best Laptop for Programming",
+    description: "MacBook Pro, Dell XPS, ThinkPad ranked — the best laptop for developers and engineers.",
+    items: ["MacBook Pro", "Dell XPS", "ThinkPad", "MacBook Air", "Surface Pro"],
+    category: "Laptops & Hardware",
+  },
+
+  // ── Dev Tools (extra) ─────────────────────────────────────────────────────
+  {
+    slug: "best-react-ui-library",
+    title: "Best React UI Library",
+    description: "shadcn/ui, Material UI, Chakra UI, and Ant Design compared — the best component library for React.",
+    items: ["shadcn/ui", "Material UI", "Chakra UI", "Ant Design", "Mantine"],
+    category: "Dev Tools",
+  },
+  {
+    slug: "best-orm-for-nodejs",
+    title: "Best ORM for Node.js",
+    description: "Prisma, Drizzle, TypeORM, and Sequelize compared — the best ORM for Node.js projects.",
+    items: ["Prisma", "Drizzle", "TypeORM", "Sequelize"],
+    category: "Dev Tools",
+  },
+  {
+    slug: "best-state-management-react",
+    title: "Best State Management for React",
+    description: "Redux, Zustand, Jotai, and Recoil ranked — the best way to manage state in React apps.",
+    items: ["Redux", "Zustand", "Jotai", "Recoil", "Context API"],
+    category: "Dev Tools",
+  },
+
+  // ── Email ─────────────────────────────────────────────────────────────────
+  {
+    slug: "best-email-client",
+    title: "Best Email Client",
+    description: "Superhuman, Apple Mail, Spark, and Outlook compared — the best email client for productivity.",
+    items: ["Superhuman", "Apple Mail", "Spark", "Outlook", "Gmail", "HEY"],
+    category: "Productivity",
+  },
+
+  // ── India ─────────────────────────────────────────────────────────────────
+  {
+    slug: "best-ott-platform-india",
+    title: "Best OTT Platform in India",
+    description: "Netflix, Disney+ Hotstar, Amazon Prime, and Sony LIV ranked — which streaming service is best in India?",
+    items: ["Netflix", "Disney+ Hotstar", "Amazon Prime Video", "Sony LIV", "JioCinema", "Zee5"],
+    category: "India",
+  },
+  {
+    slug: "best-payment-app-india",
+    title: "Best Payment App in India",
+    description: "PhonePe, Google Pay, Paytm, and CRED compared — the best UPI app for Indians.",
+    items: ["PhonePe", "Google Pay", "Paytm", "CRED", "Amazon Pay"],
+    category: "India",
+  },
+  {
+    slug: "best-food-delivery-app-india",
+    title: "Best Food Delivery App in India",
+    description: "Swiggy vs Zomato — which food delivery app is better for ordering in India?",
+    items: ["Swiggy", "Zomato"],
+    category: "India",
+  },
+  {
+    slug: "best-edtech-platform-india",
+    title: "Best EdTech Platform in India",
+    description: "BYJU'S, Unacademy, Vedantu, and upGrad ranked — the best online learning platform in India.",
+    items: ["BYJU'S", "Unacademy", "Vedantu", "upGrad", "Coursera"],
+    category: "India",
+  },
+  {
+    slug: "best-telecom-india",
+    title: "Best Telecom Operator in India",
+    description: "Jio, Airtel, and Vi compared — which mobile network gives the best value in India?",
+    items: ["Jio", "Airtel", "Vi"],
+    category: "India",
+  },
+  {
+    slug: "best-budget-phone-india",
+    title: "Best Budget Phone in India",
+    description: "Redmi, Realme, Poco, and Nothing Phone ranked — the best value smartphone in India.",
+    items: ["Redmi", "Realme", "Poco", "Nothing Phone", "OnePlus"],
+    category: "India",
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
@@ -174,10 +266,12 @@ export const BEST_CATEGORIES = [
   "AI",
   "Dev Tools",
   "Productivity",
+  "Laptops & Hardware",
   "Design",
   "Communication",
   "Cloud",
   "Entertainment",
   "Security",
   "Website Builders",
+  "India",
 ];
