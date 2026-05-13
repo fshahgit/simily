@@ -323,35 +323,55 @@ export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?
             })}
           </>
         ) : (
-          // ── 3-5 items: stacked bars ───────────────────────────────────────
+          // ── 3-5 items: side-by-side columns ──────────────────────────────
           <>
-            <div className="border-b border-gray-800 px-6 py-3">
-              <span className="text-sm font-semibold text-gray-400">Category Breakdown</span>
-            </div>
-            {data.categories.map((cat) => (
-              <div key={cat.name} className="border-b border-gray-800 px-6 py-4 last:border-0 space-y-3">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold text-gray-200">{cat.name}</p>
-                  <span className="text-xs text-violet-400 bg-violet-500/10 px-2 py-0.5 rounded-full border border-violet-500/20">
-                    {cat.winner} wins
+            {/* Column headers */}
+            <div
+              className="border-b border-gray-800 px-6 py-3 grid gap-3"
+              style={{ gridTemplateColumns: `160px repeat(${itemsCount}, 1fr)` }}
+            >
+              <span className="text-sm font-semibold text-gray-400">Category</span>
+              {items.map((item, i) => (
+                <div key={item} className="flex items-center justify-center gap-1.5 min-w-0">
+                  <LogoAvatar name={item} size={18} />
+                  <span className={`text-xs font-semibold truncate ${["text-blue-400","text-cyan-400","text-emerald-400","text-orange-400","text-pink-400"][i % 5]}`}>
+                    {item}
                   </span>
                 </div>
-                {cat.scores.map((entry, i) => (
-                  <div key={entry.name} className="space-y-0.5">
-                    <div className="flex items-center gap-2">
-                      <LogoAvatar name={entry.name} size={16} />
-                      <span className="text-xs text-gray-400 w-24 truncate shrink-0">{entry.name}</span>
-                      <div className="h-1.5 flex-1 rounded-full bg-gray-800">
-                        <div
-                          className={`h-1.5 rounded-full transition-all duration-700 ${ITEM_COLORS[i % ITEM_COLORS.length]}`}
-                          style={{ width: `${entry.score * 10}%` }}
-                        />
-                      </div>
-                      <span className="text-xs font-bold text-gray-400 w-4 shrink-0 text-right">{entry.score}</span>
-                    </div>
-                    <p className="text-xs text-gray-600 pl-[104px]">{entry.note}</p>
+              ))}
+            </div>
+
+            {/* Category rows */}
+            {data.categories.map((cat) => (
+              <div key={cat.name} className="border-b border-gray-800 last:border-0">
+                <div
+                  className="grid gap-3 px-6 py-4 items-start"
+                  style={{ gridTemplateColumns: `160px repeat(${itemsCount}, 1fr)` }}
+                >
+                  {/* Category name + winner */}
+                  <div className="space-y-1 pt-1">
+                    <p className="text-sm font-semibold text-gray-200 leading-tight">{cat.name}</p>
+                    <span className="inline-block text-xs text-violet-400 bg-violet-500/10 px-1.5 py-0.5 rounded-full border border-violet-500/20 leading-tight">
+                      {cat.winner} wins
+                    </span>
                   </div>
-                ))}
+
+                  {/* Score columns */}
+                  {cat.scores.map((entry, i) => (
+                    <div key={entry.name} className="space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="h-2 flex-1 rounded-full bg-gray-800">
+                          <div
+                            className={`h-2 rounded-full transition-all duration-700 ${ITEM_COLORS[i % ITEM_COLORS.length]}`}
+                            style={{ width: `${entry.score * 10}%` }}
+                          />
+                        </div>
+                        <span className="text-xs font-bold text-gray-400 shrink-0 w-4 text-right">{entry.score}</span>
+                      </div>
+                      <p className="text-xs text-gray-500 leading-snug">{entry.note}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </>
