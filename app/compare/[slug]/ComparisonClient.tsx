@@ -5,19 +5,22 @@ import CompareForm from "../../components/CompareForm";
 import LogoAvatar from "../../components/LogoAvatar";
 import ShareButton from "../../components/ShareButton";
 import AffiliateSection from "../../components/AffiliateSection";
+import AddThirdItem from "../../components/AddThirdItem";
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
 
 interface Category {
   name: string;
   aScore: number;
   bScore: number;
+  cScore?: number;
   aNote: string;
   bNote: string;
+  cNote?: string;
   winner: string;
-}
-
-interface FAQ {
-  question: string;
-  answer: string;
 }
 
 interface ComparisonData {
@@ -29,7 +32,9 @@ interface ComparisonData {
   aCons: string[];
   bPros: string[];
   bCons: string[];
-  verdict: { chooseA: string; chooseB: string };
+  cPros?: string[];
+  cCons?: string[];
+  verdict: { chooseA: string; chooseB: string; chooseC?: string };
   faqs?: FAQ[];
 }
 
@@ -43,9 +48,7 @@ function FaqAccordion({ faqs }: { faqs: FAQ[] }) {
             className="flex w-full items-center justify-between gap-4 py-4 text-left"
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
           >
-            <span className="text-sm font-semibold text-gray-200 group-hover:text-white pr-2">
-              {faq.question}
-            </span>
+            <span className="text-sm font-semibold text-gray-200 pr-2">{faq.question}</span>
             <span className={`flex-shrink-0 text-violet-400 transition-transform duration-200 ${openIndex === i ? "rotate-45" : ""}`}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -54,9 +57,7 @@ function FaqAccordion({ faqs }: { faqs: FAQ[] }) {
             </span>
           </button>
           {openIndex === i && (
-            <p className="pb-4 text-sm text-gray-400 leading-relaxed">
-              {faq.answer}
-            </p>
+            <p className="pb-4 text-sm text-gray-400 leading-relaxed">{faq.answer}</p>
           )}
         </div>
       ))}
@@ -64,34 +65,30 @@ function FaqAccordion({ faqs }: { faqs: FAQ[] }) {
   );
 }
 
-function ScoreBar({ score }: { score: number }) {
+function ScoreBar({ score, color = "bg-violet-500" }: { score: number; color?: string }) {
   return (
-    <div className="flex items-center gap-2">
-      <div className="h-2 flex-1 rounded-full bg-gray-800">
-        <div
-          className="h-2 rounded-full bg-violet-500 transition-all duration-700"
-          style={{ width: `${score * 10}%` }}
-        />
-      </div>
-      <span className="w-6 text-right text-xs font-bold text-gray-400">{score}</span>
+    <div className="h-1.5 flex-1 rounded-full bg-gray-800">
+      <div className={`h-1.5 rounded-full ${color} transition-all duration-700`} style={{ width: `${score * 10}%` }} />
     </div>
   );
 }
 
-export default function ComparisonClient({ a, b }: { a: string; b: string }) {
+export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?: string }) {
   const [data, setData] = useState<ComparisonData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const isThreeWay = !!c;
 
   useEffect(() => {
     async function fetchComparison() {
       setLoading(true);
       setError("");
+      setData(null);
       try {
         const res = await fetch("/api/compare", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ a, b }),
+          body: JSON.stringify({ a, b, c }),
         });
         if (!res.ok) throw new Error("Failed");
         const json = await res.json();
@@ -103,13 +100,20 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
       }
     }
     fetchComparison();
-  }, [a, b]);
+  }, [a, b, c]);
 
   if (loading) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4">
         <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-700 border-t-violet-500" />
-        <p className="text-gray-400 text-sm">AI is analyzing <span className="text-white font-medium">{a}</span> vs <span className="text-white font-medium">{b}</span>…</p>
+        <p className="text-gray-400 text-sm">
+          AI is analyzing{" "}
+          <span className="text-white font-medium">{a}</span>
+          {" vs "}
+          <span className="text-white font-medium">{b}</span>
+          {c && <>{" vs "}<span className="text-white font-medium">{c}</span></>}
+          {"…"}
+        </p>
       </div>
     );
   }
@@ -125,31 +129,40 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
     );
   }
 
+  const items = [
+    { name: a, pros: data.aPros, cons: data.aCons, chooseText: data.verdict.chooseA, color: "bg-violet-500" },
+    { name: b, pros: data.bPros, cons: data.bCons, chooseText: data.verdict.chooseB, color: "bg-blue-500" },
+    ...(c && data.cPros ? [{ name: c, pros: data.cPros, cons: data.cCons ?? [], chooseText: data.verdict.chooseC ?? "", color: "bg-emerald-500" }] : []),
+  ];
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 space-y-10">
+
       {/* Title with logos */}
       <div className="text-center space-y-4">
-        <div className="flex items-center justify-center gap-4 sm:gap-6">
-          {/* Item A */}
-          <div className="flex flex-col items-center gap-2 min-w-0">
-            <LogoAvatar name={a} size={64} />
-            <span className="text-lg font-bold text-violet-300 leading-tight text-center">{a}</span>
-          </div>
-          {/* VS badge */}
-          <div className="flex flex-col items-center gap-1 flex-shrink-0">
-            <span className="rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-xs font-bold text-gray-400 tracking-widest">
-              VS
-            </span>
-          </div>
-          {/* Item B */}
-          <div className="flex flex-col items-center gap-2 min-w-0">
-            <LogoAvatar name={b} size={64} />
-            <span className="text-lg font-bold text-violet-300 leading-tight text-center">{b}</span>
-          </div>
+        <div className="flex items-center justify-center gap-3 sm:gap-6 flex-wrap">
+          {items.map((item, i) => (
+            <div key={item.name} className="flex items-center gap-3 sm:gap-6">
+              {i > 0 && (
+                <div className="shrink-0 rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-xs font-bold text-gray-400 tracking-widest">
+                  VS
+                </div>
+              )}
+              <div className="flex flex-col items-center gap-2">
+                <LogoAvatar name={item.name} size={isThreeWay ? 52 : 64} />
+                <span className={`${isThreeWay ? "text-base" : "text-lg"} font-bold text-violet-300 leading-tight text-center`}>
+                  {item.name}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
-        <h1 className="sr-only">{a} vs {b}</h1>
+        <h1 className="sr-only">{items.map(i => i.name).join(" vs ")}</h1>
         <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">{data.summary}</p>
-        <ShareButton a={a} b={b} />
+        <div className="flex items-center justify-center gap-3 flex-wrap">
+          <ShareButton a={a} b={b} />
+          {!isThreeWay && <AddThirdItem a={a} b={b} />}
+        </div>
       </div>
 
       {/* Winner banner */}
@@ -164,45 +177,89 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
 
       {/* Category scores */}
       <div className="rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden">
-        <div className="grid grid-cols-3 border-b border-gray-800 px-6 py-3 text-sm font-semibold text-gray-400">
-          <div className="flex items-center gap-2">
-            <LogoAvatar name={a} size={22} />
-            <span className="truncate">{a}</span>
-          </div>
-          <span className="text-center">Category</span>
-          <div className="flex items-center justify-end gap-2">
-            <span className="truncate text-right">{b}</span>
-            <LogoAvatar name={b} size={22} />
-          </div>
-        </div>
-        {data.categories.map((cat) => (
-          <div key={cat.name} className="grid grid-cols-3 items-center gap-4 border-b border-gray-800 px-6 py-4 last:border-0">
-            <div className="space-y-1">
-              <ScoreBar score={cat.aScore} />
-              <p className="text-xs text-gray-500">{cat.aNote}</p>
+        {isThreeWay ? (
+          // 3-way: stacked bar layout
+          <>
+            <div className="border-b border-gray-800 px-6 py-3">
+              <span className="text-sm font-semibold text-gray-400">Category Breakdown</span>
             </div>
-            <div className="text-center">
-              <p className="text-sm font-semibold text-gray-200">{cat.name}</p>
-              <p className="text-xs text-violet-400 mt-0.5">{cat.winner}</p>
+            {data.categories.map((cat) => (
+              <div key={cat.name} className="border-b border-gray-800 px-6 py-4 last:border-0 space-y-3">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold text-gray-200">{cat.name}</p>
+                  <span className="text-xs text-violet-400 bg-violet-500/10 px-2 py-0.5 rounded-full border border-violet-500/20">
+                    {cat.winner} wins
+                  </span>
+                </div>
+                {[
+                  { name: a, score: cat.aScore, note: cat.aNote, color: "bg-violet-500" },
+                  { name: b, score: cat.bScore, note: cat.bNote, color: "bg-blue-500" },
+                  ...(c ? [{ name: c, score: cat.cScore ?? 0, note: cat.cNote ?? "", color: "bg-emerald-500" }] : []),
+                ].map((item) => (
+                  <div key={item.name} className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <LogoAvatar name={item.name} size={16} />
+                      <span className="text-xs text-gray-400 w-24 truncate shrink-0">{item.name}</span>
+                      <ScoreBar score={item.score} color={item.color} />
+                      <span className="text-xs font-bold text-gray-400 w-4 shrink-0">{item.score}</span>
+                    </div>
+                    <p className="text-xs text-gray-600 pl-[104px]">{item.note}</p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </>
+        ) : (
+          // 2-way: original side-by-side layout
+          <>
+            <div className="grid grid-cols-3 border-b border-gray-800 px-6 py-3 text-sm font-semibold text-gray-400">
+              <div className="flex items-center gap-2">
+                <LogoAvatar name={a} size={22} />
+                <span className="truncate">{a}</span>
+              </div>
+              <span className="text-center">Category</span>
+              <div className="flex items-center justify-end gap-2">
+                <span className="truncate text-right">{b}</span>
+                <LogoAvatar name={b} size={22} />
+              </div>
             </div>
-            <div className="space-y-1">
-              <ScoreBar score={cat.bScore} />
-              <p className="text-xs text-gray-500 text-right">{cat.bNote}</p>
-            </div>
-          </div>
-        ))}
+            {data.categories.map((cat) => (
+              <div key={cat.name} className="grid grid-cols-3 items-center gap-4 border-b border-gray-800 px-6 py-4 last:border-0">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <div className="h-1.5 flex-1 rounded-full bg-gray-800">
+                      <div className="h-1.5 rounded-full bg-violet-500 transition-all duration-700" style={{ width: `${cat.aScore * 10}%` }} />
+                    </div>
+                    <span className="w-6 text-right text-xs font-bold text-gray-400">{cat.aScore}</span>
+                  </div>
+                  <p className="text-xs text-gray-500">{cat.aNote}</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-sm font-semibold text-gray-200">{cat.name}</p>
+                  <p className="text-xs text-violet-400 mt-0.5">{cat.winner}</p>
+                </div>
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="w-6 text-xs font-bold text-gray-400">{cat.bScore}</span>
+                    <div className="h-1.5 flex-1 rounded-full bg-gray-800">
+                      <div className="h-1.5 rounded-full bg-blue-500 transition-all duration-700" style={{ width: `${cat.bScore * 10}%` }} />
+                    </div>
+                  </div>
+                  <p className="text-xs text-gray-500 text-right">{cat.bNote}</p>
+                </div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
 
       {/* Pros & Cons */}
-      <div className="grid gap-4 sm:grid-cols-2">
-        {[
-          { label: a, pros: data.aPros, cons: data.aCons },
-          { label: b, pros: data.bPros, cons: data.bCons },
-        ].map((item) => (
-          <div key={item.label} className="rounded-2xl border border-gray-800 bg-gray-900 p-6 space-y-4">
+      <div className={`grid gap-4 ${isThreeWay ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
+        {items.map((item) => (
+          <div key={item.name} className="rounded-2xl border border-gray-800 bg-gray-900 p-6 space-y-4">
             <div className="flex items-center gap-3">
-              <LogoAvatar name={item.label} size={36} />
-              <h3 className="font-bold text-white text-lg">{item.label}</h3>
+              <LogoAvatar name={item.name} size={36} />
+              <h3 className="font-bold text-white text-lg">{item.name}</h3>
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-green-400 font-semibold mb-2">Pros</p>
@@ -217,9 +274,9 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
             <div>
               <p className="text-xs uppercase tracking-widest text-red-400 font-semibold mb-2">Cons</p>
               <ul className="space-y-1.5">
-                {item.cons.map((c) => (
-                  <li key={c} className="flex gap-2 text-sm text-gray-300">
-                    <span className="mt-0.5 text-red-400 flex-shrink-0">✗</span> {c}
+                {item.cons.map((con) => (
+                  <li key={con} className="flex gap-2 text-sm text-gray-300">
+                    <span className="mt-0.5 text-red-400 flex-shrink-0">✗</span> {con}
                   </li>
                 ))}
               </ul>
@@ -231,23 +288,22 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
       {/* Verdict */}
       <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6 space-y-3">
         <h3 className="font-bold text-white text-lg">Who Should Choose What?</h3>
-        <div className="flex gap-3 items-start">
-          <span className="text-violet-400 font-bold text-sm mt-0.5 flex-shrink-0">→</span>
-          <p className="text-gray-300 text-sm"><span className="text-white font-semibold">{a}:</span> {data.verdict.chooseA}</p>
-        </div>
-        <div className="flex gap-3 items-start">
-          <span className="text-violet-400 font-bold text-sm mt-0.5 flex-shrink-0">→</span>
-          <p className="text-gray-300 text-sm"><span className="text-white font-semibold">{b}:</span> {data.verdict.chooseB}</p>
-        </div>
+        {items.map((item) => (
+          <div key={item.name} className="flex gap-3 items-start">
+            <span className="text-violet-400 font-bold text-sm mt-0.5 flex-shrink-0">→</span>
+            <p className="text-gray-300 text-sm">
+              <span className="text-white font-semibold">{item.name}:</span> {item.chooseText}
+            </p>
+          </div>
+        ))}
       </div>
 
       {/* Affiliate links */}
-      <AffiliateSection a={a} b={b} />
+      <AffiliateSection a={a} b={b} c={c} />
 
       {/* FAQ section */}
       {data.faqs && data.faqs.length > 0 && (
         <>
-          {/* FAQ JSON-LD for Google rich results */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -257,18 +313,13 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
                 mainEntity: data.faqs.map((faq) => ({
                   "@type": "Question",
                   name: faq.question,
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: faq.answer,
-                  },
+                  acceptedAnswer: { "@type": "Answer", text: faq.answer },
                 })),
               }),
             }}
           />
           <div className="rounded-2xl border border-gray-800 bg-gray-900 px-6 py-2">
-            <h2 className="pt-4 pb-2 text-lg font-bold text-white">
-              Frequently Asked Questions
-            </h2>
+            <h2 className="pt-4 pb-2 text-lg font-bold text-white">Frequently Asked Questions</h2>
             <FaqAccordion faqs={data.faqs} />
           </div>
         </>

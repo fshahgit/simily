@@ -9,13 +9,14 @@ const redis = new Redis({
 const CACHE_TTL = 60 * 60 * 24 * 7; // 7 days
 
 export async function POST(request: Request) {
-  const { a, b } = await request.json();
+  const { a, b, c } = await request.json();
 
   if (!a || !b) {
     return Response.json({ error: "Both items are required" }, { status: 400 });
   }
 
-  const cacheKey = `compare:v2:${a.toLowerCase().trim()}:${b.toLowerCase().trim()}`;
+  const isThreeWay = !!c;
+  const cacheKey = `compare:v2:${a.toLowerCase().trim()}:${b.toLowerCase().trim()}${c ? `:${c.toLowerCase().trim()}` : ""}`;
 
   // Check cache first
   try {
@@ -30,7 +31,49 @@ export async function POST(request: Request) {
   // Generate with AI
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-  const prompt = `You are an expert analyst. Compare "${a}" vs "${b}" in a structured, unbiased, and helpful way.
+  const prompt = isThreeWay
+    ? `You are an expert analyst. Compare "${a}" vs "${b}" vs "${c}" in a structured, unbiased, and helpful way.
+
+Return a JSON object with this exact structure:
+{
+  "summary": "A 2-3 sentence overview of the key differences between all three",
+  "winner": "The name of the overall winner, or 'Tie' if equal",
+  "winnerReason": "One sentence explaining why it wins overall",
+  "categories": [
+    {
+      "name": "Category name (e.g. Performance, Price, Ease of Use)",
+      "aScore": 8,
+      "bScore": 6,
+      "cScore": 7,
+      "aNote": "Short note about ${a} in this category",
+      "bNote": "Short note about ${b} in this category",
+      "cNote": "Short note about ${c} in this category",
+      "winner": "Name of winner in this category or 'Tie'"
+    }
+  ],
+  "aPros": ["Pro 1", "Pro 2", "Pro 3"],
+  "aCons": ["Con 1", "Con 2"],
+  "bPros": ["Pro 1", "Pro 2", "Pro 3"],
+  "bCons": ["Con 1", "Con 2"],
+  "cPros": ["Pro 1", "Pro 2", "Pro 3"],
+  "cCons": ["Con 1", "Con 2"],
+  "verdict": {
+    "chooseA": "One sentence: who should choose ${a}",
+    "chooseB": "One sentence: who should choose ${b}",
+    "chooseC": "One sentence: who should choose ${c}"
+  },
+  "faqs": [
+    {
+      "question": "A specific question someone would search for when choosing between ${a}, ${b}, and ${c}",
+      "answer": "A helpful, direct answer in 2-3 sentences"
+    }
+  ]
+}
+
+Include 5-7 relevant categories. Scores are out of 10.
+Include exactly 5 FAQs covering real search queries like "Which is best overall?", "Which is cheapest?", "Which is easiest to learn?", etc.
+Be specific, factual, and useful. Return only valid JSON, no markdown.`
+    : `You are an expert analyst. Compare "${a}" vs "${b}" in a structured, unbiased, and helpful way.
 
 Return a JSON object with this exact structure:
 {
@@ -64,7 +107,7 @@ Return a JSON object with this exact structure:
 }
 
 Include 5-7 relevant categories. Scores are out of 10.
-Include exactly 5 FAQs. Questions should mirror real search queries like "Is ${a} better than ${b}?", "Which is cheaper?", "Can I switch from one to the other?", "Which is better for beginners?", etc. Answers should be concrete and useful.
+Include exactly 5 FAQs. Questions should mirror real search queries like "Is ${a} better than ${b}?", "Which is cheaper?", "Can I switch from one to the other?", "Which is better for beginners?", etc.
 Be specific, factual, and useful. Return only valid JSON, no markdown.`;
 
   try {

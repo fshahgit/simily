@@ -54,13 +54,19 @@ function AffiliateBadge({ link }: { link: AffiliateLink }) {
 interface AffiliateSectionProps {
   a: string;
   b: string;
+  c?: string;
 }
 
-export default function AffiliateSection({ a, b }: AffiliateSectionProps) {
-  const linksA = getAffiliateLinks(a);
-  const linksB = getAffiliateLinks(b);
+export default function AffiliateSection({ a, b, c }: AffiliateSectionProps) {
+  const items = [
+    { name: a, links: getAffiliateLinks(a) },
+    { name: b, links: getAffiliateLinks(b) },
+    ...(c ? [{ name: c, links: getAffiliateLinks(c) }] : []),
+  ].filter((item) => item.links.length > 0);
 
-  if (linksA.length === 0 && linksB.length === 0) return null;
+  if (items.length === 0) return null;
+
+  const cols = items.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
 
   return (
     <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6">
@@ -71,36 +77,20 @@ export default function AffiliateSection({ a, b }: AffiliateSectionProps) {
         </span>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        {/* Item A */}
-        {linksA.length > 0 && (
-          <div className="rounded-xl border border-gray-800 bg-gray-950 p-4 space-y-3">
+      <div className={`grid gap-4 ${cols}`}>
+        {items.map((item) => (
+          <div key={item.name} className="rounded-xl border border-gray-800 bg-gray-950 p-4 space-y-3">
             <div className="flex items-center gap-2">
-              <LogoAvatar name={a} size={28} />
-              <span className="font-semibold text-gray-200 text-sm">{a}</span>
+              <LogoAvatar name={item.name} size={28} />
+              <span className="font-semibold text-gray-200 text-sm">{item.name}</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {linksA.map((link) => (
+              {item.links.map((link) => (
                 <AffiliateBadge key={link.url} link={link} />
               ))}
             </div>
           </div>
-        )}
-
-        {/* Item B */}
-        {linksB.length > 0 && (
-          <div className="rounded-xl border border-gray-800 bg-gray-950 p-4 space-y-3">
-            <div className="flex items-center gap-2">
-              <LogoAvatar name={b} size={28} />
-              <span className="font-semibold text-gray-200 text-sm">{b}</span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {linksB.map((link) => (
-                <AffiliateBadge key={link.url} link={link} />
-              ))}
-            </div>
-          </div>
-        )}
+        ))}
       </div>
 
       <p className="mt-4 text-xs text-gray-600">

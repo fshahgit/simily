@@ -104,6 +104,19 @@ const categories = [
   },
 ];
 
+const threeWayComparisons = [
+  { a: "React", b: "Vue", c: "Svelte" },
+  { a: "ChatGPT", b: "Claude", c: "Gemini" },
+  { a: "PS5", b: "Xbox Series X", c: "Nintendo Switch" },
+  { a: "Python", b: "JavaScript", c: "TypeScript" },
+  { a: "Netflix", b: "Disney+", c: "Spotify" },
+  { a: "iPhone", b: "Samsung Galaxy S25", c: "Google Pixel" },
+  { a: "Notion", b: "Obsidian", c: "Trello" },
+  { a: "AWS", b: "Google Cloud", c: "Azure" },
+  { a: "Slack", b: "Microsoft Teams", c: "Zoom" },
+  { a: "Tailwind", b: "Bootstrap", c: "CSS Modules" },
+];
+
 function ComparisonCard({ a, b }: { a: string; b: string }) {
   const slug = `${a.toLowerCase().replace(/ /g, "-")}-vs-${b.toLowerCase().replace(/ /g, "-")}`;
   return (
@@ -121,8 +134,28 @@ function ComparisonCard({ a, b }: { a: string; b: string }) {
   );
 }
 
+function ThreeWayCard({ a, b, c }: { a: string; b: string; c: string }) {
+  const slug = [a, b, c].map((s) => s.toLowerCase().replace(/ /g, "-")).join("-vs-");
+  return (
+    <Link
+      href={`/compare/${slug}?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}&c=${encodeURIComponent(c)}`}
+      className="group flex items-center gap-2 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3 transition-all hover:border-violet-500/50 hover:bg-gray-800"
+    >
+      <LogoAvatar name={a} size={24} />
+      <span className="text-sm font-medium text-gray-200 group-hover:text-white truncate">{a}</span>
+      <span className="shrink-0 rounded-full bg-violet-500/10 px-1.5 py-0.5 text-xs font-bold text-violet-400">VS</span>
+      <LogoAvatar name={b} size={24} />
+      <span className="text-sm font-medium text-gray-200 group-hover:text-white truncate">{b}</span>
+      <span className="shrink-0 rounded-full bg-violet-500/10 px-1.5 py-0.5 text-xs font-bold text-violet-400">VS</span>
+      <LogoAvatar name={c} size={24} />
+      <span className="text-sm font-medium text-gray-200 group-hover:text-white truncate">{c}</span>
+      <span className="shrink-0 text-gray-600 group-hover:text-violet-400 transition-colors ml-auto">→</span>
+    </Link>
+  );
+}
+
 export default function PopularPage() {
-  const totalComparisons = categories.reduce((sum, c) => sum + c.comparisons.length, 0);
+  const totalComparisons = categories.reduce((sum, c) => sum + c.comparisons.length, 0) + threeWayComparisons.length;
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16">
@@ -146,6 +179,19 @@ export default function PopularPage() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* 3-Way Comparisons */}
+      <div>
+        <div className="flex items-center gap-3 mb-4">
+          <h2 className="text-lg font-semibold text-white">⚡ 3-Way Comparisons</h2>
+          <span className="rounded-full bg-violet-500/10 border border-violet-500/20 px-2.5 py-0.5 text-xs font-semibold text-violet-400">New</span>
+        </div>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {threeWayComparisons.map(({ a, b, c }) => (
+            <ThreeWayCard key={`${a}-${b}-${c}`} a={a} b={b} c={c} />
+          ))}
+        </div>
       </div>
 
       {/* CTA */}

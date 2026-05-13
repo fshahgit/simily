@@ -4,51 +4,56 @@ import Script from "next/script";
 
 interface Props {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ a?: string; b?: string }>;
+  searchParams: Promise<{ a?: string; b?: string; c?: string }>;
 }
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const { a, b } = await searchParams;
+  const { a, b, c } = await searchParams;
   const itemA = a || slug.split("-vs-")[0].replace(/-/g, " ");
   const itemB = b || slug.split("-vs-")[1]?.replace(/-/g, " ") || "";
+  const itemC = c;
+  const title = itemC
+    ? `${itemA} vs ${itemB} vs ${itemC} — Which is Best? | Simily`
+    : `${itemA} vs ${itemB} — Which is Better? | Simily`;
+  const description = itemC
+    ? `${itemA} vs ${itemB} vs ${itemC}: AI-powered 3-way comparison with scores, pros & cons, and a clear verdict.`
+    : `${itemA} vs ${itemB}: AI-powered comparison with scores, pros & cons, and a clear verdict.`;
   return {
-    title: `${itemA} vs ${itemB} — Which is Better? | Simily`,
-    description: `${itemA} vs ${itemB}: AI-powered comparison with scores, pros & cons, and a clear verdict. Find out which one is right for you.`,
+    title,
+    description,
     openGraph: {
-      title: `${itemA} vs ${itemB} — Which is Better?`,
-      description: `AI-powered comparison: ${itemA} vs ${itemB}. Full breakdown of pros, cons, scores, and verdict.`,
+      title,
+      description,
       url: `https://simily.org/compare/${slug}`,
       siteName: "Simily",
       type: "article",
     },
     alternates: {
-      canonical: `https://simily.org/compare/${slug}?a=${encodeURIComponent(itemA)}&b=${encodeURIComponent(itemB)}`,
+      canonical: `https://simily.org/compare/${slug}?a=${encodeURIComponent(itemA)}&b=${encodeURIComponent(itemB)}${itemC ? `&c=${encodeURIComponent(itemC)}` : ""}`,
     },
   };
 }
 
 export default async function ComparePage({ params, searchParams }: Props) {
   const { slug } = await params;
-  const { a, b } = await searchParams;
+  const { a, b, c } = await searchParams;
   const itemA = a || slug.split("-vs-")[0].replace(/-/g, " ");
   const itemB = b || slug.split("-vs-").slice(1).join("-vs-").replace(/-/g, " ");
+  const itemC = c;
+
+  const headline = itemC
+    ? `${itemA} vs ${itemB} vs ${itemC} — Which is Best?`
+    : `${itemA} vs ${itemB} — Which is Better?`;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: `${itemA} vs ${itemB} — Which is Better?`,
-    description: `AI-powered comparison between ${itemA} and ${itemB} with detailed scores, pros, cons, and a clear verdict.`,
+    headline,
+    description: `AI-powered comparison between ${itemA}, ${itemB}${itemC ? `, and ${itemC}` : ""} with detailed scores, pros, cons, and a clear verdict.`,
     author: { "@type": "Organization", name: "Simily" },
-    publisher: {
-      "@type": "Organization",
-      name: "Simily",
-      url: "https://simily.org",
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://simily.org/compare/${slug}`,
-    },
+    publisher: { "@type": "Organization", name: "Simily", url: "https://simily.org" },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://simily.org/compare/${slug}` },
     dateModified: new Date().toISOString(),
   };
 
@@ -59,7 +64,7 @@ export default async function ComparePage({ params, searchParams }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ComparisonClient a={itemA} b={itemB} />
+      <ComparisonClient a={itemA} b={itemB} c={itemC} />
     </>
   );
 }
