@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 
@@ -42,6 +44,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="border-t border-gray-800 py-10 text-center text-sm text-gray-600">
           <p>© {new Date().getFullYear()} Simily.org — AI-powered comparisons</p>
         </footer>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
