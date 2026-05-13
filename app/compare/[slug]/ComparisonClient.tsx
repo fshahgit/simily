@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CompareForm from "../../components/CompareForm";
 import LogoAvatar from "../../components/LogoAvatar";
 import ShareButton from "../../components/ShareButton";
+import AffiliateSection from "../../components/AffiliateSection";
 
 interface Category {
   name: string;
@@ -239,6 +240,9 @@ export default function ComparisonClient({ a, b }: { a: string; b: string }) {
           <p className="text-gray-300 text-sm"><span className="text-white font-semibold">{b}:</span> {data.verdict.chooseB}</p>
         </div>
       </div>
+
+      {/* Affiliate links */}
+      <AffiliateSection a={a} b={b} />
 
       {/* FAQ section */}
       {data.faqs && data.faqs.length > 0 && (
