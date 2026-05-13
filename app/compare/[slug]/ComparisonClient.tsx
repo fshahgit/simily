@@ -136,6 +136,7 @@ export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ items }),
         });
+        if (res.status === 429) throw new Error("You've made too many comparisons. Please wait an hour and try again.");
         if (!res.ok) throw new Error("Failed");
         const json = await res.json();
         if (!cancelled) setData(json);

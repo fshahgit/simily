@@ -1,14 +1,39 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { Redis } from "@upstash/redis";
+import { Ratelimit } from "@upstash/ratelimit";
 
 const redis = new Redis({
   url: process.env.KV_REST_API_URL!,
   token: process.env.KV_REST_API_TOKEN!,
 });
 
+const ratelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(10, "1 h"),
+  prefix: "rl:compare",
+});
+
 const CACHE_TTL = 60 * 60 * 24 * 7; // 7 days
 
 export async function POST(request: Request) {
+  // Rate limiting — 10 requests per IP per hour
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anonymous";
+  const { success, limit, remaining, reset } = await ratelimit.limit(ip);
+
+  if (!success) {
+    return Response.json(
+      { error: "Too many requests. Please try again later." },
+      {
+        status: 429,
+        headers: {
+          "X-RateLimit-Limit": String(limit),
+          "X-RateLimit-Remaining": String(remaining),
+          "X-RateLimit-Reset": String(reset),
+        },
+      }
+    );
+  }
+
   const body = await request.json();
 
   // Support both { items: [] } and legacy { a, b, c }

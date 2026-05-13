@@ -78,6 +78,7 @@ export default function BestClient({
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ slug }),
         });
+        if (res.status === 429) throw new Error("You've made too many requests. Please wait an hour and try again.");
         if (!res.ok) throw new Error("Failed");
         const json = await res.json();
         setData(json);
