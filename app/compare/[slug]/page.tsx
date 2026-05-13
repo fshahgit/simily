@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ComparisonClient from "./ComparisonClient";
+import RelatedComparisons from "../../components/RelatedComparisons";
 import Script from "next/script";
 
 interface Props {
@@ -65,6 +66,9 @@ export default async function ComparePage({ params, searchParams }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ComparisonClient a={itemA} b={itemB} c={itemC} />
+      <div className="mx-auto max-w-5xl px-4 pb-16">
+        <RelatedComparisons a={itemA} b={itemB} />
+      </div>
     </>
   );
 }
