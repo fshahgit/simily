@@ -85,7 +85,6 @@ const affiliateMap: Record<string, AffiliateLink[]> = {
   "asana":            [trial("Try Asana Free", "https://asana.com")],
   // Sign up: https://monday.com/affiliates
   "monday.com":       [trial("Try Monday Free", "https://monday.com")],
-  "notion":           [trial("Try Notion Free", "https://notion.so")],
   // Sign up: https://clickup.com/affiliates
   "clickup":          [trial("Try ClickUp Free", "https://clickup.com")],
   "linear":           [trial("Try Linear Free", "https://linear.app")],
