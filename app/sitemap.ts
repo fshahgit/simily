@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { ALL_COMPARISONS, makeSlug } from "./lib/comparisons";
+import { ALL_BEST_TOPICS } from "./lib/best";
 
 const BASE_URL = "https://www.simily.org";
 
@@ -17,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/best`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
   ];
 
   const comparisonPages: MetadataRoute.Sitemap = ALL_COMPARISONS.map(({ a, b }) => ({
@@ -26,5 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...comparisonPages];
+  const bestPages: MetadataRoute.Sitemap = ALL_BEST_TOPICS.map(({ slug }) => ({
+    url: `${BASE_URL}/best/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...comparisonPages, ...bestPages];
 }
