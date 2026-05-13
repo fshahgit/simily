@@ -7,7 +7,7 @@ import ShareButton from "../../components/ShareButton";
 import AffiliateSection from "../../components/AffiliateSection";
 
 const MAX_ITEMS = 5;
-const ITEM_COLORS = ["bg-violet-500", "bg-blue-500", "bg-emerald-500", "bg-orange-500", "bg-pink-500"];
+const ITEM_COLORS = ["bg-blue-500", "bg-cyan-400", "bg-emerald-500", "bg-orange-500", "bg-pink-500"];
 
 interface FAQ { question: string; answer: string; }
 
@@ -302,7 +302,7 @@ export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       <div className="h-2 flex-1 rounded-full bg-gray-800">
-                        <div className="h-2 rounded-full bg-violet-500 transition-all duration-700" style={{ width: `${(scoreA?.score ?? 0) * 10}%` }} />
+                        <div className="h-2 rounded-full bg-blue-500 transition-all duration-700" style={{ width: `${(scoreA?.score ?? 0) * 10}%` }} />
                       </div>
                       <span className="w-6 text-right text-xs font-bold text-gray-400">{scoreA?.score}</span>
                     </div>
@@ -316,7 +316,7 @@ export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?
                     <div className="flex items-center gap-2">
                       <span className="w-6 text-xs font-bold text-gray-400">{scoreB?.score}</span>
                       <div className="h-2 flex-1 rounded-full bg-gray-800">
-                        <div className="h-2 rounded-full bg-blue-500 transition-all duration-700" style={{ width: `${(scoreB?.score ?? 0) * 10}%` }} />
+                        <div className="h-2 rounded-full bg-cyan-400 transition-all duration-700" style={{ width: `${(scoreB?.score ?? 0) * 10}%` }} />
                       </div>
                     </div>
                     <p className="text-xs text-gray-500 text-right">{scoreB?.note}</p>
