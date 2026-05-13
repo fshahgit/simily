@@ -5,6 +5,7 @@ import CompareForm from "../../components/CompareForm";
 import LogoAvatar from "../../components/LogoAvatar";
 import ShareButton from "../../components/ShareButton";
 import AffiliateSection from "../../components/AffiliateSection";
+import SuggestionsInput from "../../components/SuggestionsInput";
 
 const MAX_ITEMS = 5;
 const ITEM_COLORS = ["bg-blue-500", "bg-cyan-400", "bg-emerald-500", "bg-orange-500", "bg-pink-500"];
@@ -62,11 +63,6 @@ function AddToCompareButton({
 }) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (open) inputRef.current?.focus();
-  }, [open]);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -95,11 +91,12 @@ function AddToCompareButton({
 
   return (
     <form onSubmit={handleSubmit} className="flex items-center gap-2">
-      <input
-        ref={inputRef}
+      <SuggestionsInput
         value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder="e.g. Angular, Svelte…"
+        onChange={setValue}
+        onSelect={(val) => { setValue(val); }}
+        placeholder="e.g. Svelte, Angular…"
+        autoFocus
         className="rounded-xl border border-gray-700 bg-gray-900 px-4 py-2 text-sm text-white placeholder-gray-600 outline-none focus:border-violet-500 w-44 transition-colors"
       />
       <button
