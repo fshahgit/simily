@@ -4,6 +4,11 @@ export interface ArticleSection {
   list?: string[];
   quote?: string; // pull quote displayed prominently
   callout?: string; // highlighted info box
+  image?: {
+    src: string;   // Unsplash URL
+    alt: string;
+    caption: string;
+  };
 }
 
 export interface ArticleSource {
@@ -57,10 +62,20 @@ export const ALL_ARTICLES: Article[] = [
         heading: "Writing & Tone",
         body: "Claude consistently produces more natural, human-sounding prose. It avoids the corporate filler that ChatGPT often falls back on and adjusts its tone more precisely when asked. For blog posts, emails, or essays where you want writing that doesn't feel AI-generated, Claude edges ahead.\n\nChatGPT, however, is faster at producing structured content — listicles, outlines, and templates. If you need a framework fast and you'll rewrite it anyway, GPT-4o gets you there quicker.",
         quote: "Claude writes like a thoughtful human editor. GPT-4o writes like a very efficient assistant.",
+        image: {
+          src: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=900&auto=format&q=80",
+          alt: "AI chatbot interface on a laptop screen",
+          caption: "Both Claude and ChatGPT offer clean, minimal chat interfaces — the real differences are under the hood.",
+        },
       },
       {
         heading: "Coding & Technical Tasks",
         body: "This is where it gets close. Both models can write solid code in popular languages, debug errors, and explain complex concepts clearly. GPT-4o has a slight edge in speed and breadth — it's been trained on a wider coding dataset and integrates with more tools (like Cursor and GitHub Copilot).\n\nClaude, on the other hand, is better at reasoning through longer codebases and explaining *why* something works, not just what to do. For senior developers who want to understand the code they're generating, Claude is often more useful.",
+        image: {
+          src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&auto=format&q=80",
+          alt: "Code editor on a monitor",
+          caption: "Both models can write, debug, and explain code — but Claude excels at reasoning through larger codebases.",
+        },
       },
       {
         heading: "Reasoning & Analysis",
@@ -121,10 +136,20 @@ export const ALL_ARTICLES: Article[] = [
         heading: "Best Overall: MacBook Air M3",
         body: "The MacBook Air M3 remains the gold standard for student laptops in 2026. Apple's M3 chip delivers exceptional performance for coursework, coding, video editing, and everything in between — all while lasting up to 18 hours on a single charge.\n\nIt's thin, light, fanless (completely silent), and the build quality is unmatched at this price. Yes, it's more expensive than Windows alternatives, but the combination of performance, battery life, and longevity makes it the best long-term investment most students can make.\n\nIdeal for: General students, design/media students, developers, anyone in an Apple ecosystem.",
         quote: "The MacBook Air M3 is the only laptop where I've genuinely stopped worrying about finding a charger during a full day of lectures.",
+        image: {
+          src: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=900&auto=format&q=80",
+          alt: "MacBook Air on a clean desk",
+          caption: "The MacBook Air M3 — fanless, thin, and capable of lasting a full day without a charger.",
+        },
       },
       {
         heading: "Best Windows Laptop: Dell XPS 13",
         body: "If you're in the Windows camp, the Dell XPS 13 is the closest equivalent to a MacBook Air. It's compact, premium, and powered by Intel's latest processors. The display is stunning — one of the best screens you'll find on a laptop this size.\n\nBattery life is good (10–12 hours real-world) but doesn't quite match Apple silicon. For engineering students who need Windows-specific software, or anyone who just prefers Windows, the XPS 13 is the clear pick.",
+        image: {
+          src: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=900&auto=format&q=80",
+          alt: "Windows laptop open on a desk",
+          caption: "The Dell XPS 13 offers a stunning InfinityEdge display and compact premium build — the best Windows ultrabook for students.",
+        },
       },
       {
         heading: "Best Budget Pick: Acer Aspire 5 / Lenovo IdeaPad 5",
@@ -134,6 +159,11 @@ export const ALL_ARTICLES: Article[] = [
       {
         heading: "Best for Engineering & Science: ThinkPad X1 Carbon",
         body: "Engineering students have specific needs: robust build, reliable keyboard, Windows compatibility with specialised software, and enough CPU power for simulations and MATLAB. The Lenovo ThinkPad X1 Carbon delivers on all of these.\n\nThe keyboard is legendary — widely considered the best on any laptop. It's also MIL-SPEC tested for durability, which matters if you're lugging it between labs and lectures every day.",
+        image: {
+          src: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?w=900&auto=format&q=80",
+          alt: "ThinkPad laptop keyboard closeup",
+          caption: "The ThinkPad X1 Carbon's keyboard is widely regarded as the best on any laptop — essential for heavy writing workloads.",
+        },
       },
       {
         heading: "What to Look For in Any Student Laptop",
@@ -187,6 +217,11 @@ export const ALL_ARTICLES: Article[] = [
         heading: "Our Top Budget Pick: Acer Aspire 5",
         body: "The Acer Aspire 5 consistently ranks as one of the best value laptops you can buy. The latest model packs an AMD Ryzen 5 processor, 16GB RAM, and a 512GB SSD into a sturdy chassis for around $450–$500.\n\nThe display is a Full HD IPS panel — good colours, decent brightness, perfectly fine for coursework and Netflix. Battery life hits around 8 hours in real-world use. Not class-leading, but enough to get through a full day of lectures without hunting for a socket.",
         quote: "At $479, the Acer Aspire 5 does 90% of what a MacBook Air does at 40% of the price. The 10% you lose is in feel, battery life, and longevity.",
+        image: {
+          src: "https://images.unsplash.com/photo-1588702547919-fd4e4b67c80f?w=900&auto=format&q=80",
+          alt: "Budget laptop on a student desk",
+          caption: "A solid budget laptop can handle all student essentials — the key is avoiding the spec traps (8GB RAM, eMMC storage).",
+        },
       },
       {
         heading: "Runner-Up: Lenovo IdeaPad 5",
@@ -251,6 +286,11 @@ export const ALL_ARTICLES: Article[] = [
         heading: "The Cost Angle That Changed Everything",
         body: "DeepSeek's most remarkable achievement isn't the model itself — it's how cheaply it was built. OpenAI spent hundreds of millions training GPT-4. DeepSeek allegedly matched comparable performance for under $6 million. Whether you believe that exact figure or not, the performance-to-cost ratio is genuinely remarkable.\n\nFor users, this translates to DeepSeek being free (or very cheap via API) with no meaningful quality sacrifice for many tasks. This is why the AI industry took it so seriously.",
         callout: "DeepSeek's reported $6M training cost vs GPT-4's estimated $100M+ sent shockwaves through Silicon Valley — and forced a serious rethink of AI development economics.",
+        image: {
+          src: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&auto=format&q=80",
+          alt: "Stock market chart showing a sharp drop",
+          caption: "Nvidia's stock dropped nearly 17% in a single day after DeepSeek's release — the biggest single-day loss in US market history at the time.",
+        },
       },
       {
         heading: "Reasoning & Maths: DeepSeek's Strong Suit",
@@ -322,6 +362,11 @@ export const ALL_ARTICLES: Article[] = [
         heading: "For Research: Perplexity AI",
         body: "Perplexity is the AI tool most students don't know about but should. Unlike ChatGPT or Claude, Perplexity searches the web in real time and cites its sources — which means you can actually verify what it's telling you.\n\nFor literature reviews, finding academic sources, or getting a quick grounding in an unfamiliar topic, Perplexity is far more reliable than other AI tools. It saves hours that you'd otherwise spend down Google rabbit holes.",
         quote: "Perplexity is what Google should have become. It finds the answer, shows you where it came from, and lets you dig deeper.",
+        image: {
+          src: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=900&auto=format&q=80",
+          alt: "Student researching on a laptop in a library",
+          caption: "Perplexity cites every claim with a source link — critical for academic work where accuracy and attribution matter.",
+        },
       },
       {
         heading: "For Coding: GitHub Copilot",
@@ -386,6 +431,11 @@ export const ALL_ARTICLES: Article[] = [
         heading: "Cursor: The AI-First IDE",
         body: "Cursor is a fork of VS Code rebuilt around AI from the ground up. The core workflow is different: you can select any block of code and ask an AI to edit it in natural language. You can reference multiple files in a single conversation. You can ask it to explain your entire codebase.\n\nThe 'Composer' feature is especially powerful — describe a multi-file feature you want to build, and Cursor will draft all the files, show you the diffs, and let you apply or reject each change.",
         quote: "Cursor's Composer doesn't just autocomplete — it architects. You describe what you want and it builds the scaffolding across your entire project.",
+        image: {
+          src: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=900&auto=format&q=80",
+          alt: "Developer coding on dual monitors",
+          caption: "Cursor's multi-file Composer feature lets developers describe entire features in plain English and review AI-generated diffs before applying.",
+        },
       },
       {
         heading: "Real-World Performance",
@@ -446,6 +496,11 @@ export const ALL_ARTICLES: Article[] = [
         heading: "Battery Life: Still No Contest",
         body: "MacBook Air M3 delivers 15–18 hours of real-world battery life. The best Windows ultrabooks (Dell XPS 13, ThinkPad X1 Carbon) manage 10–12 hours — impressive, but noticeably shorter.\n\nIn practical terms: if you're going into a full day of lectures or a long flight without a charger, only the MacBook Air gives you genuine confidence you'll make it through.",
         callout: "Apple's official claim of 18 hours is unusually honest — real-world testing by major publications consistently returns 15–17 hours for mixed workloads.",
+        image: {
+          src: "https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=900&auto=format&q=80",
+          alt: "Laptop open on a plane tray table",
+          caption: "Battery life becomes critical on long flights and full lecture days — the MacBook Air M3 is the only thin laptop that reliably lasts the distance.",
+        },
       },
       {
         heading: "Software: The Crucial Decision Point",

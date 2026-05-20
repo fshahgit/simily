@@ -156,6 +156,23 @@ export default async function ArticlePage({ params }: Props) {
                 </p>
               ))}
 
+              {/* Inline section image */}
+              {section.image && (
+                <figure className="my-6 overflow-hidden rounded-xl border border-gray-800">
+                  <div className="relative h-56 w-full sm:h-72">
+                    <Image
+                      src={section.image.src}
+                      alt={section.image.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="bg-gray-900 px-4 py-2.5 text-xs text-gray-500 leading-relaxed">
+                    📷 {section.image.caption}
+                  </figcaption>
+                </figure>
+              )}
+
               {section.quote && (
                 <blockquote className="my-6 border-l-4 border-violet-500 pl-5">
                   <p className="text-lg font-medium italic leading-relaxed text-gray-200">
