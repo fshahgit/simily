@@ -181,6 +181,34 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     items: ["MacBook Pro", "Dell XPS", "ThinkPad", "MacBook Air", "Surface Pro"],
     category: "Laptops & Hardware",
   },
+  {
+    slug: "best-gaming-laptop",
+    title: "Best Gaming Laptop",
+    description: "ASUS ROG, Razer Blade, MSI, and Lenovo Legion compared — the best laptop for gaming.",
+    items: ["ASUS ROG", "Razer Blade", "MSI", "Lenovo Legion", "Acer Predator"],
+    category: "Laptops & Hardware",
+  },
+  {
+    slug: "best-macbook-to-buy",
+    title: "Best MacBook to Buy",
+    description: "MacBook Air M3, MacBook Pro M3, and MacBook Air M2 compared — which MacBook should you get?",
+    items: ["MacBook Air M3", "MacBook Pro M3", "MacBook Air M2", "MacBook Pro M2"],
+    category: "Laptops & Hardware",
+  },
+  {
+    slug: "best-windows-laptop",
+    title: "Best Windows Laptop",
+    description: "Dell XPS, HP Spectre, ThinkPad, and Surface Laptop ranked — the best Windows laptop in 2025.",
+    items: ["Dell XPS", "HP Spectre", "ThinkPad", "Surface Laptop", "ASUS ZenBook"],
+    category: "Laptops & Hardware",
+  },
+  {
+    slug: "best-laptop-for-students",
+    title: "Best Laptop for Students",
+    description: "MacBook Air, Chromebook, ThinkPad, and HP Pavilion ranked — the best laptop for college students.",
+    items: ["MacBook Air", "Chromebook", "ThinkPad", "HP Pavilion", "Dell Inspiron"],
+    category: "Laptops & Hardware",
+  },
 
   // ── Dev Tools (extra) ─────────────────────────────────────────────────────
   {

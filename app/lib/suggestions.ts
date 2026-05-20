@@ -25,9 +25,11 @@ const ALL_ITEMS = [
   "CoinDCX", "WazirX", "Policybazaar", "Ditto", "Acko",
 
   // Computers & OS
-  "MacBook Pro", "MacBook Air", "Mac", "MacOS",
-  "Windows", "Windows 11", "Linux", "Ubuntu", "Chromebook",
-  "Surface Pro", "Dell XPS", "ThinkPad",
+  "MacBook Pro", "MacBook Air", "MacBook Air M3", "MacBook Air M2", "MacBook Pro M3",
+  "Mac", "MacOS", "Windows", "Windows 11", "Linux", "Ubuntu", "Chromebook",
+  "Surface Pro", "Surface Laptop", "Dell XPS", "ThinkPad", "HP Spectre",
+  "ASUS ZenBook", "ASUS ROG", "Razer Blade", "MSI", "Lenovo Legion",
+  "Acer Predator", "HP Pavilion", "Dell Inspiron",
 
   // Audio & wearables
   "AirPods Pro", "AirPods", "Sony WH-1000XM5", "Bose QC45",
