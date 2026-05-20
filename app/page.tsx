@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import CompareForm from "./components/CompareForm";
 import LogoAvatar from "./components/LogoAvatar";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.simily.org",
+  },
+};
 
 const popularComparisons = [
   { a: "iPhone 16", b: "Samsung Galaxy S25" },
