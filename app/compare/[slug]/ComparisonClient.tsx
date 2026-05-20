@@ -167,7 +167,7 @@ export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?
   const headerSection = (
     <div className="text-center space-y-4">
       {/* Items row */}
-      <div className="flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
+      <div className="flex items-center justify-center gap-1.5 sm:gap-4 flex-wrap">
         {items.map((item, i) => (
           <div key={item} className="flex items-center gap-2 sm:gap-4">
             {i > 0 && (
@@ -281,43 +281,43 @@ export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?
         {itemsCount === 2 ? (
           // ── 2-way: original side-by-side layout ──────────────────────────
           <>
-            <div className="grid grid-cols-3 border-b border-gray-800 px-6 py-3 text-sm font-semibold text-gray-400">
-              <div className="flex items-center gap-2">
-                <LogoAvatar name={items[0]} size={20} />
-                <span className="truncate">{items[0]}</span>
+            <div className="grid grid-cols-3 border-b border-gray-800 px-3 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-gray-400">
+              <div className="flex items-center gap-1.5">
+                <LogoAvatar name={items[0]} size={18} />
+                <span className="truncate max-w-[60px] sm:max-w-none">{items[0]}</span>
               </div>
               <span className="text-center">Category</span>
-              <div className="flex items-center justify-end gap-2">
-                <span className="truncate text-right">{items[1]}</span>
-                <LogoAvatar name={items[1]} size={20} />
+              <div className="flex items-center justify-end gap-1.5">
+                <span className="truncate text-right max-w-[60px] sm:max-w-none">{items[1]}</span>
+                <LogoAvatar name={items[1]} size={18} />
               </div>
             </div>
             {data.categories.map((cat) => {
               const scoreA = cat.scores[0];
               const scoreB = cat.scores[1];
               return (
-                <div key={cat.name} className="grid grid-cols-3 items-center gap-4 border-b border-gray-800 px-6 py-4 last:border-0">
+                <div key={cat.name} className="grid grid-cols-3 items-center gap-2 sm:gap-4 border-b border-gray-800 px-3 sm:px-6 py-3 sm:py-4 last:border-0">
                   <div className="space-y-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
                       <div className="h-2 flex-1 rounded-full bg-gray-800">
                         <div className="h-2 rounded-full bg-blue-500 transition-all duration-700" style={{ width: `${(scoreA?.score ?? 0) * 10}%` }} />
                       </div>
-                      <span className="w-6 text-right text-xs font-bold text-gray-400">{scoreA?.score}</span>
+                      <span className="w-5 text-right text-xs font-bold text-gray-400">{scoreA?.score}</span>
                     </div>
-                    <p className="text-xs text-gray-500">{scoreA?.note}</p>
+                    <p className="text-xs text-gray-500 hidden sm:block">{scoreA?.note}</p>
                   </div>
-                  <div className="text-center">
-                    <p className="text-sm font-semibold text-gray-200">{cat.name}</p>
-                    <p className="text-xs text-violet-400 mt-0.5">{cat.winner}</p>
+                  <div className="text-center px-1">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-200 leading-tight">{cat.name}</p>
+                    <p className="text-xs text-violet-400 mt-0.5 truncate">{cat.winner}</p>
                   </div>
                   <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="w-6 text-xs font-bold text-gray-400">{scoreB?.score}</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-5 text-xs font-bold text-gray-400">{scoreB?.score}</span>
                       <div className="h-2 flex-1 rounded-full bg-gray-800">
                         <div className="h-2 rounded-full bg-cyan-400 transition-all duration-700" style={{ width: `${(scoreB?.score ?? 0) * 10}%` }} />
                       </div>
                     </div>
-                    <p className="text-xs text-gray-500 text-right">{scoreB?.note}</p>
+                    <p className="text-xs text-gray-500 text-right hidden sm:block">{scoreB?.note}</p>
                   </div>
                 </div>
               );
@@ -328,10 +328,10 @@ export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?
           <>
             {/* Column headers */}
             <div
-              className="border-b border-gray-800 px-6 py-3 grid gap-3"
-              style={{ gridTemplateColumns: `160px repeat(${itemsCount}, 1fr)` }}
+              className="border-b border-gray-800 px-3 sm:px-6 py-3 grid gap-2 sm:gap-3 overflow-x-auto"
+              style={{ gridTemplateColumns: `90px repeat(${itemsCount}, 1fr)` }}
             >
-              <span className="text-sm font-semibold text-gray-400">Category</span>
+              <span className="text-xs sm:text-sm font-semibold text-gray-400">Category</span>
               {items.map((item, i) => (
                 <div key={item} className="flex items-center justify-center gap-1.5 min-w-0">
                   <LogoAvatar name={item} size={18} />
@@ -346,8 +346,8 @@ export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?
             {data.categories.map((cat) => (
               <div key={cat.name} className="border-b border-gray-800 last:border-0">
                 <div
-                  className="grid gap-3 px-6 py-4 items-start"
-                  style={{ gridTemplateColumns: `160px repeat(${itemsCount}, 1fr)` }}
+                  className="grid gap-2 sm:gap-3 px-3 sm:px-6 py-3 sm:py-4 items-start overflow-x-auto"
+                  style={{ gridTemplateColumns: `90px repeat(${itemsCount}, 1fr)` }}
                 >
                   {/* Category name + winner */}
                   <div className="space-y-1 pt-1">

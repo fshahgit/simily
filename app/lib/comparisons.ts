@@ -291,6 +291,10 @@ export const ALL_COMPARISONS: Comparison[] = [
   { a: "Mistral", b: "DeepSeek" },
   { a: "Meta AI", b: "ChatGPT" },
   { a: "Sarvam AI", b: "ChatGPT" },
+  { a: "DeepSeek", b: "GPT-4o" },
+  { a: "DeepSeek", b: "Perplexity" },
+  { a: "DeepSeek", b: "Llama 3" },
+  { a: "DeepSeek", b: "Mistral" },
 ];
 
 export function makeSlug(a: string, b: string): string {
