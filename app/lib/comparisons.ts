@@ -196,21 +196,35 @@ export const ALL_COMPARISONS: Comparison[] = [
 
   // ── India — Food & Delivery ───────────────────────────────────────────────
   { a: "Swiggy", b: "Zomato" },
+  { a: "Blinkit", b: "Zepto" },
+  { a: "Blinkit", b: "BigBasket" },
+  { a: "Zepto", b: "Instamart" },
+  { a: "Swiggy Instamart", b: "Blinkit" },
 
   // ── India — Payments ─────────────────────────────────────────────────────
   { a: "PhonePe", b: "Google Pay" },
   { a: "PhonePe", b: "Paytm" },
   { a: "Google Pay", b: "Paytm" },
   { a: "PhonePe", b: "CRED" },
+  { a: "CRED", b: "Paytm" },
+  { a: "Amazon Pay", b: "Google Pay" },
+  { a: "BHIM", b: "PhonePe" },
 
   // ── India — E-commerce ───────────────────────────────────────────────────
   { a: "Amazon", b: "Flipkart" },
   { a: "Flipkart", b: "Meesho" },
+  { a: "Myntra", b: "Ajio" },
+  { a: "Nykaa", b: "Myntra" },
+  { a: "Meesho", b: "Myntra" },
+  { a: "Tata Cliq", b: "Myntra" },
 
   // ── India — Telecom ──────────────────────────────────────────────────────
   { a: "Jio", b: "Airtel" },
   { a: "Jio", b: "Vi" },
   { a: "Airtel", b: "Vi" },
+  { a: "JioFiber", b: "Airtel Xstream Fiber" },
+  { a: "JioFiber", b: "ACT Fibernet" },
+  { a: "Airtel Xstream Fiber", b: "ACT Fibernet" },
 
   // ── India — OTT ──────────────────────────────────────────────────────────
   { a: "Netflix", b: "Disney+ Hotstar" },
@@ -218,6 +232,9 @@ export const ALL_COMPARISONS: Comparison[] = [
   { a: "Sony LIV", b: "Disney+ Hotstar" },
   { a: "JioCinema", b: "Disney+ Hotstar" },
   { a: "Zee5", b: "Sony LIV" },
+  { a: "JioCinema", b: "Sony LIV" },
+  { a: "Amazon Prime Video", b: "Netflix" },
+  { a: "MX Player", b: "JioCinema" },
 
   // ── India — EdTech ───────────────────────────────────────────────────────
   { a: "BYJU'S", b: "Unacademy" },
@@ -229,6 +246,9 @@ export const ALL_COMPARISONS: Comparison[] = [
   { a: "Naukri", b: "LinkedIn" },
   { a: "Naukri", b: "Indeed" },
   { a: "Internshala", b: "LinkedIn" },
+  { a: "Internshala", b: "Naukri" },
+  { a: "Apna", b: "Naukri" },
+  { a: "Foundit", b: "Naukri" },
 
   // ── India — Budget Phones ────────────────────────────────────────────────
   { a: "Redmi", b: "Realme" },
@@ -236,11 +256,41 @@ export const ALL_COMPARISONS: Comparison[] = [
   { a: "OnePlus", b: "Samsung Galaxy S25" },
   { a: "Nothing Phone", b: "OnePlus" },
   { a: "Realme", b: "Poco" },
+  { a: "iQOO", b: "Poco" },
+  { a: "Vivo", b: "Oppo" },
+  { a: "Motorola", b: "Redmi" },
+  { a: "Samsung Galaxy M Series", b: "Redmi Note" },
+
+  // ── India — Travel & Mobility ────────────────────────────────────────────
+  { a: "MakeMyTrip", b: "Goibibo" },
+  { a: "MakeMyTrip", b: "Booking.com" },
+  { a: "Ola", b: "Uber" },
+  { a: "Rapido", b: "Uber" },
+  { a: "Rapido", b: "Ola" },
+  { a: "IRCTC", b: "MakeMyTrip" },
+
+  // ── India — Finance & Investing ──────────────────────────────────────────
+  { a: "Groww", b: "Zerodha" },
+  { a: "Zerodha", b: "Upstox" },
+  { a: "Groww", b: "Upstox" },
+  { a: "INDmoney", b: "Groww" },
+  { a: "Kuvera", b: "Groww" },
+  { a: "CoinDCX", b: "WazirX" },
+  { a: "Policybazaar", b: "Ditto" },
+  { a: "Acko", b: "Policybazaar" },
 
   // ── AI (trending globally + India) ───────────────────────────────────────
   { a: "DeepSeek", b: "ChatGPT" },
   { a: "DeepSeek", b: "Claude" },
   { a: "DeepSeek", b: "Gemini" },
+  { a: "DeepSeek", b: "Grok" },
+  { a: "Grok", b: "Perplexity" },
+  { a: "Claude", b: "Perplexity" },
+  { a: "Gemini", b: "Grok" },
+  { a: "Qwen", b: "DeepSeek" },
+  { a: "Mistral", b: "DeepSeek" },
+  { a: "Meta AI", b: "ChatGPT" },
+  { a: "Sarvam AI", b: "ChatGPT" },
 ];
 
 export function makeSlug(a: string, b: string): string {

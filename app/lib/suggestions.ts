@@ -3,7 +3,7 @@
 const ALL_ITEMS = [
   // AI tools
   "ChatGPT", "Claude", "Gemini", "Perplexity", "Grok", "DeepSeek", "Midjourney", "DALL-E",
-  "Cursor", "GitHub Copilot", "Copilot", "Windsurf",
+  "Cursor", "GitHub Copilot", "Copilot", "Windsurf", "Qwen", "Mistral", "Meta AI", "Sarvam AI",
 
   // Phones & tablets
   "iPhone 16", "iPhone 16 Pro", "iPhone 15", "iPhone",
@@ -13,12 +13,16 @@ const ALL_ITEMS = [
   "iPad", "iPad Pro", "iPad Air",
 
   // Indian apps & services
-  "Swiggy", "Zomato", "PhonePe", "Google Pay", "Paytm", "CRED",
-  "Flipkart", "Amazon India", "Meesho",
-  "Jio", "Airtel", "Vi",
-  "Disney+ Hotstar", "Sony LIV", "Zee5", "JioCinema",
+  "Swiggy", "Zomato", "PhonePe", "Google Pay", "Paytm", "CRED", "BHIM", "Amazon Pay",
+  "Blinkit", "Zepto", "Swiggy Instamart", "Instamart", "BigBasket",
+  "Flipkart", "Amazon India", "Meesho", "Myntra", "Ajio", "Nykaa", "Tata Cliq",
+  "Jio", "Airtel", "Vi", "JioFiber", "Airtel Xstream Fiber", "ACT Fibernet",
+  "Disney+ Hotstar", "Sony LIV", "Zee5", "JioCinema", "MX Player",
   "BYJU'S", "Unacademy", "Vedantu", "upGrad",
-  "Naukri", "Internshala",
+  "Naukri", "Internshala", "Apna", "Foundit",
+  "MakeMyTrip", "Goibibo", "IRCTC", "Ola", "Uber", "Rapido",
+  "Groww", "Zerodha", "Upstox", "INDmoney", "Kuvera",
+  "CoinDCX", "WazirX", "Policybazaar", "Ditto", "Acko",
 
   // Computers & OS
   "MacBook Pro", "MacBook Air", "Mac", "MacOS",
