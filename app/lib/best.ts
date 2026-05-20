@@ -4,6 +4,7 @@ export interface BestTopic {
   description: string;  // short meta description
   items: string[];      // products to rank
   category: string;     // for grouping on the browse page
+  region?: string;      // e.g. "🇮🇳 India" — only set for "By Region" category
 }
 
 export const ALL_BEST_TOPICS: BestTopic[] = [
@@ -219,105 +220,105 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     title: "Best OTT Platform in India",
     description: "Netflix, Disney+ Hotstar, Amazon Prime, and Sony LIV ranked — which streaming service is best in India?",
     items: ["Netflix", "Disney+ Hotstar", "Amazon Prime Video", "Sony LIV", "JioCinema", "Zee5"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-payment-app-india",
     title: "Best Payment App in India",
     description: "PhonePe, Google Pay, Paytm, and CRED compared — the best UPI app for Indians.",
     items: ["PhonePe", "Google Pay", "Paytm", "CRED", "Amazon Pay"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-food-delivery-app-india",
     title: "Best Food Delivery App in India",
     description: "Swiggy vs Zomato — which food delivery app is better for ordering in India?",
     items: ["Swiggy", "Zomato"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-edtech-platform-india",
     title: "Best EdTech Platform in India",
     description: "BYJU'S, Unacademy, Vedantu, and upGrad ranked — the best online learning platform in India.",
     items: ["BYJU'S", "Unacademy", "Vedantu", "upGrad", "Coursera"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-telecom-india",
     title: "Best Telecom Operator in India",
     description: "Jio, Airtel, and Vi compared — which mobile network gives the best value in India?",
     items: ["Jio", "Airtel", "Vi"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-budget-phone-india",
     title: "Best Budget Phone in India",
     description: "Redmi, Realme, Poco, and Nothing Phone ranked — the best value smartphone in India.",
     items: ["Redmi", "Realme", "Poco", "Nothing Phone", "OnePlus"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-quick-commerce-app-india",
     title: "Best Quick Commerce App in India",
     description: "Blinkit, Zepto, Instamart, and BigBasket compared — the best app for fast grocery delivery in India.",
     items: ["Blinkit", "Zepto", "Swiggy Instamart", "BigBasket"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-shopping-app-india",
     title: "Best Shopping App in India",
     description: "Flipkart, Amazon India, Meesho, Myntra, and Ajio ranked — the best app for online shopping in India.",
     items: ["Flipkart", "Amazon India", "Meesho", "Myntra", "Ajio"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-job-app-india",
     title: "Best Job Search App in India",
     description: "Naukri, LinkedIn, Indeed, Internshala, and Apna compared — the best platform for finding jobs in India.",
     items: ["Naukri", "LinkedIn", "Indeed", "Internshala", "Apna"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-stock-broker-india",
     title: "Best Stock Broker App in India",
     description: "Groww, Zerodha, Upstox, and INDmoney compared — the best investing app for Indian users.",
     items: ["Groww", "Zerodha", "Upstox", "INDmoney", "Kuvera"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-travel-booking-app-india",
     title: "Best Travel Booking App in India",
     description: "MakeMyTrip, Goibibo, Booking.com, and IRCTC compared — the best app for travel bookings in India.",
     items: ["MakeMyTrip", "Goibibo", "Booking.com", "IRCTC"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-cab-booking-app-india",
     title: "Best Cab Booking App in India",
     description: "Uber, Ola, and Rapido compared — the best ride booking app for Indian cities.",
     items: ["Uber", "Ola", "Rapido"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-broadband-india",
     title: "Best Broadband Provider in India",
     description: "JioFiber, Airtel Xstream Fiber, and ACT Fibernet compared — the best home internet provider in India.",
     items: ["JioFiber", "Airtel Xstream Fiber", "ACT Fibernet"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-ai-tool-for-students-india",
     title: "Best AI Tool for Students in India",
     description: "ChatGPT, Gemini, Claude, Perplexity, and DeepSeek ranked — the best AI assistant for Indian students.",
     items: ["ChatGPT", "Gemini", "Claude", "Perplexity", "DeepSeek"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-insurance-app-india",
     title: "Best Insurance App in India",
     description: "Policybazaar, Ditto, and Acko compared — the best platform to compare and buy insurance in India.",
     items: ["Policybazaar", "Ditto", "Acko"],
-    category: "India",
+    category: "By Region", region: "🇮🇳 India",
   },
   {
     slug: "best-ai-search-engine",
@@ -340,6 +341,133 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     items: ["Cursor", "GitHub Copilot", "Windsurf", "Claude", "ChatGPT"],
     category: "AI",
   },
+
+  // ── Latin America ─────────────────────────────────────────────────────────
+  {
+    slug: "best-ecommerce-latam",
+    title: "Best E-commerce App in Latin America",
+    description: "Mercado Libre, Amazon, and Shopee compared — the best online shopping platform in Latin America.",
+    items: ["Mercado Libre", "Amazon", "Shopee", "Falabella"],
+    category: "By Region", region: "🌎 Latin America",
+  },
+  {
+    slug: "best-food-delivery-latam",
+    title: "Best Food Delivery App in Latin America",
+    description: "Rappi, iFood, and Pedidos Ya compared — the best app for food delivery in LATAM.",
+    items: ["Rappi", "iFood", "Pedidos Ya", "Uber Eats"],
+    category: "By Region", region: "🌎 Latin America",
+  },
+  {
+    slug: "best-fintech-latam",
+    title: "Best Fintech App in Latin America",
+    description: "Nubank, Mercado Pago, and Neon compared — the best digital bank in Latin America.",
+    items: ["Nubank", "Mercado Pago", "Neon", "Boa Compra"],
+    category: "By Region", region: "🌎 Latin America",
+  },
+  {
+    slug: "best-ride-hailing-latam",
+    title: "Best Ride Hailing App in Latin America",
+    description: "Uber, Cabify, and InDriver compared — the best app to book a ride in Latin America.",
+    items: ["Uber", "Cabify", "InDriver", "Beat"],
+    category: "By Region", region: "🌎 Latin America",
+  },
+  {
+    slug: "best-streaming-latam",
+    title: "Best Streaming Service in Latin America",
+    description: "Netflix, Disney+, and Globoplay ranked — the best streaming platform for LATAM audiences.",
+    items: ["Netflix", "Disney+", "Amazon Prime Video", "Globoplay", "HBO Max"],
+    category: "By Region", region: "🌎 Latin America",
+  },
+
+  // ── Southeast Asia ────────────────────────────────────────────────────────
+  {
+    slug: "best-ride-hailing-sea",
+    title: "Best Ride Hailing App in Southeast Asia",
+    description: "Grab vs Gojek — which super app is better for rides, food, and payments in Southeast Asia?",
+    items: ["Grab", "Gojek", "Uber", "InDriver"],
+    category: "By Region", region: "🌏 Southeast Asia",
+  },
+  {
+    slug: "best-ecommerce-sea",
+    title: "Best E-commerce App in Southeast Asia",
+    description: "Shopee, Lazada, and Tokopedia compared — the best online shopping platform in SEA.",
+    items: ["Shopee", "Lazada", "Tokopedia", "Amazon"],
+    category: "By Region", region: "🌏 Southeast Asia",
+  },
+  {
+    slug: "best-food-delivery-sea",
+    title: "Best Food Delivery App in Southeast Asia",
+    description: "GrabFood, GoFood, and foodpanda compared — the best app for ordering food in Southeast Asia.",
+    items: ["GrabFood", "GoFood", "foodpanda", "Uber Eats"],
+    category: "By Region", region: "🌏 Southeast Asia",
+  },
+  {
+    slug: "best-fintech-sea",
+    title: "Best Fintech App in Southeast Asia",
+    description: "GCash, Maya, GrabPay, and OVO compared — the best digital wallet in Southeast Asia.",
+    items: ["GCash", "Maya", "GrabPay", "OVO", "ShopeePay"],
+    category: "By Region", region: "🌏 Southeast Asia",
+  },
+
+  // ── United Kingdom ────────────────────────────────────────────────────────
+  {
+    slug: "best-neobank-uk",
+    title: "Best Neobank in the UK",
+    description: "Monzo, Revolut, and Starling Bank compared — the best digital bank account in the UK.",
+    items: ["Monzo", "Revolut", "Starling Bank", "Chase UK"],
+    category: "By Region", region: "🇬🇧 United Kingdom",
+  },
+  {
+    slug: "best-food-delivery-uk",
+    title: "Best Food Delivery App in the UK",
+    description: "Deliveroo, Uber Eats, and Just Eat compared — the best app for food delivery in the UK.",
+    items: ["Deliveroo", "Uber Eats", "Just Eat"],
+    category: "By Region", region: "🇬🇧 United Kingdom",
+  },
+  {
+    slug: "best-broadband-uk",
+    title: "Best Broadband Provider in the UK",
+    description: "BT, Virgin Media, and Sky Broadband compared — the best home internet provider in the UK.",
+    items: ["BT", "Virgin Media", "Sky Broadband", "Vodafone"],
+    category: "By Region", region: "🇬🇧 United Kingdom",
+  },
+  {
+    slug: "best-mobile-carrier-uk",
+    title: "Best Mobile Network in the UK",
+    description: "EE, Vodafone, O2, and Three compared — the best SIM and mobile plan in the UK.",
+    items: ["EE", "Vodafone", "O2", "Three"],
+    category: "By Region", region: "🇬🇧 United Kingdom",
+  },
+
+  // ── United States ─────────────────────────────────────────────────────────
+  {
+    slug: "best-food-delivery-us",
+    title: "Best Food Delivery App in the US",
+    description: "DoorDash, Uber Eats, and Grubhub compared — the best app for food delivery in the US.",
+    items: ["DoorDash", "Uber Eats", "Grubhub", "Instacart"],
+    category: "By Region", region: "🇺🇸 United States",
+  },
+  {
+    slug: "best-neobank-us",
+    title: "Best Neobank in the US",
+    description: "Chime, Revolut, and Current compared — the best online bank account in the United States.",
+    items: ["Chime", "Revolut", "Current", "SoFi"],
+    category: "By Region", region: "🇺🇸 United States",
+  },
+  {
+    slug: "best-investing-app-us",
+    title: "Best Investing App in the US",
+    description: "Robinhood, Webull, and Fidelity ranked — the best app for stocks and investing in the US.",
+    items: ["Robinhood", "Webull", "Fidelity", "Charles Schwab", "Public"],
+    category: "By Region", region: "🇺🇸 United States",
+  },
+  {
+    slug: "best-mobile-carrier-us",
+    title: "Best Mobile Carrier in the US",
+    description: "T-Mobile, Verizon, and AT&T compared — the best cell phone plan in the United States.",
+    items: ["T-Mobile", "Verizon", "AT&T", "Mint Mobile"],
+    category: "By Region", region: "🇺🇸 United States",
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
@@ -357,5 +485,13 @@ export const BEST_CATEGORIES = [
   "Entertainment",
   "Security",
   "Website Builders",
-  "India",
+  "By Region",
+];
+
+export const REGIONS = [
+  "🇮🇳 India",
+  "🌎 Latin America",
+  "🌏 Southeast Asia",
+  "🇬🇧 United Kingdom",
+  "🇺🇸 United States",
 ];
