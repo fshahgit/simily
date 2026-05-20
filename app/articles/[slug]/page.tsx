@@ -43,10 +43,14 @@ function formatDate(iso: string) {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  AI: "bg-violet-500/15 text-violet-300 border-violet-500/30",
+  AI:      "bg-violet-500/15 text-violet-300 border-violet-500/30",
   Laptops: "bg-blue-500/15 text-blue-300 border-blue-500/30",
-  Apps: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-  Phones: "bg-orange-500/15 text-orange-300 border-orange-500/30",
+  Travel:  "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+  Finance: "bg-yellow-500/15 text-yellow-300 border-yellow-500/30",
+  Health:  "bg-rose-500/15 text-rose-300 border-rose-500/30",
+  Career:  "bg-orange-500/15 text-orange-300 border-orange-500/30",
+  Apps:    "bg-teal-500/15 text-teal-300 border-teal-500/30",
+  Phones:  "bg-pink-500/15 text-pink-300 border-pink-500/30",
 };
 function categoryClass(cat: string) {
   return CATEGORY_COLORS[cat] ?? "bg-gray-500/15 text-gray-300 border-gray-500/30";
