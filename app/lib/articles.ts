@@ -1013,6 +1013,383 @@ export const ALL_ARTICLES: Article[] = [
       { a: "Zoom", b: "Google Meet" },
     ],
   },
+
+  // ─── INDIA ────────────────────────────────────────────────────────────────
+
+  {
+    slug: "best-smartphone-india-2026",
+    title: "Best Smartphone to Buy in India in 2026 — Every Budget Covered",
+    description:
+      "From ₹10,000 to ₹1,00,000+, here are the best phones you can buy in India right now. No confusion, no jargon — just honest picks for every pocket.",
+    date: "2026-05-21",
+    category: "India",
+    readTime: 8,
+    coverEmoji: "📱",
+    heroImage: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=1200&auto=format&q=80",
+    tags: ["Smartphones", "India", "Best Phone 2026", "Budget Phone", "iPhone", "Samsung"],
+    author: "Simily Editorial",
+    keyTakeaways: [
+      "Under ₹10,000: Redmi A4 5G is the best — 5G, big battery, and a smooth display",
+      "₹10,000–₹20,000: Redmi Note 14 5G gives you a premium feel without the premium price",
+      "₹20,000–₹35,000: Samsung Galaxy M55 5G or OnePlus Nord CE 4 — both outstanding",
+      "₹35,000–₹60,000: Nothing Phone 3a or Google Pixel 9a — the sweet spot for most people",
+      "₹60,000+: iPhone 16 or Samsung Galaxy S25 — if you want the best, these are it",
+    ],
+    sections: [
+      {
+        body: "Buying a phone in India in 2026 is genuinely confusing. There are hundreds of options, brands you've never heard of making big claims, and flashy specs that don't always translate to real-world performance. So we've cut through the noise and picked the best phone at every price point — phones that actually deliver in daily Indian life, whether you're in Mumbai or Meerut.",
+      },
+      {
+        heading: "Under ₹10,000 — Best Budget Pick: Redmi A4 5G",
+        body: "If ₹10,000 is your max, the Redmi A4 5G is the one to get. It runs on Snapdragon 4s Gen 2, which gives you genuinely smooth performance for calls, WhatsApp, YouTube, and social media. The 6.88-inch 120Hz display is the largest in this price segment — great for watching Reels and IPL highlights.\n\nBattery life is exceptional — easily 1.5 days on a single charge. Yes, the camera is average and the build is plastic. But at this price, you're not getting glass and metal — you're getting a phone that works reliably for 2-3 years, and that's exactly what this delivers.",
+        image: {
+          src: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900&auto=format&q=80",
+          alt: "Budget Android smartphone in hand",
+          caption: "Budget phones in India have come a long way — 5G, large displays, and big batteries are now standard even under ₹10,000.",
+        },
+        callout: "Pro tip: Buy directly from Mi.com or Flipkart during sale events — the Redmi A4 5G regularly drops to ₹7,999 during Big Billion Days and Republic Day sales.",
+      },
+      {
+        heading: "₹10,000–₹20,000 — Best Mid-Budget: Redmi Note 14 5G",
+        body: "This is the most competitive segment in Indian smartphones — and the Redmi Note 14 5G wins it comfortably. You get a 108MP camera that shoots genuinely good photos in daylight, a 6.67-inch AMOLED display (big upgrade from LCD at this price), and a 5,500mAh battery that comfortably lasts a day and a half.\n\nThe Samsung Galaxy M35 5G is the alternative worth considering — Samsung's 4 years of software updates and 3,000+ service centres across India make it the smarter long-term investment if you plan to use your phone for 3+ years.",
+        quote: "The Redmi Note series has been the backbone of Indian smartphone upgrades for a decade. In 2026, the Note 14 5G continues that tradition — solid, reliable, and genuinely good value.",
+      },
+      {
+        heading: "₹20,000–₹35,000 — Best Value: OnePlus Nord CE 4",
+        body: "This is where it gets exciting. The OnePlus Nord CE 4 at around ₹25,000 gives you a Snapdragon 7s Gen 3 processor, 100W SuperVOOC fast charging (full charge in 30 minutes), and OxygenOS which is one of the cleanest Android experiences available.\n\nThe Samsung Galaxy A55 5G is the other strong contender here — better cameras and Samsung's reliability, but slightly slower charging. Both are excellent. If you take lots of photos, go Samsung. If you value speed and fast charging, go OnePlus.",
+        image: {
+          src: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=900&auto=format&q=80",
+          alt: "Mid-range smartphone photography",
+          caption: "At ₹25,000, you're getting camera systems and performance that were flagship-level just 2 years ago.",
+        },
+      },
+      {
+        heading: "₹35,000–₹60,000 — The Sweet Spot: Nothing Phone 3a",
+        body: "The Nothing Phone 3a at around ₹35,000–₹40,000 is the most interesting phone in India right now. The transparent back with Glyph Interface LEDs makes it genuinely unique — but beyond the looks, the camera system is excellent, the software is clean and fast, and it gets guaranteed updates.\n\nThe Google Pixel 9a (if you can find it around ₹50,000) is the camera king of this price bracket — Google's computational photography is simply the best, and the 7 years of guaranteed updates make it the longest-lasting investment you can make in a smartphone.",
+        callout: "The Pixel 9a's camera beats phones costing ₹80,000+ in low-light and portrait shots. If photography matters to you, it's the most underrated phone in India right now.",
+      },
+      {
+        heading: "₹60,000+ — The Best of the Best",
+        body: "At this price, you're choosing between two worlds: iPhone 16 or Samsung Galaxy S25.\n\nThe iPhone 16 at around ₹79,900 gives you the Apple ecosystem, incredible video recording, 5 years of iOS updates, and the best resale value of any phone in India. If you already use a MacBook or iPad, the seamless integration is genuinely worth the premium.\n\nThe Samsung Galaxy S25 at around ₹80,000 gives you a 200MP camera system, AI features like Circle to Search, and Android's flexibility. Samsung is also the better buy if you want to pair your phone with a Galaxy Watch or Galaxy Buds.",
+        list: [
+          "Under ₹10,000 → Redmi A4 5G",
+          "₹10,000–₹20,000 → Redmi Note 14 5G or Samsung Galaxy M35 5G",
+          "₹20,000–₹35,000 → OnePlus Nord CE 4 or Samsung Galaxy A55 5G",
+          "₹35,000–₹60,000 → Nothing Phone 3a or Google Pixel 9a",
+          "₹60,000+ → iPhone 16 or Samsung Galaxy S25",
+        ],
+      },
+    ],
+    sources: [
+      { title: "Best Smartphones in India 2026 — 91mobiles", url: "https://www.91mobiles.com", publisher: "91mobiles" },
+      { title: "Best Phones to Buy in India 2026 — Cashify", url: "https://www.cashify.in/best-phones-to-buy-in-2026", publisher: "Cashify" },
+      { title: "India Smartphone Market Report Q1 2026 — IDC", url: "https://idc.com", publisher: "IDC India" },
+    ],
+    relatedComparisons: [
+      { a: "iPhone 16", b: "Samsung Galaxy S25" },
+      { a: "OnePlus 13", b: "Samsung Galaxy S25" },
+      { a: "Redmi", b: "Realme" },
+    ],
+  },
+
+  {
+    slug: "best-upi-app-india-2026",
+    title: "PhonePe vs Google Pay vs Paytm: Which UPI App is Best in 2026?",
+    description:
+      "You use UPI every day — but are you on the right app? We compare PhonePe, Google Pay, Paytm, and CRED to find the best one for your needs in 2026.",
+    date: "2026-05-21",
+    category: "India",
+    readTime: 6,
+    coverEmoji: "💸",
+    heroImage: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&auto=format&q=80",
+    tags: ["UPI", "PhonePe", "Google Pay", "Paytm", "India", "Payments", "CRED"],
+    author: "Simily Editorial",
+    keyTakeaways: [
+      "PhonePe is India's #1 UPI app by transaction volume — fastest, most reliable, fewest failures",
+      "Google Pay has the cleanest interface and best rewards for regular bill payments",
+      "Paytm does more than UPI — wallet, FASTag, insurance, gold, stocks all in one app",
+      "CRED is the best choice if you have a credit card — unbeatable rewards and bill management",
+      "All four apps are equally safe — UPI is regulated by NPCI and your money is protected",
+    ],
+    sections: [
+      {
+        body: "India does over 10 billion UPI transactions every single month. Chances are you're doing several of them daily — paying the sabziwala, splitting a restaurant bill, sending money home, or paying rent. But which app should you actually be using? We break down the four biggest UPI apps in India honestly, so you can pick the right one for how you actually spend.",
+      },
+      {
+        heading: "PhonePe — India's Most Trusted UPI App",
+        body: "PhonePe processes around 48% of all UPI transactions in India — nearly half the country uses it. And there's a simple reason: it's the most reliable. Payment failures are rare, the interface is fast, and it works smoothly even on older phones with patchy internet.\n\nBeyond basic UPI, PhonePe has expanded significantly — you can buy insurance, invest in mutual funds, book FASTag recharge, and even purchase gold. If you want one app that handles most of your financial needs, PhonePe is the safest all-rounder.",
+        image: {
+          src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&auto=format&q=80",
+          alt: "Person making digital payment on smartphone",
+          caption: "UPI has transformed how India pays — from ₹5 chai to ₹50,000 rent, everything now happens in seconds on your phone.",
+        },
+        quote: "PhonePe's dominance isn't from marketing — it's from being the most reliable UPI app when it matters. Nobody wants a payment to fail when the auto is waiting.",
+      },
+      {
+        heading: "Google Pay — Cleanest Experience, Best for Bills",
+        body: "Google Pay (GPay) has the most intuitive interface of any UPI app. The home screen shows your recent contacts and a simple scan button — nothing cluttered, nothing confusing. It's the app most people would recommend to their parents.\n\nWhere GPay particularly shines is bill payments — electricity, gas, water, postpaid, broadband. Google has negotiated cashback deals with most billers that PhonePe hasn't matched. If you're paying multiple utility bills every month, GPay often gives you the best rewards.",
+        callout: "Google Pay's 'Nearby' feature shows you offers at shops around you — useful for discovering which local stores give extra cashback on GPay payments.",
+      },
+      {
+        heading: "Paytm — The Everything App",
+        body: "Paytm was India's first big digital payments app, and despite losing UPI market share, it still has something the others don't: it does everything. UPI, wallet (useful when UPI is down), FASTag, movie tickets, bus tickets, flight bookings, insurance, gold, stocks — all in one place.\n\nThe Paytm wallet is genuinely useful — you can add money to it and spend without needing your bank linked every time. For merchants and small businesses, Paytm's QR ecosystem is also the most widely accepted offline.",
+      },
+      {
+        heading: "CRED — The Best App If You Have a Credit Card",
+        body: "CRED is a different kind of app — it's built specifically for credit card users. You link your cards, pay your bills through CRED, and earn CRED coins that you can redeem for discounts on brands, travel, and products.\n\nIf you're responsible with a credit card (paying the full bill every month), CRED makes the experience genuinely rewarding. The app also gives you spending insights, credit score tracking, and exclusive member-only deals. Not for everyone — but for credit card users, it's the smartest financial app in India.",
+        image: {
+          src: "https://images.unsplash.com/photo-1559526324-593bc073d938?w=900&auto=format&q=80",
+          alt: "Credit card and smartphone payment",
+          caption: "CRED turns credit card bill payment — usually a chore — into a rewarding experience with points, offers, and spending insights.",
+        },
+      },
+      {
+        heading: "Which One Should You Use?",
+        body: "Honestly, most people should have two apps: PhonePe for daily UPI payments (it's the most reliable), and one more based on your needs.",
+        list: [
+          "Daily UPI payments → PhonePe (most reliable, fewest failures)",
+          "Bill payments + simple interface → Google Pay",
+          "FASTag + wallet + everything in one → Paytm",
+          "Credit card user → CRED (best rewards, bill management)",
+          "Investing via UPI → Groww or INDmoney (not just payment apps)",
+        ],
+      },
+    ],
+    sources: [
+      { title: "NPCI UPI Transaction Data May 2026", url: "https://npci.org.in", publisher: "NPCI" },
+      { title: "PhonePe vs Google Pay Market Share 2026", url: "https://entrackr.com", publisher: "Entrackr" },
+      { title: "Best UPI Apps India 2026 — BankBazaar", url: "https://bankbazaar.com", publisher: "BankBazaar" },
+    ],
+    relatedComparisons: [
+      { a: "PhonePe", b: "Google Pay" },
+      { a: "Paytm", b: "PhonePe" },
+      { a: "CRED", b: "Paytm" },
+    ],
+  },
+
+  {
+    slug: "best-apps-watch-ipl-2026-free",
+    title: "IPL 2026: Best Apps to Watch Live Cricket — Free & Paid Options",
+    description:
+      "Don't miss a single six this IPL season. Here are the best apps to watch IPL 2026 live in India — including how to watch completely free.",
+    date: "2026-05-21",
+    category: "India",
+    readTime: 5,
+    coverEmoji: "🏏",
+    heroImage: "https://images.unsplash.com/photo-1540747913346-19212a4b32a2?w=1200&auto=format&q=80",
+    tags: ["IPL 2026", "Cricket", "JioCinema", "Hotstar", "Free Streaming", "India"],
+    author: "Simily Editorial",
+    keyTakeaways: [
+      "JioCinema is the best free option — HD streaming with no subscription required",
+      "Disney+ Hotstar has the best overall experience — fewer ads, better quality, multi-device support",
+      "Jio users get extra perks on JioCinema — higher quality streams and exclusive content",
+      "DD Sports streams IPL free on TV — if your internet is unreliable, this is your fallback",
+      "Use a Wi-Fi connection for best quality — mobile data can struggle during peak match hours",
+    ],
+    sections: [
+      {
+        body: "IPL season in India means one thing — everyone is glued to their screens. Whether you're watching the match at home, sneaking a peek at your phone during office hours, or following ball-by-ball in a chai shop, you need a reliable app that doesn't buffer at the crucial moment. Here's exactly what to use in 2026.",
+      },
+      {
+        heading: "JioCinema — Best Free Option",
+        body: "JioCinema is where most of India watches IPL for free, and in 2026 it remains the best free streaming option. No subscription needed — just download the app, create a free account, and you're in.\n\nThe stream quality is HD (up to 1080p) on most devices. The only trade-off compared to paid options is ads — you'll see commercial breaks during overs and between wickets. But if you're not paying anything, that's a very fair deal. JioCinema also has multi-language commentary, which is a big plus for fans who prefer Hindi, Tamil, Telugu, or Kannada over English.",
+        image: {
+          src: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=900&auto=format&q=80",
+          alt: "Person watching cricket on smartphone",
+          caption: "Millions of Indians follow IPL on their phones — JioCinema makes it free for everyone, no subscription needed.",
+        },
+        callout: "Jio SIM users get priority access on JioCinema during high-traffic matches. If your stream is buffering, try switching to your Jio data connection instead of Wi-Fi.",
+      },
+      {
+        heading: "Disney+ Hotstar — Best Paid Experience",
+        body: "If you want the best possible IPL watching experience, Disney+ Hotstar is worth the subscription. The advantages over free options are real: significantly fewer ads, higher quality streams at peak times, better stability when crores of people are watching simultaneously, and the ability to watch on multiple devices.\n\nThe Mobile plan starts at ₹149/month — cheaper than a single match ticket. The Super plan at ₹299/month adds HD quality and two simultaneous screens, which is great if you want to watch on your TV and your family member wants to watch on their phone at the same time.",
+        quote: "During a Super Over, the last thing you want is your free stream to buffer. That's when a Hotstar subscription feels like the best ₹149 you've ever spent.",
+      },
+      {
+        heading: "Other Ways to Watch IPL Free",
+        body: "Beyond JioCinema, there are a few more legitimate free options worth knowing about.",
+        list: [
+          "DD Sports (Doordarshan) — free on cable TV and DD Free Dish, no internet required",
+          "Airtel Thanks app — Airtel users can access JioCinema content through their plan",
+          "YouTube — official IPL highlights are free and uploaded within hours of each match",
+          "Cricbuzz & ESPNCricinfo — if you just want ball-by-ball scores and commentary without video",
+          "Star Sports (TV) — available on most cable and DTH connections across India",
+        ],
+      },
+      {
+        heading: "Tips for the Best Streaming Experience",
+        body: "Millions of people are watching simultaneously during big matches — here's how to avoid buffering and frustration.",
+        list: [
+          "Use Wi-Fi instead of mobile data — more stable for long matches",
+          "Close other apps while streaming — frees up RAM on lower-end phones",
+          "Download the JioCinema or Hotstar app fresh before the match — updates often fix bugs",
+          "If buffering, drop quality from HD to SD — smoother experience than constant interruptions",
+          "Use Chromecast or a TV stick to cast from your phone to a bigger screen for free",
+        ],
+      },
+    ],
+    sources: [
+      { title: "JioCinema IPL 2026 — Official", url: "https://jiocinema.com", publisher: "JioCinema" },
+      { title: "Disney+ Hotstar Plans India 2026", url: "https://hotstar.com", publisher: "Disney+ Hotstar" },
+      { title: "IPL 2026 Broadcasting Rights — ESPNCricinfo", url: "https://espncricinfo.com", publisher: "ESPNCricinfo" },
+    ],
+    relatedComparisons: [
+      { a: "JioCinema", b: "Disney+ Hotstar" },
+      { a: "Sony LIV", b: "Disney+ Hotstar" },
+      { a: "Jio", b: "Airtel" },
+    ],
+  },
+
+  {
+    slug: "best-investment-apps-india-2026",
+    title: "Groww vs Zerodha vs Upstox: Best Investment App in India 2026",
+    description:
+      "Mutual funds, stocks, SIPs, FDs — which app should you trust with your money in 2026? We compare India's top investment platforms honestly.",
+    date: "2026-05-20",
+    category: "India",
+    readTime: 7,
+    coverEmoji: "📈",
+    heroImage: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&auto=format&q=80",
+    tags: ["Investing", "Groww", "Zerodha", "Upstox", "Mutual Funds", "India", "SIP"],
+    author: "Simily Editorial",
+    keyTakeaways: [
+      "Groww is the best app for beginners — clean, simple, and great for mutual funds and SIPs",
+      "Zerodha is the best for serious stock traders — lowest brokerage, most powerful tools",
+      "Upstox is the best middle ground — good for both beginners and active traders",
+      "INDmoney is worth adding for tracking all your investments in one place",
+      "Start with a SIP of ₹500/month — time in the market beats timing the market every time",
+    ],
+    sections: [
+      {
+        body: "Five years ago, investing in India meant visiting a bank branch, filling forms, and waiting weeks. In 2026, you can start a SIP in under 10 minutes sitting on your sofa. But with so many apps competing for your money, which one do you actually trust? We've broken it down honestly — for beginners, for traders, and for everyone in between.",
+      },
+      {
+        heading: "Groww — Best for Beginners and SIP Investors",
+        body: "If you're just starting to invest — or if mutual funds and SIPs are your main focus — Groww is the right choice. The app is built with simplicity in mind. Setting up your first SIP takes literally 5 minutes. The interface explains every term in plain Hindi and English without making you feel stupid for not knowing what an expense ratio is.\n\nGroww has over 5 crore registered users in India and is SEBI-registered and BSE/NSE listed. Your money is safe and regulated. For mutual funds, Groww offers direct plans (no distributor commission), which means more of your money actually gets invested.",
+        image: {
+          src: "https://images.unsplash.com/photo-1579170053380-58064b2def6b?w=900&auto=format&q=80",
+          alt: "Person checking investment portfolio on phone",
+          caption: "Starting a SIP on Groww takes under 10 minutes — India's simplest path from first-time investor to consistent market participant.",
+        },
+        quote: "Groww made me start investing when nothing else did. I understood every step. It didn't feel like finance — it felt like shopping.",
+        callout: "Groww tip: Start with a Nifty 50 Index Fund SIP. Low fees, diversified, and historically one of the best long-term performers for Indian investors.",
+      },
+      {
+        heading: "Zerodha — Best for Stock Traders",
+        body: "Zerodha is India's largest stock broker by active clients and it's the clear choice if you want to actively trade stocks. The brokerage is zero on equity delivery (buying and holding stocks) and just ₹20 per executed order for intraday and F&O — the lowest in the industry.\n\nKite, Zerodha's trading platform, is exceptionally powerful — advanced charts, 100+ indicators, GTT orders, and one of the fastest order execution systems in India. If you're serious about stock investing beyond mutual funds, Zerodha is where serious Indian traders operate.",
+        image: {
+          src: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=900&auto=format&q=80",
+          alt: "Stock market charts on multiple screens",
+          caption: "Zerodha's Kite platform gives serious Indian traders the same tools as professional traders — at ₹20 per trade or less.",
+        },
+      },
+      {
+        heading: "Upstox — Best of Both Worlds",
+        body: "Upstox sits in the sweet spot between Groww's simplicity and Zerodha's power. It's beginner-friendly enough for someone starting their first SIP, but capable enough for active traders who want charts, F&O trading, and IPO applications.\n\nUpstox is backed by Tiger Global and Ratan Tata — which gives many Indian investors confidence in its stability. Brokerage rates are competitive (₹20 per executed order), and the app's interface has improved dramatically in the last two years.",
+      },
+      {
+        heading: "INDmoney — Best for Tracking Everything",
+        body: "INDmoney isn't just a trading app — it's a financial dashboard. You can link your bank accounts, existing mutual fund investments (from any platform), EPF, PPF, and stocks, and see your complete net worth in one screen.\n\nFor people who have investments scattered across multiple platforms and apps, INDmoney brings everything together. It also lets you invest in US stocks (Apple, Google, Tesla) directly from India in a few taps — a feature that's become increasingly popular with young Indian investors.",
+        callout: "INDmoney lets you invest in US stocks with as little as $1 (around ₹83). A simple way to get exposure to global companies you use every day.",
+      },
+      {
+        heading: "Which App Should You Start With?",
+        body: "For most people reading this — especially if you're new to investing — start with Groww. Set up a ₹500 or ₹1,000 monthly SIP in a Nifty 50 Index Fund today. Don't wait for the perfect time. The best time to start was yesterday. The second best time is right now.",
+        list: [
+          "First-time investor, want to start SIP → Groww",
+          "Want to buy/sell individual stocks → Zerodha",
+          "Want both SIP + trading in one app → Upstox",
+          "Want to track all your money in one place → INDmoney",
+          "Have a credit card and want smart finance tracking → CRED Money",
+        ],
+      },
+    ],
+    sources: [
+      { title: "SEBI Registered Investment Platforms India 2026", url: "https://sebi.gov.in", publisher: "SEBI" },
+      { title: "Groww vs Zerodha vs Upstox Comparison 2026 — Finshots", url: "https://finshots.in", publisher: "Finshots" },
+      { title: "NSE Active Client Data May 2026", url: "https://nseindia.com", publisher: "NSE India" },
+    ],
+    relatedComparisons: [
+      { a: "Groww", b: "Zerodha" },
+      { a: "Zerodha", b: "Upstox" },
+      { a: "Groww", b: "Upstox" },
+    ],
+  },
+
+  {
+    slug: "best-5g-phone-under-20000-india-2026",
+    title: "Best 5G Phone Under ₹20,000 in India (2026) — Top Picks That Won't Let You Down",
+    description:
+      "You don't need to spend ₹50,000 to get a great 5G phone in India. These are the best options under ₹20,000 in 2026 — real picks, honest reviews.",
+    date: "2026-05-21",
+    category: "India",
+    readTime: 6,
+    coverEmoji: "⚡",
+    heroImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&auto=format&q=80",
+    tags: ["5G Phone", "India", "Budget Phone", "Under 20000", "Redmi", "Samsung", "Realme"],
+    author: "Simily Editorial",
+    keyTakeaways: [
+      "Redmi Note 14 5G is the best overall pick under ₹20,000 — AMOLED display, great camera, big battery",
+      "Samsung Galaxy M35 5G is the safest long-term pick — 4 years of updates, widest service network in India",
+      "Realme Narzo 70 Pro 5G is the best-looking phone in this price range with a great display",
+      "All phones listed support 5G on major Indian carriers — Jio, Airtel, and Vi",
+      "Wait for sale events — most of these phones drop ₹1,000–₹3,000 during Flipkart and Amazon sales",
+    ],
+    sections: [
+      {
+        body: "5G is rolling out fast across Indian cities and towns — and if you're buying a new phone in 2026, there's no reason not to get a 5G one, even on a budget. The good news: under ₹20,000, you now have genuinely excellent options. The challenge is picking the right one from a sea of look-alike spec sheets. We've done the hard work for you.",
+      },
+      {
+        heading: "Best Overall: Redmi Note 14 5G",
+        body: "The Redmi Note series has dominated the Indian mid-range market for years — and the Note 14 5G continues that tradition. At around ₹17,999 (6GB + 128GB), you get a 6.67-inch AMOLED display with 120Hz refresh rate — the kind of smooth, vibrant screen you'd expect on a much more expensive phone.\n\nThe 108MP camera delivers excellent daylight shots and decent portraits. Battery life with the 5,500mAh cell is genuinely outstanding — easily lasting a full day of heavy use with data, social media, maps, and calls. MIUI has improved significantly, and Xiaomi is now offering 3 years of Android updates.",
+        image: {
+          src: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=900&auto=format&q=80",
+          alt: "Modern smartphone with AMOLED display showing vibrant colours",
+          caption: "AMOLED displays under ₹20,000 are now the norm — richer colours, deeper blacks, and better battery efficiency than LCD panels.",
+        },
+        quote: "The Redmi Note 14 5G gives you an AMOLED screen, 108MP camera, and all-day battery under ₹18,000. Three years ago this was a ₹35,000 phone spec sheet.",
+      },
+      {
+        heading: "Most Reliable: Samsung Galaxy M35 5G",
+        body: "Samsung's Galaxy M35 5G at ₹19,999 might not have the flashiest specs on paper, but it's the most sensible long-term purchase in this segment. Four years of OS updates and five years of security patches — no other brand in India matches this at this price.\n\nSamsung's 3,000+ service centres across India mean if something goes wrong, getting it fixed is easy whether you're in Delhi or a small town in Rajasthan. The 6,000mAh battery is the largest in this price range and the Exynos 1380 processor handles daily tasks smoothly.",
+        callout: "Samsung's after-sales network matters more than most people think. If your Redmi has a hardware issue in a Tier 2 city, finding an authorised service centre can be a nightmare. Samsung's network is simply the most widespread.",
+      },
+      {
+        heading: "Best Display: Realme Narzo 70 Pro 5G",
+        body: "If the display is what matters most to you — for watching IPL, Reels, and YouTube — the Realme Narzo 70 Pro 5G has the best screen in this price bracket. The curved AMOLED panel with 120Hz looks premium far above its price tag.\n\nThe Dimensity 7050 chipset handles everything smoothly. Camera performance is good in daylight but average in low light. Battery at 5,000mAh is solid. Realme's software (Realme UI) has matured and is no longer the bloatware-heavy experience it used to be.",
+      },
+      {
+        heading: "Dark Horse: iQOO Z9 5G",
+        body: "The iQOO Z9 5G at around ₹17,999 is one of the most underrated phones in India right now. iQOO is Vivo's performance sub-brand, and the Z9 delivers Snapdragon 7s Gen 2 performance that beats every other phone in this price bracket in benchmarks.\n\nIf you play games (BGMI, Call of Duty Mobile, Free Fire), the iQOO Z9 5G is the fastest phone under ₹20,000 in India. The cooling system is genuinely better than competitors, and the 44W fast charging fills the 4,500mAh battery in under an hour.",
+        image: {
+          src: "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=900&auto=format&q=80",
+          alt: "Gaming on a smartphone",
+          caption: "For mobile gamers in India, the iQOO Z9 5G's Snapdragon processor and superior cooling make it the best gaming phone under ₹20,000.",
+        },
+      },
+      {
+        heading: "Final Recommendation",
+        body: "For most people, the Redmi Note 14 5G is the straightforward winner — best balance of display, camera, battery, and price. If you care about long-term reliability and after-sales support, go Samsung Galaxy M35 5G. If you're a gamer, iQOO Z9 5G.",
+        list: [
+          "Best all-rounder → Redmi Note 14 5G (₹17,999)",
+          "Most reliable long-term → Samsung Galaxy M35 5G (₹19,999)",
+          "Best display → Realme Narzo 70 Pro 5G (₹17,999)",
+          "Best for gaming → iQOO Z9 5G (₹17,999)",
+          "Tip: Buy during Flipkart Big Billion Days or Amazon Great Indian Festival for ₹1,500–₹2,000 off",
+        ],
+      },
+    ],
+    sources: [
+      { title: "Best 5G Phones Under ₹20,000 India 2026 — 91mobiles", url: "https://91mobiles.com", publisher: "91mobiles" },
+      { title: "Redmi Note 14 5G Full Review — Smartprix", url: "https://smartprix.com", publisher: "Smartprix" },
+      { title: "India 5G Coverage Map 2026 — Ookla", url: "https://speedtest.net/ookla-5g-map", publisher: "Ookla" },
+    ],
+    relatedComparisons: [
+      { a: "Redmi", b: "Realme" },
+      { a: "Samsung Galaxy S24", b: "iPhone 16" },
+      { a: "OnePlus 13", b: "Samsung Galaxy S25" },
+    ],
+  },
 ];
 
 export function getArticle(slug: string): Article | undefined {
