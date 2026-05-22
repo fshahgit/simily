@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     url: "https://www.simily.org",
     siteName: "Simily",
     type: "website",
-    images: [{ url: "https://www.simily.org/opengraph-image", width: 1200, height: 630 }],
+    images: [{ url: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=630&fit=crop&auto=format&q=80", width: 1200, height: 630, alt: "Simily — Compare Anything with AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Simily — Compare Anything with AI",
     description: "AI-powered comparisons for products, tools, concepts, and more.",
-    images: ["https://www.simily.org/opengraph-image"],
+    images: ["https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=630&fit=crop&auto=format&q=80"],
   },
 };
 
