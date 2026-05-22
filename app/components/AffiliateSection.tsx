@@ -1,4 +1,4 @@
-import { getAffiliateLinks, type AffiliateLink, type Region } from "../lib/affiliates";
+import { getAffiliateLinks, type AffiliateLink } from "../lib/affiliates";
 import LogoAvatar from "./LogoAvatar";
 
 function AffiliateBadge({ link }: { link: AffiliateLink }) {
@@ -51,36 +51,26 @@ interface AffiliateSectionProps {
   a: string;
   b: string;
   c?: string;
-  region?: Region;
 }
 
-export default function AffiliateSection({ a, b, c, region = "US" }: AffiliateSectionProps) {
+export default function AffiliateSection({ a, b, c }: AffiliateSectionProps) {
   const items = [
-    { name: a, links: getAffiliateLinks(a, region) },
-    { name: b, links: getAffiliateLinks(b, region) },
-    ...(c ? [{ name: c, links: getAffiliateLinks(c, region) }] : []),
+    { name: a, links: getAffiliateLinks(a) },
+    { name: b, links: getAffiliateLinks(b) },
+    ...(c ? [{ name: c, links: getAffiliateLinks(c) }] : []),
   ].filter((item) => item.links.length > 0);
 
   if (items.length === 0) return null;
 
   const cols = items.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
 
-  const regionLabel: Record<Region, string> = {
-    US: "🇺🇸 US Store",
-    IN: "🇮🇳 India Store",
-    UK: "🇬🇧 UK Store",
-  };
-
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-2">
-          <h3 className="font-bold text-slate-900 text-lg">Where to Get It</h3>
-          <span className="rounded-full bg-green-50 px-2 py-0.5 text-xs font-semibold text-green-600 border border-green-200">
-            Best links
-          </span>
-        </div>
-        <span className="text-xs text-slate-400">{regionLabel[region]}</span>
+      <div className="flex items-center gap-2 mb-5">
+        <h3 className="font-bold text-slate-900 text-lg">Where to Get It</h3>
+        <span className="rounded-full bg-green-50 px-2 py-0.5 text-xs font-semibold text-green-600 border border-green-200">
+          Best links
+        </span>
       </div>
 
       <div className={`grid gap-4 ${cols}`}>
