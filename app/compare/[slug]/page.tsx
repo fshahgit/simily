@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import ComparisonClient from "./ComparisonClient";
 import RelatedComparisons from "../../components/RelatedComparisons";
 import Script from "next/script";
+import { getRegion } from "../../lib/affiliates";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -43,6 +45,10 @@ export default async function ComparePage({ params, searchParams }: Props) {
   const itemB = b || slug.split("-vs-").slice(1).join("-vs-").replace(/-/g, " ");
   const itemC = c;
 
+  const hdrs = await headers();
+  const countryCode = hdrs.get("x-vercel-ip-country") ?? "US";
+  const region = getRegion(countryCode);
+
   const headline = itemC
     ? `${itemA} vs ${itemB} vs ${itemC} — Which is Best?`
     : `${itemA} vs ${itemB} — Which is Better?`;
@@ -65,7 +71,7 @@ export default async function ComparePage({ params, searchParams }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ComparisonClient a={itemA} b={itemB} c={itemC} />
+      <ComparisonClient a={itemA} b={itemB} c={itemC} region={region} />
       <div className="mx-auto max-w-5xl px-4 pb-16">
         <RelatedComparisons a={itemA} b={itemB} />
       </div>

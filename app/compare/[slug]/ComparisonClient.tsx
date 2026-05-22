@@ -5,6 +5,7 @@ import CompareForm from "../../components/CompareForm";
 import LogoAvatar from "../../components/LogoAvatar";
 import ShareButton from "../../components/ShareButton";
 import AffiliateSection from "../../components/AffiliateSection";
+import type { Region } from "../../lib/affiliates";
 import SuggestionsInput from "../../components/SuggestionsInput";
 
 const MAX_ITEMS = 5;
@@ -115,7 +116,7 @@ function AddToCompareButton({
   );
 }
 
-export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?: string }) {
+export default function ComparisonClient({ a, b, c, region = "US" }: { a: string; b: string; c?: string; region?: Region }) {
   const [items, setItems] = useState<string[]>([a, b, ...(c ? [c] : [])]);
   const [data, setData] = useState<ComparisonData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -410,7 +411,7 @@ export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?
       </div>
 
       {/* Affiliate links */}
-      <AffiliateSection a={items[0]} b={items[1]} c={items[2]} />
+      <AffiliateSection a={items[0]} b={items[1]} c={items[2]} region={region} />
 
       {/* FAQ */}
       {data.faqs && data.faqs.length > 0 && (

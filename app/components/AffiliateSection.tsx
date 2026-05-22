@@ -1,16 +1,12 @@
-import { getAffiliateLinks, type AffiliateLink } from "../lib/affiliates";
+import { getAffiliateLinks, type AffiliateLink, type Region } from "../lib/affiliates";
 import LogoAvatar from "./LogoAvatar";
 
 function AffiliateBadge({ link }: { link: AffiliateLink }) {
   const styles: Record<AffiliateLink["type"], string> = {
-    amazon:
-      "bg-amber-500/10 border-amber-500/30 text-amber-400 hover:bg-amber-500/20 hover:border-amber-500/50",
-    trial:
-      "bg-green-500/10 border-green-500/30 text-green-400 hover:bg-green-500/20 hover:border-green-500/50",
-    deal:
-      "bg-violet-500/10 border-violet-500/30 text-violet-400 hover:bg-violet-500/20 hover:border-violet-500/50",
-    site:
-      "bg-blue-500/10 border-blue-500/30 text-blue-400 hover:bg-blue-500/20 hover:border-blue-500/50",
+    amazon:  "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100 hover:border-amber-300",
+    trial:   "bg-green-50 border-green-200 text-green-700 hover:bg-green-100 hover:border-green-300",
+    deal:    "bg-violet-50 border-violet-200 text-violet-700 hover:bg-violet-100 hover:border-violet-300",
+    site:    "bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:border-blue-300",
   };
 
   const icons: Record<AffiliateLink["type"], React.ReactNode> = {
@@ -43,7 +39,7 @@ function AffiliateBadge({ link }: { link: AffiliateLink }) {
       href={link.url}
       target="_blank"
       rel="noopener noreferrer sponsored"
-      className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all ${styles[link.type]}`}
+      className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all shadow-sm ${styles[link.type]}`}
     >
       {icons[link.type]}
       {link.label}
@@ -55,34 +51,44 @@ interface AffiliateSectionProps {
   a: string;
   b: string;
   c?: string;
+  region?: Region;
 }
 
-export default function AffiliateSection({ a, b, c }: AffiliateSectionProps) {
+export default function AffiliateSection({ a, b, c, region = "US" }: AffiliateSectionProps) {
   const items = [
-    { name: a, links: getAffiliateLinks(a) },
-    { name: b, links: getAffiliateLinks(b) },
-    ...(c ? [{ name: c, links: getAffiliateLinks(c) }] : []),
+    { name: a, links: getAffiliateLinks(a, region) },
+    { name: b, links: getAffiliateLinks(b, region) },
+    ...(c ? [{ name: c, links: getAffiliateLinks(c, region) }] : []),
   ].filter((item) => item.links.length > 0);
 
   if (items.length === 0) return null;
 
   const cols = items.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
 
+  const regionLabel: Record<Region, string> = {
+    US: "🇺🇸 US Store",
+    IN: "🇮🇳 India Store",
+    UK: "🇬🇧 UK Store",
+  };
+
   return (
-    <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6">
-      <div className="flex items-center gap-2 mb-5">
-        <h3 className="font-bold text-white text-lg">Where to Get It</h3>
-        <span className="rounded-full bg-green-500/10 px-2 py-0.5 text-xs font-semibold text-green-400 border border-green-500/20">
-          Best links
-        </span>
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center gap-2">
+          <h3 className="font-bold text-slate-900 text-lg">Where to Get It</h3>
+          <span className="rounded-full bg-green-50 px-2 py-0.5 text-xs font-semibold text-green-600 border border-green-200">
+            Best links
+          </span>
+        </div>
+        <span className="text-xs text-slate-400">{regionLabel[region]}</span>
       </div>
 
       <div className={`grid gap-4 ${cols}`}>
         {items.map((item) => (
-          <div key={item.name} className="rounded-xl border border-gray-800 bg-gray-950 p-4 space-y-3">
+          <div key={item.name} className="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-3">
             <div className="flex items-center gap-2">
               <LogoAvatar name={item.name} size={28} />
-              <span className="font-semibold text-gray-200 text-sm">{item.name}</span>
+              <span className="font-semibold text-slate-800 text-sm">{item.name}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {item.links.map((link) => (
@@ -93,7 +99,7 @@ export default function AffiliateSection({ a, b, c }: AffiliateSectionProps) {
         ))}
       </div>
 
-      <p className="mt-4 text-xs text-gray-600">
+      <p className="mt-4 text-xs text-slate-400">
         Some links may be affiliate links — we may earn a small commission at no extra cost to you.
       </p>
     </div>
