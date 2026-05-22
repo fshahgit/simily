@@ -33,24 +33,24 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geist.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-gray-950 text-gray-100 font-sans">
-        <header className="border-b border-gray-800 bg-gray-950/80 backdrop-blur sticky top-0 z-50">
+      <body className="min-h-full flex flex-col bg-slate-100 text-slate-900 font-sans">
+        <header className="border-b border-slate-200 bg-white/90 backdrop-blur sticky top-0 z-50 shadow-sm">
           <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight">
-              <span className="text-violet-400">⇄</span>
-              <span>Simily</span>
-              <span className="text-gray-500 text-sm font-normal hidden sm:block">— Compare Anything</span>
+              <span className="text-violet-600">⇄</span>
+              <span className="text-slate-900">Simily</span>
+              <span className="text-slate-400 text-sm font-normal hidden sm:block">— Compare Anything</span>
             </Link>
-            <nav className="flex items-center gap-4 sm:gap-6 text-sm text-gray-400">
-              <Link href="/search" className="hover:text-white transition-colors">Search</Link>
-              <Link href="/popular" className="hover:text-white transition-colors">Popular</Link>
-              <Link href="/best" className="hover:text-white transition-colors font-medium text-violet-400 hover:text-violet-300">Best Of</Link>
-              <Link href="/articles" className="hover:text-white transition-colors font-medium text-emerald-400 hover:text-emerald-300">Articles</Link>
+            <nav className="flex items-center gap-4 sm:gap-6 text-sm text-slate-500">
+              <Link href="/search" className="hover:text-slate-900 transition-colors">Search</Link>
+              <Link href="/popular" className="hover:text-slate-900 transition-colors">Popular</Link>
+              <Link href="/best" className="hover:text-violet-700 transition-colors font-medium text-violet-600">Best Of</Link>
+              <Link href="/articles" className="hover:text-teal-700 transition-colors font-medium text-teal-600">Articles</Link>
             </nav>
           </div>
         </header>
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-gray-800 py-10 text-center text-sm text-gray-600">
+        <footer className="border-t border-slate-200 py-10 text-center text-sm text-slate-400">
           <p>© {new Date().getFullYear()} Simily.org — AI-powered comparisons</p>
         </footer>
         <Analytics />

@@ -43,18 +43,18 @@ function formatDate(iso: string) {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  AI:      "bg-violet-500/15 text-violet-300 border-violet-500/30",
-  Laptops: "bg-blue-500/15 text-blue-300 border-blue-500/30",
-  Travel:  "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-  Finance: "bg-yellow-500/15 text-yellow-300 border-yellow-500/30",
-  Health:  "bg-rose-500/15 text-rose-300 border-rose-500/30",
-  Career:  "bg-orange-500/15 text-orange-300 border-orange-500/30",
-  India:   "bg-orange-500/15 text-orange-200 border-orange-400/30",
-  Apps:    "bg-teal-500/15 text-teal-300 border-teal-500/30",
-  Phones:  "bg-pink-500/15 text-pink-300 border-pink-500/30",
+  AI:      "bg-violet-100 text-violet-700 border-violet-300",
+  Laptops: "bg-blue-100 text-blue-700 border-blue-300",
+  Travel:  "bg-emerald-100 text-emerald-700 border-emerald-300",
+  Finance: "bg-amber-100 text-amber-700 border-amber-300",
+  Health:  "bg-rose-100 text-rose-700 border-rose-300",
+  Career:  "bg-orange-100 text-orange-700 border-orange-300",
+  India:   "bg-orange-100 text-orange-800 border-orange-300",
+  Apps:    "bg-teal-100 text-teal-700 border-teal-300",
+  Phones:  "bg-pink-100 text-pink-700 border-pink-300",
 };
 function categoryClass(cat: string) {
-  return CATEGORY_COLORS[cat] ?? "bg-gray-500/15 text-gray-300 border-gray-500/30";
+  return CATEGORY_COLORS[cat] ?? "bg-slate-100 text-slate-600 border-slate-300";
 }
 
 export default async function ArticlePage({ params }: Props) {
@@ -97,17 +97,17 @@ export default async function ArticlePage({ params }: Props) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent" />
       </div>
 
       <div className="mx-auto max-w-3xl px-4 pb-16">
         {/* Breadcrumb */}
-        <nav className="mb-6 flex items-center gap-2 pt-6 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-300 transition-colors">Home</Link>
+        <nav className="mb-6 flex items-center gap-2 pt-6 text-sm text-slate-400">
+          <Link href="/" className="hover:text-slate-700 transition-colors">Home</Link>
           <span>/</span>
-          <Link href="/articles" className="hover:text-gray-300 transition-colors">Articles</Link>
+          <Link href="/articles" className="hover:text-slate-700 transition-colors">Articles</Link>
           <span>/</span>
-          <span className="truncate max-w-[180px] text-gray-400">{article.title}</span>
+          <span className="truncate max-w-[180px] text-slate-600">{article.title}</span>
         </nav>
 
         {/* Category + meta row */}
@@ -115,34 +115,34 @@ export default async function ArticlePage({ params }: Props) {
           <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${categoryClass(article.category)}`}>
             {article.category}
           </span>
-          <span className="text-sm text-gray-500">{formatDate(article.date)}</span>
-          <span className="text-gray-700">·</span>
-          <span className="text-sm text-gray-500">{article.readTime} min read</span>
-          <span className="text-gray-700">·</span>
-          <span className="text-sm text-gray-500">By {article.author}</span>
+          <span className="text-sm text-slate-400">{formatDate(article.date)}</span>
+          <span className="text-slate-300">·</span>
+          <span className="text-sm text-slate-400">{article.readTime} min read</span>
+          <span className="text-slate-300">·</span>
+          <span className="text-sm text-slate-400">By {article.author}</span>
         </div>
 
         {/* Title */}
-        <h1 className="mb-5 text-3xl font-bold leading-tight text-white sm:text-4xl">
+        <h1 className="mb-5 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
           {article.title}
         </h1>
 
         {/* Lead / description */}
-        <p className="mb-8 border-l-4 border-violet-500 pl-4 text-lg leading-relaxed text-gray-300">
+        <p className="mb-8 border-l-4 border-violet-500 pl-4 text-lg leading-relaxed text-slate-600">
           {article.description}
         </p>
 
         {/* Key Takeaways box */}
         {article.keyTakeaways && article.keyTakeaways.length > 0 && (
-          <div className="mb-10 rounded-2xl border border-violet-500/20 bg-violet-500/5 p-5">
-            <h2 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-violet-400">
+          <div className="mb-10 rounded-2xl border border-violet-200 bg-violet-50 p-5">
+            <h2 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-violet-600">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
               Key Takeaways
             </h2>
             <ul className="space-y-2">
               {article.keyTakeaways.map((t, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm text-gray-300">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
+                <li key={i} className="flex items-start gap-2.5 text-sm text-slate-700">
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-500" />
                   {t}
                 </li>
               ))}
@@ -155,18 +155,18 @@ export default async function ArticlePage({ params }: Props) {
           {article.sections.map((section, i) => (
             <section key={i}>
               {section.heading && (
-                <h2 className="mb-4 text-2xl font-bold text-white">{section.heading}</h2>
+                <h2 className="mb-4 text-2xl font-bold text-slate-900">{section.heading}</h2>
               )}
 
               {section.body.split("\n\n").map((para, j) => (
-                <p key={j} className="mb-4 text-base leading-8 text-gray-300">
+                <p key={j} className="mb-4 text-base leading-8 text-slate-600">
                   {para}
                 </p>
               ))}
 
               {/* Inline section image */}
               {section.image && (
-                <figure className="my-6 overflow-hidden rounded-xl border border-gray-800">
+                <figure className="my-6 overflow-hidden rounded-xl border border-slate-200 shadow-sm">
                   <div className="relative h-56 w-full sm:h-72">
                     <Image
                       src={section.image.src}
@@ -175,7 +175,7 @@ export default async function ArticlePage({ params }: Props) {
                       className="object-cover"
                     />
                   </div>
-                  <figcaption className="bg-gray-900 px-4 py-2.5 text-xs text-gray-500 leading-relaxed">
+                  <figcaption className="bg-slate-50 px-4 py-2.5 text-xs text-slate-400 leading-relaxed border-t border-slate-200">
                     📷 {section.image.caption}
                   </figcaption>
                 </figure>
@@ -183,24 +183,24 @@ export default async function ArticlePage({ params }: Props) {
 
               {section.quote && (
                 <blockquote className="my-6 border-l-4 border-violet-500 pl-5">
-                  <p className="text-lg font-medium italic leading-relaxed text-gray-200">
+                  <p className="text-lg font-medium italic leading-relaxed text-slate-700">
                     &ldquo;{section.quote}&rdquo;
                   </p>
                 </blockquote>
               )}
 
               {section.callout && (
-                <div className="my-5 flex gap-3 rounded-xl border border-blue-500/20 bg-blue-500/5 p-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0 text-blue-400"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-                  <p className="text-sm leading-relaxed text-blue-200">{section.callout}</p>
+                <div className="my-5 flex gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0 text-blue-500"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                  <p className="text-sm leading-relaxed text-blue-700">{section.callout}</p>
                 </div>
               )}
 
               {section.list && (
                 <ul className="mt-3 space-y-2.5">
                   {section.list.map((item, k) => (
-                    <li key={k} className="flex items-start gap-3 text-base text-gray-300">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
+                    <li key={k} className="flex items-start gap-3 text-base text-slate-600">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-500" />
                       {item}
                     </li>
                   ))}
@@ -211,11 +211,11 @@ export default async function ArticlePage({ params }: Props) {
         </article>
 
         {/* Tags */}
-        <div className="mt-10 flex flex-wrap gap-2 border-t border-gray-800 pt-8">
+        <div className="mt-10 flex flex-wrap gap-2 border-t border-slate-200 pt-8">
           {article.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-gray-800 px-3 py-1 text-xs text-gray-400 border border-gray-700"
+              className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-500 border border-slate-200"
             >
               #{tag}
             </span>
@@ -224,24 +224,24 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* Sources / References */}
         {article.sources && article.sources.length > 0 && (
-          <div className="mt-8 rounded-xl border border-gray-800 bg-gray-900 p-5">
-            <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-500">
+          <div className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5">
+            <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
               Sources & References
             </h3>
             <ul className="space-y-2">
               {article.sources.map((src, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm">
-                  <span className="mt-0.5 text-gray-600">{i + 1}.</span>
+                  <span className="mt-0.5 text-slate-400">{i + 1}.</span>
                   <div>
                     <a
                       href={src.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-violet-400 hover:text-violet-300 hover:underline transition-colors"
+                      className="text-violet-600 hover:text-violet-700 hover:underline transition-colors"
                     >
                       {src.title}
                     </a>
-                    <span className="ml-1.5 text-xs text-gray-600">— {src.publisher}</span>
+                    <span className="ml-1.5 text-xs text-slate-400">— {src.publisher}</span>
                   </div>
                 </li>
               ))}
@@ -252,7 +252,7 @@ export default async function ArticlePage({ params }: Props) {
         {/* Related comparisons */}
         {article.relatedComparisons && article.relatedComparisons.length > 0 && (
           <div className="mt-10">
-            <h2 className="mb-4 text-lg font-bold text-white">Compare These Yourself</h2>
+            <h2 className="mb-4 text-lg font-bold text-slate-900">Compare These Yourself</h2>
             <div className="grid gap-3 sm:grid-cols-3">
               {article.relatedComparisons.map(({ a, b }) => {
                 const compSlug = makeSlug(a, b);
@@ -260,16 +260,16 @@ export default async function ArticlePage({ params }: Props) {
                   <Link
                     key={compSlug}
                     href={`/compare/${compSlug}?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`}
-                    className="group flex flex-col items-center gap-1.5 rounded-xl border border-gray-800 bg-gray-900 px-4 py-4 text-center text-sm transition-all hover:border-violet-500/50 hover:bg-gray-800"
+                    className="group flex flex-col items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-4 text-center text-sm shadow-sm transition-all hover:border-violet-300 hover:shadow-md hover:bg-slate-50"
                   >
                     <div className="flex items-center gap-1.5">
                       <LogoAvatar name={a} size={18} />
-                      <span className="font-medium text-gray-200 group-hover:text-white">{a}</span>
+                      <span className="font-medium text-slate-700 group-hover:text-slate-900">{a}</span>
                     </div>
-                    <span className="text-xs text-violet-400 font-bold">VS</span>
+                    <span className="text-xs text-violet-600 font-bold">VS</span>
                     <div className="flex items-center gap-1.5">
                       <LogoAvatar name={b} size={18} />
-                      <span className="font-medium text-gray-200 group-hover:text-white">{b}</span>
+                      <span className="font-medium text-slate-700 group-hover:text-slate-900">{b}</span>
                     </div>
                   </Link>
                 );
@@ -279,25 +279,25 @@ export default async function ArticlePage({ params }: Props) {
         )}
 
         {/* More articles */}
-        <div className="mt-12 border-t border-gray-800 pt-10">
-          <h2 className="mb-5 text-lg font-bold text-white">More Articles</h2>
+        <div className="mt-12 border-t border-slate-200 pt-10">
+          <h2 className="mb-5 text-lg font-bold text-slate-900">More Articles</h2>
           <div className="space-y-3">
             {moreArticles.map((a) => (
               <Link
                 key={a.slug}
                 href={`/articles/${a.slug}`}
-                className="group flex items-center gap-4 rounded-xl border border-gray-800 bg-gray-900 p-4 transition-all hover:border-violet-500/50 hover:bg-gray-800"
+                className="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all hover:border-violet-300 hover:shadow-md hover:bg-slate-50"
               >
                 <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-lg">
                   <Image src={a.heroImage} alt={a.title} fill className="object-cover" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-semibold text-white group-hover:text-violet-300 transition-colors">
+                  <p className="truncate text-sm font-semibold text-slate-900 group-hover:text-violet-600 transition-colors">
                     {a.title}
                   </p>
-                  <p className="mt-0.5 text-xs text-gray-500">{a.readTime} min read · {a.category}</p>
+                  <p className="mt-0.5 text-xs text-slate-400">{a.readTime} min read · {a.category}</p>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-gray-600 group-hover:text-violet-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-slate-300 group-hover:text-violet-500 transition-colors">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </Link>
@@ -309,7 +309,7 @@ export default async function ArticlePage({ params }: Props) {
         <div className="mt-8">
           <Link
             href="/articles"
-            className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-slate-900 transition-colors"
           >
             ← Back to all articles
           </Link>

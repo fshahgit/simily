@@ -14,32 +14,34 @@ function formatDate(iso: string) {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  AI:      "bg-violet-500/15 text-violet-300 border-violet-500/30",
-  Laptops: "bg-blue-500/15 text-blue-300 border-blue-500/30",
-  Travel:  "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-  Finance: "bg-yellow-500/15 text-yellow-300 border-yellow-500/30",
-  Health:  "bg-rose-500/15 text-rose-300 border-rose-500/30",
-  Career:  "bg-orange-500/15 text-orange-300 border-orange-500/30",
-  Apps:    "bg-teal-500/15 text-teal-300 border-teal-500/30",
-  Phones:  "bg-pink-500/15 text-pink-300 border-pink-500/30",
+  AI:      "bg-violet-100 text-violet-700 border-violet-300",
+  Laptops: "bg-blue-100 text-blue-700 border-blue-300",
+  Travel:  "bg-emerald-100 text-emerald-700 border-emerald-300",
+  Finance: "bg-amber-100 text-amber-700 border-amber-300",
+  Health:  "bg-rose-100 text-rose-700 border-rose-300",
+  Career:  "bg-orange-100 text-orange-700 border-orange-300",
+  India:   "bg-orange-100 text-orange-800 border-orange-300",
+  Apps:    "bg-teal-100 text-teal-700 border-teal-300",
+  Phones:  "bg-pink-100 text-pink-700 border-pink-300",
 };
 
 const CATEGORY_ACTIVE: Record<string, string> = {
-  AI:      "bg-violet-500 text-white border-violet-500",
-  Laptops: "bg-blue-500 text-white border-blue-500",
-  Travel:  "bg-emerald-500 text-white border-emerald-500",
-  Finance: "bg-yellow-500 text-white border-yellow-500",
-  Health:  "bg-rose-500 text-white border-rose-500",
-  Career:  "bg-orange-500 text-white border-orange-500",
-  Apps:    "bg-teal-500 text-white border-teal-500",
-  Phones:  "bg-pink-500 text-white border-pink-500",
+  AI:      "bg-violet-600 text-white border-violet-600",
+  Laptops: "bg-blue-600 text-white border-blue-600",
+  Travel:  "bg-emerald-600 text-white border-emerald-600",
+  Finance: "bg-amber-500 text-white border-amber-500",
+  Health:  "bg-rose-600 text-white border-rose-600",
+  Career:  "bg-orange-600 text-white border-orange-600",
+  India:   "bg-orange-600 text-white border-orange-600",
+  Apps:    "bg-teal-600 text-white border-teal-600",
+  Phones:  "bg-pink-600 text-white border-pink-600",
 };
 
 function categoryClass(cat: string, active = false) {
   const map = active ? CATEGORY_ACTIVE : CATEGORY_COLORS;
   return map[cat] ?? (active
-    ? "bg-gray-400 text-white border-gray-400"
-    : "bg-gray-500/15 text-gray-300 border-gray-500/30"
+    ? "bg-slate-700 text-white border-slate-700"
+    : "bg-slate-100 text-slate-600 border-slate-300"
   );
 }
 
@@ -63,7 +65,7 @@ export default function ArticlesClient({ articles, categories }: Props) {
       {showFeatured && (
         <Link
           href={`/articles/${featured.slug}`}
-          className="group mb-10 flex flex-col overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 transition-all hover:border-violet-500/50 hover:bg-gray-800 sm:flex-row"
+          className="group mb-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:border-violet-300 hover:shadow-md sm:flex-row"
         >
           {/* Image */}
           <div className="relative h-48 w-full shrink-0 sm:h-auto sm:w-64">
@@ -80,17 +82,17 @@ export default function ArticlesClient({ articles, categories }: Props) {
               <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${categoryClass(featured.category)}`}>
                 {featured.category}
               </span>
-              <span className="text-xs text-gray-500">{formatDate(featured.date)}</span>
-              <span className="text-xs text-gray-500">·</span>
-              <span className="text-xs text-gray-500">{featured.readTime} min read</span>
+              <span className="text-xs text-slate-400">{formatDate(featured.date)}</span>
+              <span className="text-xs text-slate-300">·</span>
+              <span className="text-xs text-slate-400">{featured.readTime} min read</span>
             </div>
-            <h2 className="text-xl font-bold text-white group-hover:text-violet-300 transition-colors">
+            <h2 className="text-xl font-bold text-slate-900 group-hover:text-violet-600 transition-colors">
               {featured.title}
             </h2>
-            <p className="mt-2 text-sm text-gray-400 leading-relaxed line-clamp-2">{featured.description}</p>
+            <p className="mt-2 text-sm text-slate-500 leading-relaxed line-clamp-2">{featured.description}</p>
             <div className="mt-4 flex flex-wrap gap-1.5">
               {featured.tags.slice(0, 3).map((tag) => (
-                <span key={tag} className="rounded-full bg-gray-800 px-2.5 py-0.5 text-xs text-gray-500 border border-gray-700">
+                <span key={tag} className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-500 border border-slate-200">
                   #{tag}
                 </span>
               ))}
@@ -101,13 +103,13 @@ export default function ArticlesClient({ articles, categories }: Props) {
 
       {/* Category filter row */}
       <div className="mb-6 flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-sm font-medium text-gray-400">Browse:</span>
+        <span className="mr-1 text-sm font-medium text-slate-500">Browse:</span>
         <button
           onClick={() => setActive(null)}
           className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${
             active === null
-              ? "bg-gray-100 text-gray-900 border-gray-100"
-              : "bg-gray-500/15 text-gray-300 border-gray-500/30 hover:border-gray-400"
+              ? "bg-slate-900 text-white border-slate-900"
+              : "bg-slate-100 text-slate-600 border-slate-200 hover:border-slate-400"
           }`}
         >
           All
@@ -125,14 +127,14 @@ export default function ArticlesClient({ articles, categories }: Props) {
 
       {/* Article grid */}
       {filtered.length === 0 ? (
-        <p className="py-10 text-center text-gray-500">No articles in this category yet.</p>
+        <p className="py-10 text-center text-slate-400">No articles in this category yet.</p>
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((article) => (
             <Link
               key={article.slug}
               href={`/articles/${article.slug}`}
-              className="group flex flex-col overflow-hidden rounded-xl border border-gray-800 bg-gray-900 transition-all hover:border-violet-500/50 hover:bg-gray-800"
+              className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:border-violet-300 hover:shadow-md"
             >
               {/* Card image */}
               <div className="relative h-40 w-full overflow-hidden">
@@ -142,20 +144,20 @@ export default function ArticlesClient({ articles, categories }: Props) {
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <span className={`absolute bottom-3 left-3 inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${categoryClass(article.category)}`}>
                   {article.category}
                 </span>
               </div>
               {/* Card body */}
               <div className="flex flex-1 flex-col p-4">
-                <h3 className="flex-1 text-sm font-semibold text-white group-hover:text-violet-300 transition-colors leading-snug">
+                <h3 className="flex-1 text-sm font-semibold text-slate-900 group-hover:text-violet-600 transition-colors leading-snug">
                   {article.title}
                 </h3>
-                <p className="mt-2 text-xs text-gray-500 leading-relaxed line-clamp-2">
+                <p className="mt-2 text-xs text-slate-500 leading-relaxed line-clamp-2">
                   {article.description}
                 </p>
-                <div className="mt-3 flex items-center gap-2 text-xs text-gray-600">
+                <div className="mt-3 flex items-center gap-2 text-xs text-slate-400">
                   <span>{formatDate(article.date)}</span>
                   <span>·</span>
                   <span>{article.readTime} min read</span>

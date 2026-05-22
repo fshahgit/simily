@@ -9,23 +9,23 @@ function TopicCard({ topic }: { topic: BestTopic }) {
   return (
     <Link
       href={`/best/${topic.slug}`}
-      className="group flex flex-col gap-3 rounded-2xl border border-gray-800 bg-gray-900 p-5 transition-all hover:border-violet-500/40 hover:bg-gray-800"
+      className="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:border-violet-300 hover:shadow-md hover:bg-slate-50"
     >
       <div className="flex items-center gap-1.5 flex-wrap">
         {topic.items.slice(0, 5).map((item) => (
           <LogoAvatar key={item} name={item} size={24} />
         ))}
         {topic.items.length > 5 && (
-          <span className="text-xs text-gray-600">+{topic.items.length - 5}</span>
+          <span className="text-xs text-slate-400">+{topic.items.length - 5}</span>
         )}
       </div>
       <div>
-        <h3 className="font-semibold text-white group-hover:text-violet-300 transition-colors text-sm leading-snug">
+        <h3 className="font-semibold text-slate-900 group-hover:text-violet-600 transition-colors text-sm leading-snug">
           {topic.title}
         </h3>
-        <p className="text-xs text-gray-500 mt-1 line-clamp-2">{topic.description}</p>
+        <p className="text-xs text-slate-500 mt-1 line-clamp-2">{topic.description}</p>
       </div>
-      <span className="text-xs text-violet-400 font-medium">See rankings →</span>
+      <span className="text-xs text-violet-600 font-medium">See rankings →</span>
     </Link>
   );
 }
@@ -59,7 +59,6 @@ export default function BestClient({ topics }: Props) {
       }).slice(0, 8)
     : [];
 
-  // Open search and focus input
   function openSearch() {
     setSearchOpen(true);
     setActive(null);
@@ -71,7 +70,6 @@ export default function BestClient({ topics }: Props) {
     setQuery("");
   }
 
-  // Close dropdown on outside click
   useEffect(() => {
     function handler(e: MouseEvent) {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
@@ -82,7 +80,6 @@ export default function BestClient({ topics }: Props) {
     return () => document.removeEventListener("mousedown", handler);
   }, [searchOpen]);
 
-  // Close on Escape
   useEffect(() => {
     function handler(e: KeyboardEvent) {
       if (e.key === "Escape") closeSearch();
@@ -101,15 +98,15 @@ export default function BestClient({ topics }: Props) {
     <div className="space-y-10">
       {/* Filter row */}
       <div className="flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-sm font-medium text-gray-400">Browse:</span>
+        <span className="mr-1 text-sm font-medium text-slate-500">Browse:</span>
 
         {/* All */}
         <button
           onClick={() => { setActive(null); closeSearch(); }}
           className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${
             active === null && !searchOpen
-              ? "bg-gray-100 text-gray-900 border-gray-100"
-              : "bg-gray-500/15 text-gray-300 border-gray-500/30 hover:border-gray-400"
+              ? "bg-slate-900 text-white border-slate-900"
+              : "bg-slate-100 text-slate-600 border-slate-200 hover:border-slate-400"
           }`}
         >
           All
@@ -121,8 +118,8 @@ export default function BestClient({ topics }: Props) {
             onClick={() => { setActive(active === cat ? null : cat); closeSearch(); }}
             className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${
               active === cat
-                ? "bg-violet-500 text-white border-violet-500"
-                : "bg-violet-500/10 text-violet-300 border-violet-500/20 hover:border-violet-400"
+                ? "bg-violet-600 text-white border-violet-600"
+                : "bg-violet-50 text-violet-600 border-violet-200 hover:border-violet-400"
             }`}
           >
             {cat}
@@ -133,8 +130,8 @@ export default function BestClient({ topics }: Props) {
           onClick={() => { setActive(active === "By Region" ? null : "By Region"); closeSearch(); }}
           className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${
             active === "By Region"
-              ? "bg-emerald-500 text-white border-emerald-500"
-              : "bg-emerald-500/10 text-emerald-300 border-emerald-500/20 hover:border-emerald-400"
+              ? "bg-teal-600 text-white border-teal-600"
+              : "bg-teal-50 text-teal-600 border-teal-200 hover:border-teal-400"
           }`}
         >
           By Region
@@ -146,15 +143,15 @@ export default function BestClient({ topics }: Props) {
             <button
               onClick={openSearch}
               aria-label="Search guides"
-              className="inline-flex items-center justify-center h-7 w-7 rounded-full border border-gray-700 bg-gray-800 text-gray-400 hover:border-violet-500/50 hover:text-violet-300 transition-all cursor-pointer"
+              className="inline-flex items-center justify-center h-7 w-7 rounded-full border border-slate-300 bg-white text-slate-400 hover:border-violet-400 hover:text-violet-600 transition-all cursor-pointer shadow-sm"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
               </svg>
             </button>
           ) : (
-            <div className="flex items-center gap-1.5 rounded-full border border-violet-500/50 bg-gray-800 px-3 py-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-violet-400 shrink-0">
+            <div className="flex items-center gap-1.5 rounded-full border border-violet-400 bg-white px-3 py-1 shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-violet-500 shrink-0">
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
               </svg>
               <input
@@ -162,10 +159,10 @@ export default function BestClient({ topics }: Props) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search guides…"
-                className="w-36 bg-transparent text-xs text-white placeholder-gray-500 outline-none"
+                className="w-36 bg-transparent text-xs text-slate-900 placeholder-slate-400 outline-none"
               />
               {query && (
-                <button onClick={() => setQuery("")} className="text-gray-500 hover:text-gray-300 cursor-pointer">
+                <button onClick={() => setQuery("")} className="text-slate-400 hover:text-slate-600 cursor-pointer">
                   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M18 6 6 18M6 6l12 12"/>
                   </svg>
@@ -176,9 +173,9 @@ export default function BestClient({ topics }: Props) {
 
           {/* Dropdown */}
           {searchOpen && query.trim().length > 0 && (
-            <div className="absolute left-0 top-full z-50 mt-2 w-72 rounded-xl border border-gray-700 bg-gray-900 shadow-xl overflow-hidden">
+            <div className="absolute left-0 top-full z-50 mt-2 w-72 rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden">
               {searchResults.length === 0 ? (
-                <p className="px-4 py-3 text-xs text-gray-500">No guides found for &ldquo;{query}&rdquo;</p>
+                <p className="px-4 py-3 text-xs text-slate-400">No guides found for &ldquo;{query}&rdquo;</p>
               ) : (
                 <ul>
                   {searchResults.map((topic) => (
@@ -186,7 +183,7 @@ export default function BestClient({ topics }: Props) {
                       <Link
                         href={`/best/${topic.slug}`}
                         onClick={closeSearch}
-                        className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-800 transition-colors"
+                        className="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 transition-colors"
                       >
                         <div className="flex shrink-0 -space-x-1.5">
                           {topic.items.slice(0, 3).map((item) => (
@@ -194,10 +191,10 @@ export default function BestClient({ topics }: Props) {
                           ))}
                         </div>
                         <div className="min-w-0">
-                          <p className="truncate text-xs font-medium text-white">{topic.title}</p>
-                          <p className="text-xs text-gray-500">{topic.category}</p>
+                          <p className="truncate text-xs font-medium text-slate-900">{topic.title}</p>
+                          <p className="text-xs text-slate-400">{topic.category}</p>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-auto shrink-0 text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-auto shrink-0 text-slate-300">
                           <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                       </Link>
@@ -210,7 +207,7 @@ export default function BestClient({ topics }: Props) {
         </div>
       </div>
 
-      {/* Content — hidden while search dropdown is active */}
+      {/* Content */}
       {!(searchOpen && query.trim().length > 0) && (
         <>
           {/* Standard categories */}
@@ -220,7 +217,7 @@ export default function BestClient({ topics }: Props) {
               if (catTopics.length === 0) return null;
               return (
                 <section key={cat} className="space-y-4">
-                  <h2 className="text-xs font-semibold uppercase tracking-widest text-violet-400 border-b border-gray-800 pb-2">
+                  <h2 className="text-xs font-semibold uppercase tracking-widest text-violet-600 border-b border-slate-200 pb-2">
                     {cat}
                   </h2>
                   <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -233,11 +230,11 @@ export default function BestClient({ topics }: Props) {
             })
           ) : active !== "By Region" ? (
             <section className="space-y-4">
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-violet-400 border-b border-gray-800 pb-2">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-violet-600 border-b border-slate-200 pb-2">
                 {active}
               </h2>
               {filteredStandard.length === 0 ? (
-                <p className="py-8 text-center text-gray-500">No guides in this category yet.</p>
+                <p className="py-8 text-center text-slate-400">No guides in this category yet.</p>
               ) : (
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {filteredStandard.map((topic) => (
@@ -251,7 +248,7 @@ export default function BestClient({ topics }: Props) {
           {/* By Region */}
           {showRegions && regionalTopics.length > 0 && (
             <section className="space-y-8">
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-violet-400 border-b border-gray-800 pb-2">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-violet-600 border-b border-slate-200 pb-2">
                 By Region
               </h2>
               {REGIONS.map((region) => {
@@ -259,7 +256,7 @@ export default function BestClient({ topics }: Props) {
                 if (regionTopics.length === 0) return null;
                 return (
                   <div key={region} className="space-y-3">
-                    <h3 className="text-sm font-semibold text-gray-300">{region}</h3>
+                    <h3 className="text-sm font-semibold text-slate-700">{region}</h3>
                     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                       {regionTopics.map((topic) => (
                         <TopicCard key={topic.slug} topic={topic} />

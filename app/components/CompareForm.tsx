@@ -24,16 +24,16 @@ export default function CompareForm() {
         value={a}
         onChange={setA}
         placeholder="e.g. iPhone 16"
-        className="w-full rounded-xl border border-gray-700 bg-gray-900 px-4 py-3.5 text-white placeholder-gray-500 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
+        className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3.5 text-slate-900 placeholder-slate-400 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all shadow-sm"
       />
-      <div className="flex items-center justify-center text-sm font-bold text-violet-400 sm:px-1">
+      <div className="flex items-center justify-center text-sm font-bold text-violet-600 sm:px-1">
         VS
       </div>
       <SuggestionsInput
         value={b}
         onChange={setB}
         placeholder="e.g. Samsung Galaxy S25"
-        className="w-full rounded-xl border border-gray-700 bg-gray-900 px-4 py-3.5 text-white placeholder-gray-500 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
+        className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3.5 text-slate-900 placeholder-slate-400 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all shadow-sm"
       />
       <button
         type="submit"
