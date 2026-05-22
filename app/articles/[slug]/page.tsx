@@ -49,6 +49,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   Finance: "bg-yellow-500/15 text-yellow-300 border-yellow-500/30",
   Health:  "bg-rose-500/15 text-rose-300 border-rose-500/30",
   Career:  "bg-orange-500/15 text-orange-300 border-orange-500/30",
+  India:   "bg-orange-500/15 text-orange-200 border-orange-400/30",
   Apps:    "bg-teal-500/15 text-teal-300 border-teal-500/30",
   Phones:  "bg-pink-500/15 text-pink-300 border-pink-500/30",
 };
@@ -74,8 +75,11 @@ export default async function ArticlePage({ params }: Props) {
     keywords: article.tags.join(", "),
   };
 
-  // Other articles for "More Articles" section
-  const moreArticles = ALL_ARTICLES.filter((a) => a.slug !== slug).slice(0, 3);
+  // Other articles for "More Articles" section — sorted by date, newest first
+  const moreArticles = [...ALL_ARTICLES]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .filter((a) => a.slug !== slug)
+    .slice(0, 3);
 
   return (
     <>

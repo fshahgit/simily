@@ -19,7 +19,10 @@ export default function ArticlesPage() {
         </p>
       </div>
 
-      <ArticlesClient articles={ALL_ARTICLES} categories={ARTICLE_CATEGORIES} />
+      <ArticlesClient
+        articles={[...ALL_ARTICLES].sort((a, b) => b.date.localeCompare(a.date))}
+        categories={ARTICLE_CATEGORIES}
+      />
     </div>
   );
 }
