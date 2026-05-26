@@ -3,13 +3,51 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import LogoAvatar from "../components/LogoAvatar";
-import { type BestTopic, BEST_CATEGORIES, REGIONS } from "../lib/best";
+import { type BestTopic, BEST_CATEGORIES } from "../lib/best";
+
+const PAGE_SIZE = 8;
+
+const CAT_COLORS: Record<string, string> = {
+  "AI":                "bg-violet-100 text-violet-700 border-violet-300",
+  "Dev Tools":         "bg-blue-100 text-blue-700 border-blue-300",
+  "Productivity":      "bg-amber-100 text-amber-700 border-amber-300",
+  "Laptops & Hardware":"bg-slate-100 text-slate-700 border-slate-300",
+  "Design":            "bg-pink-100 text-pink-700 border-pink-300",
+  "Communication":     "bg-teal-100 text-teal-700 border-teal-300",
+  "Cloud":             "bg-sky-100 text-sky-700 border-sky-300",
+  "Entertainment":     "bg-orange-100 text-orange-700 border-orange-300",
+  "Security":          "bg-red-100 text-red-700 border-red-300",
+  "Website Builders":  "bg-emerald-100 text-emerald-700 border-emerald-300",
+  "By Region":         "bg-teal-100 text-teal-700 border-teal-300",
+};
+
+const CAT_ACTIVE: Record<string, string> = {
+  "AI":                "bg-violet-600 text-white border-violet-600",
+  "Dev Tools":         "bg-blue-600 text-white border-blue-600",
+  "Productivity":      "bg-amber-500 text-white border-amber-500",
+  "Laptops & Hardware":"bg-slate-700 text-white border-slate-700",
+  "Design":            "bg-pink-600 text-white border-pink-600",
+  "Communication":     "bg-teal-600 text-white border-teal-600",
+  "Cloud":             "bg-sky-600 text-white border-sky-600",
+  "Entertainment":     "bg-orange-600 text-white border-orange-600",
+  "Security":          "bg-red-600 text-white border-red-600",
+  "Website Builders":  "bg-emerald-600 text-white border-emerald-600",
+  "By Region":         "bg-teal-600 text-white border-teal-600",
+};
+
+function catClass(cat: string, active = false) {
+  const map = active ? CAT_ACTIVE : CAT_COLORS;
+  return map[cat] ?? (active
+    ? "bg-slate-700 text-white border-slate-700"
+    : "bg-slate-100 text-slate-600 border-slate-300"
+  );
+}
 
 function TopicCard({ topic }: { topic: BestTopic }) {
   return (
     <Link
       href={`/best/${topic.slug}`}
-      className="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:border-violet-300 hover:shadow-md hover:bg-slate-50"
+      className="group flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:border-violet-300 hover:shadow-md hover:bg-slate-50"
     >
       <div className="flex items-center gap-1.5 flex-wrap">
         {topic.items.slice(0, 5).map((item) => (
@@ -19,34 +57,55 @@ function TopicCard({ topic }: { topic: BestTopic }) {
           <span className="text-xs text-slate-400">+{topic.items.length - 5}</span>
         )}
       </div>
-      <div>
+      <div className="flex-1">
         <h3 className="font-semibold text-slate-900 group-hover:text-violet-600 transition-colors text-sm leading-snug">
           {topic.title}
         </h3>
         <p className="text-xs text-slate-500 mt-1 line-clamp-2">{topic.description}</p>
       </div>
-      <span className="text-xs text-violet-600 font-medium">See rankings →</span>
+      <div className="flex items-center justify-between">
+        <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${catClass(topic.category)}`}>
+          {topic.category}
+        </span>
+        <span className="text-xs text-violet-600 font-medium group-hover:underline">See rankings →</span>
+      </div>
     </Link>
   );
 }
+
+const ALL_CATS = BEST_CATEGORIES; // includes "By Region"
 
 interface Props {
   topics: BestTopic[];
 }
 
-const ALL_CATS = BEST_CATEGORIES.filter((c) => c !== "By Region");
-
 export default function BestClient({ topics }: Props) {
   const [active, setActive] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const standardTopics = topics.filter((t) => t.category !== "By Region");
-  const regionalTopics = topics.filter((t) => t.category === "By Region");
+  const featured = topics[0];
 
-  // Search results — match against title, description, items, category
+  // Filtered list (excludes featured when showing "all")
+  const filtered = active
+    ? topics.filter((t) => t.category === active)
+    : topics.slice(1);
+
+  const showFeatured = !active && page === 1 && !searchOpen;
+
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+  function handleCategory(cat: string | null) {
+    setActive(cat);
+    setPage(1);
+    closeSearch();
+  }
+
+  // Search results
   const searchResults = query.trim().length > 0
     ? topics.filter((t) => {
         const q = query.toLowerCase();
@@ -62,6 +121,7 @@ export default function BestClient({ topics }: Props) {
   function openSearch() {
     setSearchOpen(true);
     setActive(null);
+    setPage(1);
     setTimeout(() => inputRef.current?.focus(), 50);
   }
 
@@ -88,21 +148,53 @@ export default function BestClient({ topics }: Props) {
     return () => document.removeEventListener("keydown", handler);
   }, []);
 
-  const filteredStandard = active
-    ? standardTopics.filter((t) => t.category === active)
-    : standardTopics;
-
-  const showRegions = !active || active === "By Region";
-
   return (
-    <div className="space-y-10">
-      {/* Filter row */}
-      <div className="flex flex-wrap items-center gap-2">
+    <div>
+      {/* Featured topic — only on page 1, no filter, no search */}
+      {showFeatured && featured && (
+        <Link
+          href={`/best/${featured.slug}`}
+          className="group mb-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:border-violet-300 hover:shadow-md sm:flex-row"
+        >
+          {/* Logo wall */}
+          <div className="flex shrink-0 items-center justify-center bg-gradient-to-br from-violet-50 to-slate-100 p-8 sm:w-64">
+            <div className="flex flex-wrap items-center justify-center gap-3 max-w-[180px]">
+              {featured.items.slice(0, 6).map((item) => (
+                <LogoAvatar key={item} name={item} size={40} />
+              ))}
+              {featured.items.length > 6 && (
+                <span className="text-sm text-slate-400 font-medium">+{featured.items.length - 6}</span>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-1 flex-col justify-center p-6">
+            <div className="mb-2 flex flex-wrap items-center gap-2">
+              <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${catClass(featured.category)}`}>
+                {featured.category}
+              </span>
+              <span className="text-xs text-slate-400">Latest guide</span>
+            </div>
+            <h2 className="text-xl font-bold text-slate-900 group-hover:text-violet-600 transition-colors">
+              {featured.title}
+            </h2>
+            <p className="mt-2 text-sm text-slate-500 leading-relaxed line-clamp-2">{featured.description}</p>
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {featured.items.slice(0, 5).map((item) => (
+                <span key={item} className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-500 border border-slate-200">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Link>
+      )}
+
+      {/* Category filter row */}
+      <div className="mb-6 flex flex-wrap items-center gap-2">
         <span className="mr-1 text-sm font-medium text-slate-500">Browse:</span>
 
-        {/* All */}
         <button
-          onClick={() => { setActive(null); closeSearch(); }}
+          onClick={() => handleCategory(null)}
           className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${
             active === null && !searchOpen
               ? "bg-slate-900 text-white border-slate-900"
@@ -115,29 +207,14 @@ export default function BestClient({ topics }: Props) {
         {ALL_CATS.map((cat) => (
           <button
             key={cat}
-            onClick={() => { setActive(active === cat ? null : cat); closeSearch(); }}
-            className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${
-              active === cat
-                ? "bg-violet-600 text-white border-violet-600"
-                : "bg-violet-50 text-violet-600 border-violet-200 hover:border-violet-400"
-            }`}
+            onClick={() => handleCategory(active === cat ? null : cat)}
+            className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer hover:opacity-90 ${catClass(cat, active === cat)}`}
           >
             {cat}
           </button>
         ))}
 
-        <button
-          onClick={() => { setActive(active === "By Region" ? null : "By Region"); closeSearch(); }}
-          className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${
-            active === "By Region"
-              ? "bg-teal-600 text-white border-teal-600"
-              : "bg-teal-50 text-teal-600 border-teal-200 hover:border-teal-400"
-          }`}
-        >
-          By Region
-        </button>
-
-        {/* Search icon / input */}
+        {/* Search */}
         <div ref={containerRef} className="relative ml-1">
           {!searchOpen ? (
             <button
@@ -171,7 +248,7 @@ export default function BestClient({ topics }: Props) {
             </div>
           )}
 
-          {/* Dropdown */}
+          {/* Search dropdown */}
           {searchOpen && query.trim().length > 0 && (
             <div className="absolute left-0 top-full z-50 mt-2 w-72 rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden">
               {searchResults.length === 0 ? (
@@ -207,67 +284,68 @@ export default function BestClient({ topics }: Props) {
         </div>
       </div>
 
-      {/* Content */}
-      {!(searchOpen && query.trim().length > 0) && (
-        <>
-          {/* Standard categories */}
-          {active === null ? (
-            ALL_CATS.map((cat) => {
-              const catTopics = standardTopics.filter((t) => t.category === cat);
-              if (catTopics.length === 0) return null;
-              return (
-                <section key={cat} className="space-y-4">
-                  <h2 className="text-xs font-semibold uppercase tracking-widest text-violet-600 border-b border-slate-200 pb-2">
-                    {cat}
-                  </h2>
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                    {catTopics.map((topic) => (
-                      <TopicCard key={topic.slug} topic={topic} />
-                    ))}
-                  </div>
-                </section>
-              );
-            })
-          ) : active !== "By Region" ? (
-            <section className="space-y-4">
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-violet-600 border-b border-slate-200 pb-2">
-                {active}
-              </h2>
-              {filteredStandard.length === 0 ? (
-                <p className="py-8 text-center text-slate-400">No guides in this category yet.</p>
-              ) : (
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {filteredStandard.map((topic) => (
-                    <TopicCard key={topic.slug} topic={topic} />
-                  ))}
-                </div>
-              )}
-            </section>
-          ) : null}
+      {/* Grid */}
+      {searchOpen && query.trim().length > 0 ? (
+        searchResults.length === 0 ? (
+          <p className="py-10 text-center text-slate-400">No guides found for &ldquo;{query}&rdquo;</p>
+        ) : (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {searchResults.map((topic) => (
+              <TopicCard key={topic.slug} topic={topic} />
+            ))}
+          </div>
+        )
+      ) : paginated.length === 0 ? (
+        <p className="py-10 text-center text-slate-400">No guides in this category yet.</p>
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {paginated.map((topic) => (
+            <TopicCard key={topic.slug} topic={topic} />
+          ))}
+        </div>
+      )}
 
-          {/* By Region */}
-          {showRegions && regionalTopics.length > 0 && (
-            <section className="space-y-8">
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-violet-600 border-b border-slate-200 pb-2">
-                By Region
-              </h2>
-              {REGIONS.map((region) => {
-                const regionTopics = regionalTopics.filter((t) => t.region === region);
-                if (regionTopics.length === 0) return null;
-                return (
-                  <div key={region} className="space-y-3">
-                    <h3 className="text-sm font-semibold text-slate-700">{region}</h3>
-                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                      {regionTopics.map((topic) => (
-                        <TopicCard key={topic.slug} topic={topic} />
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </section>
-          )}
-        </>
+      {/* Pagination */}
+      {!searchOpen && totalPages > 1 && (
+        <div className="mt-10 flex items-center justify-center gap-2">
+          <button
+            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            disabled={page === 1}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 shadow-sm transition-all hover:border-violet-300 hover:text-violet-600 disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            ‹
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => {
+            const isActive = p === page;
+            const isNear = Math.abs(p - page) <= 2 || p === 1 || p === totalPages;
+            if (!isNear) {
+              if (p === page - 3 || p === page + 3) return <span key={p} className="text-slate-400 text-sm">…</span>;
+              return null;
+            }
+            return (
+              <button
+                key={p}
+                onClick={() => setPage(p)}
+                className={`flex h-9 w-9 items-center justify-center rounded-lg border text-sm font-medium transition-all ${
+                  isActive
+                    ? "bg-violet-600 border-violet-600 text-white shadow-sm"
+                    : "border-slate-200 bg-white text-slate-600 shadow-sm hover:border-violet-300 hover:text-violet-600"
+                }`}
+              >
+                {p}
+              </button>
+            );
+          })}
+
+          <button
+            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            disabled={page === totalPages}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 shadow-sm transition-all hover:border-violet-300 hover:text-violet-600 disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            ›
+          </button>
+        </div>
       )}
     </div>
   );
