@@ -92,7 +92,17 @@ Return ONLY a valid JSON array, no markdown, no explanation:
   const text = response.content[0].text.trim();
   const jsonStart = text.indexOf("[");
   const jsonEnd = text.lastIndexOf("]") + 1;
-  const articles = JSON.parse(text.slice(jsonStart, jsonEnd));
+  let articles = [];
+  try {
+    articles = JSON.parse(text.slice(jsonStart, jsonEnd));
+  } catch (e) {
+    // Try to extract individual valid objects if full parse fails
+    console.warn("Full JSON parse failed, attempting partial extraction...");
+    const matches = [...text.matchAll(/\{[\s\S]*?"slug"[\s\S]*?"relatedComparisons"[\s\S]*?\]\s*\}/g)];
+    for (const m of matches) {
+      try { articles.push(JSON.parse(m[0])); } catch {}
+    }
+  }
 
   console.log(`Generated ${articles.length} articles`);
   return articles.filter((a) => !used.has(a.slug));
@@ -149,43 +159,41 @@ function appendArticles(articles) {
   const insertBefore = "\n];\n\nexport function getArticle";
 
   const newEntries = articles.map((a) => {
-    const tags = a.tags?.map((t) => `"${escape(t)}"`).join(", ") ?? "";
-    const takeaways = a.keyTakeaways?.map((t) => `      "${escape(t)}"`).join(",\n") ?? "";
+    const s = (v) => JSON.stringify(String(v ?? ""));
+    const tags = a.tags?.map((t) => s(t)).join(", ") ?? "";
+    const takeaways = a.keyTakeaways?.map((t) => `      ${s(t)}`).join(",\n") ?? "";
     const sections = (a.sections ?? [])
-      .map(
-        (s) =>
-          `      { heading: "${escape(s.heading)}", body: \`${escape(s.body)}\` }`
-      )
+      .map((sec) => `      { heading: ${s(sec.heading)}, body: ${s(sec.body)} }`)
       .join(",\n");
     const sources = (a.sources ?? [])
-      .map(
-        (s) =>
-          `      { title: "${escape(s.title)}", url: "${s.url}", publisher: "${escape(s.publisher)}" }`
-      )
+      .map((src) => `      { title: ${s(src.title)}, url: ${s(src.url)}, publisher: ${s(src.publisher)} }`)
       .join(",\n");
     const related = (a.relatedComparisons ?? [])
-      .map((r) => `      { a: "${escape(r.a)}", b: "${escape(r.b)}" }`)
+      .map((r) => `      { a: ${s(r.a)}, b: ${s(r.b)} }`)
       .join(",\n");
+
+    const introSection = a.intro ? `      { body: ${s(a.intro)} }` : null;
+    const conclusionSection = a.conclusion ? `      { heading: "Conclusion", body: ${s(a.conclusion)} }` : null;
+    const allSections = [introSection, sections, conclusionSection].filter(Boolean).join(",\n");
 
     return `
   {
-    slug: "${a.slug}",
-    title: "${escape(a.title)}",
-    description:
-      "${escape(a.description)}",
+    slug: ${s(a.slug)},
+    title: ${s(a.title)},
+    description: ${s(a.description)},
     date: "${TODAY}",
-    category: "${a.category}",
+    category: ${s(a.category)},
     readTime: ${a.readTime ?? 6},
+    coverEmoji: "📊",
+    heroImage: "",
     tags: [${tags}],
-    image: "",
-    intro: \`${escape(a.intro ?? "")}\`,
+    author: "Simily Editorial",
     keyTakeaways: [
 ${takeaways}
     ],
     sections: [
-${sections}
+${allSections}
     ],
-    conclusion: \`${escape(a.conclusion ?? "")}\`,
     sources: [
 ${sources}
     ],
@@ -210,13 +218,14 @@ function appendBestTopics(topics) {
   const insertBefore = "\n];\n\nexport function getBestTopic";
 
   const newEntries = topics.map((t) => {
-    const items = t.items.map((i) => `    "${escape(i)}"`).join(",\n");
+    const s = (v) => JSON.stringify(String(v ?? ""));
+    const items = t.items.map((i) => `    ${s(i)}`).join(",\n");
     return `
   {
-    slug: "${t.slug}",
-    title: "${escape(t.title)}",
-    description: "${escape(t.description)}",
-    category: "${t.category}",
+    slug: ${s(t.slug)},
+    title: ${s(t.title)},
+    description: ${s(t.description)},
+    category: ${s(t.category)},
     items: [
 ${items}
     ],
@@ -231,20 +240,25 @@ ${items}
 // ─── main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
+  let articles = [], bestTopics = [];
+
   try {
-    const [articles, bestTopics] = await Promise.all([
-      generateArticles(),
-      generateBestTopics(),
-    ]);
-
+    articles = await generateArticles();
     if (articles.length > 0) appendArticles(articles);
-    if (bestTopics.length > 0) appendBestTopics(bestTopics);
-
-    console.log(`\n✅ Done — ${articles.length} articles + ${bestTopics.length} best-of topics added for ${TODAY}`);
+    console.log(`✅ Articles done — ${articles.length} added`);
   } catch (err) {
-    console.error("❌ Error:", err);
-    process.exit(1);
+    console.error("❌ Articles error:", err.message);
   }
+
+  try {
+    bestTopics = await generateBestTopics();
+    if (bestTopics.length > 0) appendBestTopics(bestTopics);
+    console.log(`✅ Best-of done — ${bestTopics.length} added`);
+  } catch (err) {
+    console.error("❌ Best-of error:", err.message);
+  }
+
+  console.log(`\n✅ Done — ${articles.length} articles + ${bestTopics.length} best-of topics added for ${TODAY}`);
 }
 
 main();
