@@ -1022,7 +1022,7 @@ export const ALL_ARTICLES: Article[] = [
     description:
       "From ₹10,000 to ₹1,00,000+, here are the best phones you can buy in India right now. No confusion, no jargon — just honest picks for every pocket.",
     date: "2026-05-21",
-    category: "India",
+    category: "Smartphones",
     readTime: 8,
     coverEmoji: "📱",
     heroImage: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=1200&auto=format&q=80",
@@ -1098,7 +1098,7 @@ export const ALL_ARTICLES: Article[] = [
     description:
       "You use UPI every day — but are you on the right app? We compare PhonePe, Google Pay, Paytm, and CRED to find the best one for your needs in 2026.",
     date: "2026-05-21",
-    category: "India",
+    category: "Finance",
     readTime: 6,
     coverEmoji: "💸",
     heroImage: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&auto=format&q=80",
@@ -1173,7 +1173,7 @@ export const ALL_ARTICLES: Article[] = [
     description:
       "Don't miss a single six this IPL season. Here are the best apps to watch IPL 2026 live in India — including how to watch completely free.",
     date: "2026-05-21",
-    category: "India",
+    category: "Entertainment",
     readTime: 5,
     coverEmoji: "🏏",
     heroImage: "https://images.unsplash.com/photo-1540747913346-19212a4b32a2?w=1200&auto=format&q=80",
@@ -1246,7 +1246,7 @@ export const ALL_ARTICLES: Article[] = [
     description:
       "Mutual funds, stocks, SIPs, FDs — which app should you trust with your money in 2026? We compare India's top investment platforms honestly.",
     date: "2026-05-20",
-    category: "India",
+    category: "Finance",
     readTime: 7,
     coverEmoji: "📈",
     heroImage: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&auto=format&q=80",
@@ -1322,7 +1322,7 @@ export const ALL_ARTICLES: Article[] = [
     description:
       "You don't need to spend ₹50,000 to get a great 5G phone in India. These are the best options under ₹20,000 in 2026 — real picks, honest reviews.",
     date: "2026-05-21",
-    category: "India",
+    category: "Smartphones",
     readTime: 6,
     coverEmoji: "⚡",
     heroImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&auto=format&q=80",

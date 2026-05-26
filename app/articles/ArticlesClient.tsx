@@ -14,27 +14,27 @@ function formatDate(iso: string) {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  AI:      "bg-violet-100 text-violet-700 border-violet-300",
-  Laptops: "bg-blue-100 text-blue-700 border-blue-300",
-  Travel:  "bg-emerald-100 text-emerald-700 border-emerald-300",
-  Finance: "bg-amber-100 text-amber-700 border-amber-300",
-  Health:  "bg-rose-100 text-rose-700 border-rose-300",
-  Career:  "bg-orange-100 text-orange-700 border-orange-300",
-  India:   "bg-orange-100 text-orange-800 border-orange-300",
-  Apps:    "bg-teal-100 text-teal-700 border-teal-300",
-  Phones:  "bg-pink-100 text-pink-700 border-pink-300",
+  AI:            "bg-violet-100 text-violet-700 border-violet-300",
+  Laptops:       "bg-blue-100 text-blue-700 border-blue-300",
+  Travel:        "bg-emerald-100 text-emerald-700 border-emerald-300",
+  Finance:       "bg-amber-100 text-amber-700 border-amber-300",
+  Health:        "bg-rose-100 text-rose-700 border-rose-300",
+  Career:        "bg-orange-100 text-orange-700 border-orange-300",
+  Smartphones:   "bg-pink-100 text-pink-700 border-pink-300",
+  Entertainment: "bg-teal-100 text-teal-700 border-teal-300",
+  Apps:          "bg-teal-100 text-teal-700 border-teal-300",
 };
 
 const CATEGORY_ACTIVE: Record<string, string> = {
-  AI:      "bg-violet-600 text-white border-violet-600",
-  Laptops: "bg-blue-600 text-white border-blue-600",
-  Travel:  "bg-emerald-600 text-white border-emerald-600",
-  Finance: "bg-amber-500 text-white border-amber-500",
-  Health:  "bg-rose-600 text-white border-rose-600",
-  Career:  "bg-orange-600 text-white border-orange-600",
-  India:   "bg-orange-600 text-white border-orange-600",
-  Apps:    "bg-teal-600 text-white border-teal-600",
-  Phones:  "bg-pink-600 text-white border-pink-600",
+  AI:            "bg-violet-600 text-white border-violet-600",
+  Laptops:       "bg-blue-600 text-white border-blue-600",
+  Travel:        "bg-emerald-600 text-white border-emerald-600",
+  Finance:       "bg-amber-500 text-white border-amber-500",
+  Health:        "bg-rose-600 text-white border-rose-600",
+  Career:        "bg-orange-600 text-white border-orange-600",
+  Smartphones:   "bg-pink-600 text-white border-pink-600",
+  Entertainment: "bg-teal-600 text-white border-teal-600",
+  Apps:          "bg-teal-600 text-white border-teal-600",
 };
 
 function categoryClass(cat: string, active = false) {
