@@ -102,7 +102,8 @@ export default function BestClient({ topics }: Props) {
   function handleCategory(cat: string | null) {
     setActive(cat);
     setPage(1);
-    closeSearch();
+    setSearchOpen(false);
+    setQuery("");
   }
 
   // Search results
@@ -117,13 +118,6 @@ export default function BestClient({ topics }: Props) {
         );
       }).slice(0, 8)
     : [];
-
-  function openSearch() {
-    setSearchOpen(true);
-    setActive(null);
-    setPage(1);
-    setTimeout(() => inputRef.current?.focus(), 50);
-  }
 
   function closeSearch() {
     setSearchOpen(false);
@@ -150,6 +144,64 @@ export default function BestClient({ topics }: Props) {
 
   return (
     <div>
+      {/* Search bar — always visible, above filters */}
+      <div ref={containerRef} className="relative mb-6">
+        <div className={`flex items-center gap-2 rounded-xl border bg-white px-4 py-2.5 shadow-sm transition-all ${searchOpen || query ? "border-violet-400 ring-2 ring-violet-100" : "border-slate-200 hover:border-slate-300"}`}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-slate-400">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input
+            ref={inputRef}
+            value={query}
+            onChange={(e) => { setQuery(e.target.value); if (!searchOpen) { setSearchOpen(true); setActive(null); setPage(1); } }}
+            onFocus={() => { setSearchOpen(true); setActive(null); setPage(1); }}
+            placeholder="Search best-of guides…"
+            className="flex-1 bg-transparent text-sm text-slate-900 placeholder-slate-400 outline-none"
+          />
+          {query && (
+            <button onClick={() => { setQuery(""); setSearchOpen(false); }} className="text-slate-400 hover:text-slate-600 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6 6 18M6 6l12 12"/>
+              </svg>
+            </button>
+          )}
+        </div>
+
+        {/* Search dropdown */}
+        {searchOpen && query.trim().length > 0 && (
+          <div className="absolute left-0 right-0 top-full z-50 mt-1.5 rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden">
+            {searchResults.length === 0 ? (
+              <p className="px-4 py-3 text-sm text-slate-400">No guides found for &ldquo;{query}&rdquo;</p>
+            ) : (
+              <ul>
+                {searchResults.map((topic) => (
+                  <li key={topic.slug}>
+                    <Link
+                      href={`/best/${topic.slug}`}
+                      onClick={closeSearch}
+                      className="flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors"
+                    >
+                      <div className="flex shrink-0 -space-x-1.5">
+                        {topic.items.slice(0, 3).map((item) => (
+                          <LogoAvatar key={item} name={item} size={22} />
+                        ))}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-medium text-slate-900">{topic.title}</p>
+                        <p className="text-xs text-slate-400">{topic.category}</p>
+                      </div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-slate-300">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
+      </div>
+
       {/* Featured topic — only on page 1, no filter, no search */}
       {showFeatured && featured && (
         <Link
@@ -214,74 +266,6 @@ export default function BestClient({ topics }: Props) {
           </button>
         ))}
 
-        {/* Search */}
-        <div ref={containerRef} className="relative ml-1">
-          {!searchOpen ? (
-            <button
-              onClick={openSearch}
-              aria-label="Search guides"
-              className="inline-flex items-center justify-center h-7 w-7 rounded-full border border-slate-300 bg-white text-slate-400 hover:border-violet-400 hover:text-violet-600 transition-all cursor-pointer shadow-sm"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-              </svg>
-            </button>
-          ) : (
-            <div className="flex items-center gap-1.5 rounded-full border border-violet-400 bg-white px-3 py-1 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-violet-500 shrink-0">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-              </svg>
-              <input
-                ref={inputRef}
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search guides…"
-                className="w-36 bg-transparent text-xs text-slate-900 placeholder-slate-400 outline-none"
-              />
-              {query && (
-                <button onClick={() => setQuery("")} className="text-slate-400 hover:text-slate-600 cursor-pointer">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 6 6 18M6 6l12 12"/>
-                  </svg>
-                </button>
-              )}
-            </div>
-          )}
-
-          {/* Search dropdown */}
-          {searchOpen && query.trim().length > 0 && (
-            <div className="absolute left-0 top-full z-50 mt-2 w-72 rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden">
-              {searchResults.length === 0 ? (
-                <p className="px-4 py-3 text-xs text-slate-400">No guides found for &ldquo;{query}&rdquo;</p>
-              ) : (
-                <ul>
-                  {searchResults.map((topic) => (
-                    <li key={topic.slug}>
-                      <Link
-                        href={`/best/${topic.slug}`}
-                        onClick={closeSearch}
-                        className="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 transition-colors"
-                      >
-                        <div className="flex shrink-0 -space-x-1.5">
-                          {topic.items.slice(0, 3).map((item) => (
-                            <LogoAvatar key={item} name={item} size={20} />
-                          ))}
-                        </div>
-                        <div className="min-w-0">
-                          <p className="truncate text-xs font-medium text-slate-900">{topic.title}</p>
-                          <p className="text-xs text-slate-400">{topic.category}</p>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-auto shrink-0 text-slate-300">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          )}
-        </div>
       </div>
 
       {/* Grid */}
