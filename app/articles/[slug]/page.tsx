@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ALL_ARTICLES, getArticle } from "../../lib/articles";
 import { makeSlug } from "../../lib/comparisons";
 import LogoAvatar from "../../components/LogoAvatar";
+import ReadingProgress from "../../components/ReadingProgress";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -88,8 +89,11 @@ export default async function ArticlePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero image — full width */}
-      <div className="relative h-64 w-full overflow-hidden sm:h-80 lg:h-96">
+      {/* Reading progress bar */}
+      <ReadingProgress />
+
+      {/* Hero image — full width, taller */}
+      <div className="relative h-72 w-full overflow-hidden sm:h-96 lg:h-[28rem]">
         <Image
           src={article.heroImage}
           alt={article.title}
@@ -97,7 +101,25 @@ export default async function ArticlePage({ params }: Props) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
+        {/* Title overlay on image */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
+          <div className="mx-auto max-w-3xl">
+            <div className="mb-3 flex flex-wrap items-center gap-2">
+              <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${categoryClass(article.category)}`}>
+                {article.category}
+              </span>
+              <span className="text-sm text-slate-300">{formatDate(article.date)}</span>
+              <span className="text-slate-500">·</span>
+              <span className="text-sm text-slate-300">{article.readTime} min read</span>
+              <span className="text-slate-500">·</span>
+              <span className="text-sm text-slate-300">By {article.author}</span>
+            </div>
+            <h1 className="text-2xl font-bold leading-tight text-white sm:text-4xl drop-shadow-md">
+              {article.title}
+            </h1>
+          </div>
+        </div>
       </div>
 
       <div className="mx-auto max-w-3xl px-4 pb-16">
@@ -109,23 +131,6 @@ export default async function ArticlePage({ params }: Props) {
           <span>/</span>
           <span className="truncate max-w-[180px] text-slate-600">{article.title}</span>
         </nav>
-
-        {/* Category + meta row */}
-        <div className="mb-4 flex flex-wrap items-center gap-3">
-          <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${categoryClass(article.category)}`}>
-            {article.category}
-          </span>
-          <span className="text-sm text-slate-400">{formatDate(article.date)}</span>
-          <span className="text-slate-300">·</span>
-          <span className="text-sm text-slate-400">{article.readTime} min read</span>
-          <span className="text-slate-300">·</span>
-          <span className="text-sm text-slate-400">By {article.author}</span>
-        </div>
-
-        {/* Title */}
-        <h1 className="mb-5 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
-          {article.title}
-        </h1>
 
         {/* Lead / description */}
         <p className="mb-8 border-l-4 border-violet-500 pl-4 text-lg leading-relaxed text-slate-600">
@@ -155,7 +160,10 @@ export default async function ArticlePage({ params }: Props) {
           {article.sections.map((section, i) => (
             <section key={i}>
               {section.heading && (
-                <h2 className="mb-4 text-2xl font-bold text-slate-900">{section.heading}</h2>
+                <h2 className="mb-4 flex items-center gap-3 text-xl font-bold text-slate-900 sm:text-2xl">
+                  <span className="h-6 w-1 shrink-0 rounded-full bg-violet-500" />
+                  {section.heading}
+                </h2>
               )}
 
               {section.body.split("\n\n").map((para, j) => (

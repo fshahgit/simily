@@ -1546,7 +1546,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 8,
     coverEmoji: "📊",
-    heroImage: "",
+    heroImage: "https://images.unsplash.com/photo-1574375927818-3af57bd817dd?w=1200&auto=format&q=80",
     tags: ["AI video", "Sora", "Runway", "content creation", "generative AI"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1583,7 +1583,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 9,
     coverEmoji: "📊",
-    heroImage: "",
+    heroImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&auto=format&q=80",
     tags: ["AI agents", "automation", "productivity", "Devin", "autonomous AI"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1620,7 +1620,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Finance",
     readTime: 10,
     coverEmoji: "📊",
-    heroImage: "",
+    heroImage: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1200&auto=format&q=80",
     tags: ["electric vehicles", "Tesla", "BYD", "EV comparison", "sustainable transport"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1657,7 +1657,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Health",
     readTime: 8,
     coverEmoji: "📊",
-    heroImage: "",
+    heroImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&auto=format&q=80",
     tags: ["wearables", "health tracking", "Apple Watch", "Oura Ring", "fitness"],
     author: "Simily Editorial",
     keyTakeaways: [
