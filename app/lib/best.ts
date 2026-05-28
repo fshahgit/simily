@@ -561,6 +561,45 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     "Carbon Black"
     ],
   },
+  {
+    slug: "best-api-gateway-2026",
+    title: "Best API Gateway for Modern Applications",
+    description: "A comprehensive comparison of API gateway solutions for managing, securing, and scaling your APIs. Covers performance, authentication features, and developer experience.",
+    category: "Dev Tools",
+    items: [
+    "Kong Gateway",
+    "AWS API Gateway",
+    "Cloudflare API Shield",
+    "Tyk",
+    "Apigee"
+    ],
+  },
+  {
+    slug: "best-siem-platform-2026",
+    title: "Best SIEM Platforms for Enterprise Security",
+    description: "Compare leading Security Information and Event Management solutions for threat detection, compliance, and incident response across hybrid cloud environments.",
+    category: "Security",
+    items: [
+    "Splunk Enterprise Security",
+    "Microsoft Sentinel",
+    "CrowdStrike Falcon LogScale",
+    "Elastic Security",
+    "Sumo Logic"
+    ],
+  },
+  {
+    slug: "best-ai-video-generator-2026",
+    title: "Best AI Video Generators for Marketing and Social Media",
+    description: "Explore AI-powered video creation tools that turn text prompts into professional videos. We assess output quality, customization options, and export capabilities.",
+    category: "Entertainment",
+    items: [
+    "Runway Gen-4",
+    "Pika Labs",
+    "Synthesia",
+    "HeyGen",
+    "Sora"
+    ],
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
