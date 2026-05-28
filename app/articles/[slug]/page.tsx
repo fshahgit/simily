@@ -6,6 +6,7 @@ import { ALL_ARTICLES, getArticle } from "../../lib/articles";
 import { makeSlug } from "../../lib/comparisons";
 import LogoAvatar from "../../components/LogoAvatar";
 import ReadingProgress from "../../components/ReadingProgress";
+import ShareButtons from "../../components/ShareButtons";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -133,9 +134,15 @@ export default async function ArticlePage({ params }: Props) {
         </nav>
 
         {/* Lead / description */}
-        <p className="mb-8 border-l-4 border-violet-500 pl-4 text-lg leading-relaxed text-slate-600">
+        <p className="mb-6 border-l-4 border-violet-500 pl-4 text-lg leading-relaxed text-slate-600">
           {article.description}
         </p>
+
+        {/* Share buttons */}
+        <ShareButtons
+          title={article.title}
+          url={`https://simily.org/articles/${slug}`}
+        />
 
         {/* Key Takeaways box */}
         {article.keyTakeaways && article.keyTakeaways.length > 0 && (
@@ -156,21 +163,43 @@ export default async function ArticlePage({ params }: Props) {
         )}
 
         {/* Article body */}
-        <article className="space-y-8">
+        <article className="space-y-10">
           {article.sections.map((section, i) => (
             <section key={i}>
               {section.heading && (
-                <h2 className="mb-4 flex items-center gap-3 text-xl font-bold text-slate-900 sm:text-2xl">
+                <h2 className="mb-5 flex items-center gap-3 text-xl font-bold text-slate-900 sm:text-2xl">
                   <span className="h-6 w-1 shrink-0 rounded-full bg-violet-500" />
                   {section.heading}
                 </h2>
               )}
 
               {section.body.split("\n\n").map((para, j) => (
-                <p key={j} className="mb-4 text-base leading-8 text-slate-600">
+                <p
+                  key={j}
+                  className={`mb-5 text-[1.05rem] leading-[1.85] text-slate-600 ${
+                    i === 0 && j === 0
+                      ? "first-letter:float-left first-letter:mr-2 first-letter:text-5xl first-letter:font-bold first-letter:leading-none first-letter:text-violet-600"
+                      : ""
+                  }`}
+                >
                   {para}
                 </p>
               ))}
+
+              {/* Visual image break after section 1 and section 3 */}
+              {(i === 1 || i === 3) && article.heroImage && (
+                <div className="my-8 overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+                  <div className="relative h-52 w-full sm:h-72">
+                    <Image
+                      src={article.heroImage}
+                      alt={section.heading ?? article.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-violet-900/30 to-transparent" />
+                  </div>
+                </div>
+              )}
 
               {/* Inline section image */}
               {section.image && (
