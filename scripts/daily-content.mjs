@@ -17,6 +17,26 @@ const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const TODAY = new Date().toISOString().slice(0, 10); // e.g. "2026-05-26"
 const YEAR = TODAY.slice(0, 4);
 
+// ─── Unsplash hero images by category ─────────────────────────────────────────
+
+const CATEGORY_IMAGES = {
+  AI:            ["1677442135703-1787eea5ce01","1676277791608-ac54525aa94d","1620712943543-bcc4688e7485","1485827404703-89b55fcc595e","1593508512255-86ab42a8e620"],
+  Laptops:       ["1496181133206-80ce9b88a853","1517694712202-14dd9538aa97","1531297484001-80022131f5a1","1588872657578-7efd1f1555ef","1484788984921-03950022c38b"],
+  Travel:        ["1506905925346-21bda4d32df4","1476514525535-07fb3b4ae5f1","1537953773345-d172ccf13cf1","1488085061387-422e29b40080","1469854523086-cc02fe5d8800"],
+  Finance:       ["1554224155-6726b3ff858f","1579621970563-ebec7560ff3e","1611974789855-9c2a0a7236a3","1565514020179-026b92b84bb6","1559526324-593bc073d938"],
+  Health:        ["1571019613454-1cb2f99b2d8b","1490645935967-10de6ba17061","1505576399279-565b52d4ac71","1540420773420-7a4b0b6ed462","1559757148-5c350d0d3c56"],
+  Career:        ["1521898284481-a5ec348cb555","1454165804606-c3d57bc86b40","1507679799987-c73779587ccf","1553877522-43269d4ea984","1552664730-d307ca884978"],
+  Smartphones:   ["1512941937669-90a1b58e7e9c","1598327105666-5b89351aff97","1511707171634-5f897ff02aa9","1533228100845-08145b01de14","1565849904461-04a58ad377e0"],
+  Entertainment: ["1540747913346-19212a4b32a2","1522869635100-9f4c5e86aa37","1574375927818-3af57bd817dd","1485846234645-a62644f84728","1478720568477-152d9b92543c"],
+};
+
+function getHeroImage(category) {
+  const imgs = CATEGORY_IMAGES[category] ?? CATEGORY_IMAGES["AI"];
+  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+  const id = imgs[dayOfYear % imgs.length];
+  return `https://images.unsplash.com/photo-${id}?w=1200&auto=format&q=80`;
+}
+
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
 function slugify(title) {
@@ -185,7 +205,7 @@ function appendArticles(articles) {
     category: ${s(a.category)},
     readTime: ${a.readTime ?? 6},
     coverEmoji: "📊",
-    heroImage: "",
+    heroImage: ${JSON.stringify(getHeroImage(a.category))},
     tags: [${tags}],
     author: "Simily Editorial",
     keyTakeaways: [

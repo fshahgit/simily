@@ -1398,7 +1398,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 8,
     coverEmoji: "📊",
-    heroImage: "",
+    heroImage: "https://images.unsplash.com/photo-1676277791608-ac54525aa94d?w=1200&auto=format&q=80",
     tags: ["AI comparison", "Gemini 2", "Claude 4", "large language models", "AI tools 2026"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1435,7 +1435,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 9,
     coverEmoji: "📊",
-    heroImage: "",
+    heroImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&auto=format&q=80",
     tags: ["AI coding", "developer tools", "GitHub Copilot", "Cursor", "programming 2026"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1472,7 +1472,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Health",
     readTime: 7,
     coverEmoji: "📊",
-    heroImage: "",
+    heroImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&auto=format&q=80",
     tags: ["weight loss apps", "AI health", "fitness technology", "diet apps 2026", "health tech"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1509,7 +1509,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Finance",
     readTime: 6,
     coverEmoji: "📊",
-    heroImage: "",
+    heroImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&q=80",
     tags: ["high-yield savings", "best savings accounts", "online banking 2026", "APY rates", "personal finance"],
     author: "Simily Editorial",
     keyTakeaways: [
