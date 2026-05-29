@@ -8,6 +8,65 @@ import LogoAvatar from "../../components/LogoAvatar";
 import ReadingProgress from "../../components/ReadingProgress";
 import ShareButtons from "../../components/ShareButtons";
 
+// Curated section images per category — different from hero images
+const SECTION_IMAGES: Record<string, string[]> = {
+  AI: [
+    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&auto=format&q=80",
+  ],
+  Laptops: [
+    "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1588872657578-7efd1f1555ef?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1484788984921-03950022c38b?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=1200&auto=format&q=80",
+  ],
+  Travel: [
+    "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&auto=format&q=80",
+  ],
+  Finance: [
+    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1559526324-593bc073d938?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1638913662584-731da41f5a59?w=1200&auto=format&q=80",
+  ],
+  Health: [
+    "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1540420773420-7a4b0b6ed462?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&auto=format&q=80",
+  ],
+  Career: [
+    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&q=80",
+  ],
+  Smartphones: [
+    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1533228100845-08145b01de14?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=1200&auto=format&q=80",
+  ],
+  Entertainment: [
+    "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1478720568477-152d9b92543c?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1585647347483-22b66260dfff?w=1200&auto=format&q=80",
+    "https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=1200&auto=format&q=80",
+  ],
+};
+
+function getSectionImage(category: string, sectionIndex: number, slug: string): string {
+  const pool = SECTION_IMAGES[category] ?? SECTION_IMAGES["AI"];
+  // combine slug char code + section index for variety across articles
+  const seed = (slug.charCodeAt(0) + slug.charCodeAt(slug.length - 1) + sectionIndex) % pool.length;
+  return pool[seed];
+}
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -186,17 +245,17 @@ export default async function ArticlePage({ params }: Props) {
                 </p>
               ))}
 
-              {/* Visual image break after section 1 and section 3 */}
-              {(i === 1 || i === 3) && article.heroImage && (
+              {/* Unique visual image break after sections 1, 3, 5 */}
+              {(i === 1 || i === 3 || i === 5) && (
                 <div className="my-8 overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
-                  <div className="relative h-52 w-full sm:h-72">
+                  <div className="relative h-52 w-full sm:h-64">
                     <Image
-                      src={article.heroImage}
+                      src={getSectionImage(article.category, i, slug)}
                       alt={section.heading ?? article.title}
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-violet-900/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/20 to-transparent" />
                   </div>
                 </div>
               )}
