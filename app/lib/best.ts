@@ -600,6 +600,32 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     "Sora"
     ],
   },
+  {
+    slug: "best-zero-trust-security-platform-2026",
+    title: "Best Zero Trust Security Platform for Remote Teams",
+    description: "This guide reviews leading zero trust network access solutions that protect distributed workforces from cyber threats. Compares identity verification, device posture checks, and integration capabilities.",
+    category: "Security",
+    items: [
+    "Zscaler",
+    "Cloudflare Access",
+    "Palo Alto Prisma",
+    "Okta",
+    "Tailscale"
+    ],
+  },
+  {
+    slug: "best-ai-meeting-assistant-2026",
+    title: "Best AI Meeting Assistant for Automated Notes and Action Items",
+    description: "A comparison of AI tools that join your meetings to transcribe conversations, summarize key points, and generate action items automatically. Covers accuracy, integrations, and privacy features.",
+    category: "Productivity",
+    items: [
+    "Fireflies.ai",
+    "Otter.ai",
+    "Fathom",
+    "Grain",
+    "tl;dv"
+    ],
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
