@@ -5,6 +5,7 @@ import LogoAvatar from "../../components/LogoAvatar";
 import Script from "next/script";
 import Link from "next/link";
 import { ALL_COMPARISONS, makeSlug } from "../../lib/comparisons";
+import { Redis } from "@upstash/redis";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -52,6 +53,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+async function getCachedComparison(items: string[]) {
+  try {
+    const redis = new Redis({
+      url: process.env.KV_REST_API_URL!,
+      token: process.env.KV_REST_API_TOKEN!,
+    });
+    const key = `compare:v3:${items.map((i) => i.toLowerCase().trim()).join(":")}`;
+    const cached = await redis.get(key);
+    return cached ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export default async function ComparePage({ params }: Props) {
   const { slug } = await params;
   const { itemA, itemB, itemC } = resolveItems(slug);
@@ -65,6 +80,10 @@ export default async function ComparePage({ params }: Props) {
     : `AI-powered comparison between ${itemA} and ${itemB} with detailed scores, pros, cons, and a clear verdict.`;
 
   const items = [itemA, itemB, ...(itemC ? [itemC] : [])];
+
+  // Fetch cached comparison data so it's server-rendered for SEO
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const initialData = (await getCachedComparison(items)) as any ?? undefined;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -114,8 +133,8 @@ export default async function ComparePage({ params }: Props) {
         </div>
       </div>
 
-      {/* Client-rendered comparison content */}
-      <ComparisonClient a={itemA} b={itemB} c={itemC} />
+      {/* Comparison content — server-rendered when cached, client-rendered otherwise */}
+      <ComparisonClient a={itemA} b={itemB} c={itemC} initialData={initialData} />
 
       <div className="mx-auto max-w-5xl px-4 pb-16">
         <RelatedComparisons a={itemA} b={itemB} />

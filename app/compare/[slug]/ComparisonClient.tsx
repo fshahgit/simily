@@ -115,13 +115,20 @@ function AddToCompareButton({
   );
 }
 
-export default function ComparisonClient({ a, b, c }: { a: string; b: string; c?: string }) {
+export default function ComparisonClient({ a, b, c, initialData }: { a: string; b: string; c?: string; initialData?: ComparisonData }) {
   const [items, setItems] = useState<string[]>([a, b, ...(c ? [c] : [])]);
-  const [data, setData] = useState<ComparisonData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<ComparisonData | null>(initialData ?? null);
+  const [loading, setLoading] = useState(!initialData);
   const [error, setError] = useState("");
+  // Skip the initial client-side fetch when server already provided data
+  const skipInitialFetch = useRef(!!initialData);
 
   useEffect(() => {
+    // Skip the very first render when server-side data was provided
+    if (skipInitialFetch.current) {
+      skipInitialFetch.current = false;
+      return;
+    }
     let cancelled = false;
     async function fetchComparison() {
       setLoading(true);
