@@ -1803,6 +1803,102 @@ export const ALL_ARTICLES: Article[] = [
       { a: "Surface Laptop 7", b: "ThinkPad X1 Carbon Gen 13" }
     ],
   },
+  {
+    slug: "apple-wwdc-2026-what-to-expect",
+    title: "Apple WWDC 2026: Everything You Need to Know Before June 8",
+    description:
+      "Apple's biggest developer event of the year is almost here. From a reinvented Siri to iOS 27, foldable iPhone groundwork, and Apple's biggest AI bet yet — here's the full story.",
+    date: "2026-06-04",
+    category: "AI",
+    readTime: 8,
+    coverEmoji: "🍎",
+    heroImage: "https://images.unsplash.com/photo-1510557880182-3d4d3cfc5b4b?w=1200&auto=format&q=80",
+    tags: ["Apple", "WWDC", "iOS 27", "Siri", "AI", "iPhone", "macOS"],
+    author: "Simily Editorial",
+    keyTakeaways: [
+      "WWDC 2026 keynote is Monday June 8 at 10am PT — Apple's 'All Systems Glow' tagline teases a Siri redesign",
+      "Siri is getting a full chatbot overhaul: standalone app, Dynamic Island integration, and conversation history",
+      "iOS 27 is Apple's 'Snow Leopard moment' — focused on speed, stability, and AI, not flashy new features",
+      "Apple is partnering with Google's Gemini team to power some of the new Siri capabilities",
+      "iOS 27 lays the software groundwork for the foldable iPhone Fold expected in September 2026",
+      "macOS 27 will be M-series only — older Intel Macs are officially left behind",
+    ],
+    sections: [
+      {
+        body: "Once a year, Apple drops everything else and puts on a show for its developers — and the rest of the world watches. WWDC (Worldwide Developers Conference) is where Apple sets the direction for its entire software ecosystem for the next 12 months. And WWDC 2026, which kicks off on Monday June 8, might be the most consequential one in years.\n\nThe tagline Apple chose — *All Systems Glow* — is a play on 'all systems go.' It's a deliberate hint at what's coming: a sweeping redesign of Siri, new AI capabilities across every Apple platform, and the software foundation for a product category Apple has never entered before. This is Apple's AI do-over, and the stakes couldn't be higher.",
+      },
+      {
+        heading: "The Siri Reinvention Apple Has Owed Us",
+        body: "Let's be direct: Siri has been an embarrassment for years. While ChatGPT and Google Gemini became genuinely useful AI assistants, Siri was still struggling to set timers without misunderstanding you. Apple promised a smarter Siri at WWDC 2024 — and then quietly delayed almost everything it announced.\n\nWWDC 2026 is Apple's chance to finally deliver. According to multiple credible reports, this year's Siri overhaul is real and dramatic. A standalone Siri app is coming to iOS 27, iPadOS 27, and macOS 27 — designed to compete directly with ChatGPT. It will support both voice and text input, maintain a full conversation history, and introduce 'Extensions' that let Siri work across third-party apps with genuine context awareness.\n\nPerhaps most visibly: Siri's animated indicator is moving to the Dynamic Island. When you invoke the assistant, a dark glowing orb will appear at the top of your screen — a much more modern, spatial interface than the old bottom-of-screen glow.",
+        quote: "This is Apple's AI do-over. Two years of broken promises riding on one keynote.",
+        image: {
+          src: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&auto=format&q=80",
+          alt: "AI interface visualization with glowing neural network",
+          caption: "Apple is betting big on a rebuilt Siri — this time backed by real large language model technology.",
+        },
+      },
+      {
+        heading: "The Google Partnership Nobody Expected",
+        body: "Here's the twist nobody predicted: Apple is reportedly building its new Siri chatbot capabilities in partnership with Google's Gemini team. The two companies struck a deal in January 2026, and a custom AI model built collaboratively between Apple and Google will power some of Siri's most advanced new features.\n\nThis is significant for several reasons. First, it signals that Apple has accepted it cannot build frontier AI models fast enough on its own — at least not yet. Second, it raises privacy questions that Apple will need to address head-on, given how central privacy is to the Apple brand.\n\nThe Siri architecture is also being opened up to third-party AI chatbots. If you have Claude or ChatGPT installed, Siri will be able to hand off questions it can't answer to those services — creating a routing layer rather than a closed assistant. Think of it as Siri becoming a smart front door to the AI ecosystem.",
+        callout: "Apple's Siri will route complex questions to Claude, ChatGPT, or Gemini if they're installed — turning Siri into a universal AI gateway rather than a standalone assistant.",
+      },
+      {
+        heading: "iOS 27: Apple's 'Snow Leopard' Moment",
+        body: "Tech veterans will remember Snow Leopard — Apple's 2009 macOS release that contained almost no new user-visible features. Instead, it was a deep internal rebuild: faster, more stable, more efficient. iOS 27 appears to follow the same philosophy.\n\nExpect a cleaner, faster iOS rather than a feature-stuffed one. Apple is reportedly stripping outdated code, rebuilding core system processes, and pushing Apple Intelligence capabilities deeper into native apps like Wallet, Safari, Shortcuts, and Mail. The keyboard is getting an upgrade too — improved autocorrect that actually understands context, not just individual words.\n\nOne standout feature: Apple Maps is gaining satellite connectivity support, letting it function without a cellular or Wi-Fi connection in remote areas. This matters for hikers, travellers, and anyone who's ever been lost with no signal.",
+        image: {
+          src: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&auto=format&q=80",
+          alt: "iPhone showing a home screen with apps",
+          caption: "iOS 27 is less about new icons and more about what happens under the hood — performance, AI, and reliability.",
+        },
+      },
+      {
+        heading: "The Foldable iPhone Is Coming — And iOS 27 Is Getting Ready",
+        body: "Apple won't announce hardware at WWDC. But iOS 27 will quietly contain something enormous: the software foundations for Apple's first-ever foldable iPhone, expected to launch in September 2026.\n\nReferred to internally as the iPhone Fold (some leakers say iPhone Ultra), the device will operate in two distinct modes. Closed, it functions like a standard iPhone with a compact external display. Open, it unfolds into a tablet-like screen that can run two apps side-by-side — a feature currently reserved for iPad.\n\nApple's challenge is making this multitasking feel natural and distinctly Apple — not like a Samsung Galaxy Z Fold with an Apple logo on it. The iOS 27 split-screen implementation will reportedly be tighter and more intuitive than existing Android foldable software. Developers attending WWDC will get early access to foldable display APIs to start optimising their apps.\n\nWith a rumoured price tag around $2,400, the iPhone Fold will be Apple's most premium product since the original Vision Pro.",
+        image: {
+          src: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&auto=format&q=80",
+          alt: "Futuristic folding smartphone concept",
+          caption: "iOS 27 will include the split-screen and multi-window foundations needed for Apple's first foldable iPhone.",
+        },
+      },
+      {
+        heading: "macOS 27: Intel Macs Left Behind",
+        body: "macOS 27 arrives this autumn, and it comes with a hard line: M-series chips only. If you're running an Intel Mac, this is your last year of full macOS support. Apple made the M1 transition in 2020 — a full six years of Intel support is generous by Silicon Valley standards, but it will still sting for users with older iMacs and MacBook Pros.\n\nFor M-chip users, macOS 27 is a significant upgrade. Smarter Spotlight search with AI-powered natural language understanding, Siri integration throughout the system, and new AI writing tools in Pages, Notes, and Mail are the headline features. The Liquid Glass design language introduced in iOS 17 is being refined further, with smoother animations and tighter visual consistency.\n\nDevelopers will be watching the new AI APIs closely — Apple is expected to release a robust on-device LLM framework that lets apps run AI features locally, without sending data to the cloud.",
+        callout: "macOS 27 drops Intel Mac support entirely. If your Mac has an Intel chip, this autumn's update will be the last full OS upgrade you receive.",
+      },
+      {
+        heading: "watchOS & visionOS: Incremental but Meaningful",
+        body: "watchOS 27 won't steal headlines, but there are meaningful updates. New watch faces including a refined Modular Ultra design, health features currently under regulatory review, and deeper integration with the new Siri stack are expected. Apple Watch remains the world's most popular smartwatch by a wide margin — watchOS updates don't need to be dramatic to be worthwhile.\n\nvisionOS 27 details are the most scarce. Apple Vision Pro has had a challenging first year commercially, and Apple is expected to use this WWDC to reset expectations — focusing on making existing experiences more polished rather than chasing new use cases. Spatial computing remains a long game.",
+        image: {
+          src: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=900&auto=format&q=80",
+          alt: "Apple Watch on a wrist showing a watch face",
+          caption: "watchOS 27 brings refined watch faces and deeper Siri integration to the world's most popular smartwatch.",
+        },
+      },
+      {
+        heading: "What This WWDC Really Means",
+        body: "Read between the lines and WWDC 2026 is Apple acknowledging something uncomfortable: it fell behind in AI, it knows it, and it's spending enormous political and financial capital to catch up — including partnering with its biggest rival.\n\nThe question isn't whether the new features sound impressive in a keynote. It's whether they work reliably when hundreds of millions of people actually use them every day. Apple's brand is built on things that just work. If the new Siri delivers on even 70% of what's being promised, this will go down as the year Apple reasserted itself in the AI race.\n\nThe keynote streams live at 10am PT on June 8 on Apple's website, YouTube, and the Apple TV app. Whether you're an Apple fanatic or just AI-curious, it's worth watching.",
+        list: [
+          "June 8 at 10am PT — keynote streams live on apple.com, YouTube, and Apple TV app",
+          "iOS 27, macOS 27, watchOS 27, iPadOS 27, tvOS 27, visionOS 27 all previewed",
+          "Developer beta available same day for those enrolled in Apple Developer Program",
+          "Public beta typically arrives in July; full release in September alongside new iPhones",
+        ],
+      },
+    ],
+    sources: [
+      { title: "WWDC 2026 - Apple Developer", url: "https://developer.apple.com/wwdc26/", publisher: "Apple" },
+      { title: "WWDC 2026: Everything to Expect", url: "https://www.macrumors.com/roundup/wwdc/", publisher: "MacRumors" },
+      { title: "WWDC 2026: The year of the do-over", url: "https://www.macworld.com/article/3150887/wwdc-2026-time-for-apples-ai-do-over.html", publisher: "Macworld" },
+      { title: "What to expect from WWDC 2026", url: "https://www.engadget.com/big-tech/what-to-expect-from-wwdc-2026-110000086.html", publisher: "Engadget" },
+      { title: "Apple Teases WWDC 2026: 'All Systems Glow'", url: "https://www.macrumors.com/2026/06/01/apple-wwdc-2026-all-systems-glow/", publisher: "MacRumors" },
+      { title: "WWDC 2026: Everything Apple Is Expected to Announce", url: "https://www.newsweek.com/wwdc-2026-everything-apple-is-expected-to-announce-on-june-8-12016937", publisher: "Newsweek" },
+    ],
+    relatedComparisons: [
+      { a: "Siri", b: "ChatGPT" },
+      { a: "iPhone", b: "Google Pixel" },
+      { a: "Claude", b: "Gemini" },
+    ],
+  },
 ];
 
 export function getArticle(slug: string): Article | undefined {
