@@ -1812,7 +1812,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 8,
     coverEmoji: "🍎",
-    heroImage: "https://images.unsplash.com/photo-1510557880182-3d4d3cfc5b4b?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1576085898323-218337e3e43c?w=1200&auto=format&q=80",
     tags: ["Apple", "WWDC", "iOS 27", "Siri", "AI", "iPhone", "macOS"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1832,9 +1832,9 @@ export const ALL_ARTICLES: Article[] = [
         body: "Let's be direct: Siri has been an embarrassment for years. While ChatGPT and Google Gemini became genuinely useful AI assistants, Siri was still struggling to set timers without misunderstanding you. Apple promised a smarter Siri at WWDC 2024 — and then quietly delayed almost everything it announced.\n\nWWDC 2026 is Apple's chance to finally deliver. According to multiple credible reports, this year's Siri overhaul is real and dramatic. A standalone Siri app is coming to iOS 27, iPadOS 27, and macOS 27 — designed to compete directly with ChatGPT. It will support both voice and text input, maintain a full conversation history, and introduce 'Extensions' that let Siri work across third-party apps with genuine context awareness.\n\nPerhaps most visibly: Siri's animated indicator is moving to the Dynamic Island. When you invoke the assistant, a dark glowing orb will appear at the top of your screen — a much more modern, spatial interface than the old bottom-of-screen glow.",
         quote: "This is Apple's AI do-over. Two years of broken promises riding on one keynote.",
         image: {
-          src: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&auto=format&q=80",
-          alt: "AI interface visualization with glowing neural network",
-          caption: "Apple is betting big on a rebuilt Siri — this time backed by real large language model technology.",
+          src: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?w=900&auto=format&q=80",
+          alt: "Silver iPhone X showing Siri interface",
+          caption: "Siri is moving from a voice shortcut to a full chatbot — with conversation history, a standalone app, and Dynamic Island integration.",
         },
       },
       {
@@ -1846,8 +1846,8 @@ export const ALL_ARTICLES: Article[] = [
         heading: "iOS 27: Apple's 'Snow Leopard' Moment",
         body: "Tech veterans will remember Snow Leopard — Apple's 2009 macOS release that contained almost no new user-visible features. Instead, it was a deep internal rebuild: faster, more stable, more efficient. iOS 27 appears to follow the same philosophy.\n\nExpect a cleaner, faster iOS rather than a feature-stuffed one. Apple is reportedly stripping outdated code, rebuilding core system processes, and pushing Apple Intelligence capabilities deeper into native apps like Wallet, Safari, Shortcuts, and Mail. The keyboard is getting an upgrade too — improved autocorrect that actually understands context, not just individual words.\n\nOne standout feature: Apple Maps is gaining satellite connectivity support, letting it function without a cellular or Wi-Fi connection in remote areas. This matters for hikers, travellers, and anyone who's ever been lost with no signal.",
         image: {
-          src: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&auto=format&q=80",
-          alt: "iPhone showing a home screen with apps",
+          src: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=900&auto=format&q=80",
+          alt: "iPhone resting on a white surface",
           caption: "iOS 27 is less about new icons and more about what happens under the hood — performance, AI, and reliability.",
         },
       },
@@ -1855,22 +1855,27 @@ export const ALL_ARTICLES: Article[] = [
         heading: "The Foldable iPhone Is Coming — And iOS 27 Is Getting Ready",
         body: "Apple won't announce hardware at WWDC. But iOS 27 will quietly contain something enormous: the software foundations for Apple's first-ever foldable iPhone, expected to launch in September 2026.\n\nReferred to internally as the iPhone Fold (some leakers say iPhone Ultra), the device will operate in two distinct modes. Closed, it functions like a standard iPhone with a compact external display. Open, it unfolds into a tablet-like screen that can run two apps side-by-side — a feature currently reserved for iPad.\n\nApple's challenge is making this multitasking feel natural and distinctly Apple — not like a Samsung Galaxy Z Fold with an Apple logo on it. The iOS 27 split-screen implementation will reportedly be tighter and more intuitive than existing Android foldable software. Developers attending WWDC will get early access to foldable display APIs to start optimising their apps.\n\nWith a rumoured price tag around $2,400, the iPhone Fold will be Apple's most premium product since the original Vision Pro.",
         image: {
-          src: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&auto=format&q=80",
-          alt: "Futuristic folding smartphone concept",
+          src: "https://images.unsplash.com/photo-1596558450268-9c27524ba856?w=900&auto=format&q=80",
+          alt: "iPhone resting on a surface showing the screen",
           caption: "iOS 27 will include the split-screen and multi-window foundations needed for Apple's first foldable iPhone.",
         },
       },
       {
         heading: "macOS 27: Intel Macs Left Behind",
         body: "macOS 27 arrives this autumn, and it comes with a hard line: M-series chips only. If you're running an Intel Mac, this is your last year of full macOS support. Apple made the M1 transition in 2020 — a full six years of Intel support is generous by Silicon Valley standards, but it will still sting for users with older iMacs and MacBook Pros.\n\nFor M-chip users, macOS 27 is a significant upgrade. Smarter Spotlight search with AI-powered natural language understanding, Siri integration throughout the system, and new AI writing tools in Pages, Notes, and Mail are the headline features. The Liquid Glass design language introduced in iOS 17 is being refined further, with smoother animations and tighter visual consistency.\n\nDevelopers will be watching the new AI APIs closely — Apple is expected to release a robust on-device LLM framework that lets apps run AI features locally, without sending data to the cloud.",
+        image: {
+          src: "https://images.unsplash.com/photo-1605647736739-cd2f4b5612ee?w=900&auto=format&q=80",
+          alt: "MacBook Pro open on a desk",
+          caption: "macOS 27 is M-series only — a clean break that lets Apple build exclusively for Apple Silicon.",
+        },
         callout: "macOS 27 drops Intel Mac support entirely. If your Mac has an Intel chip, this autumn's update will be the last full OS upgrade you receive.",
       },
       {
         heading: "watchOS & visionOS: Incremental but Meaningful",
         body: "watchOS 27 won't steal headlines, but there are meaningful updates. New watch faces including a refined Modular Ultra design, health features currently under regulatory review, and deeper integration with the new Siri stack are expected. Apple Watch remains the world's most popular smartwatch by a wide margin — watchOS updates don't need to be dramatic to be worthwhile.\n\nvisionOS 27 details are the most scarce. Apple Vision Pro has had a challenging first year commercially, and Apple is expected to use this WWDC to reset expectations — focusing on making existing experiences more polished rather than chasing new use cases. Spatial computing remains a long game.",
         image: {
-          src: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=900&auto=format&q=80",
-          alt: "Apple Watch on a wrist showing a watch face",
+          src: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=900&auto=format&q=80",
+          alt: "Apple Watch with black sport band on a wrist",
           caption: "watchOS 27 brings refined watch faces and deeper Siri integration to the world's most popular smartwatch.",
         },
       },
