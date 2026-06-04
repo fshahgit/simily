@@ -10,14 +10,26 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // 301 redirect: strip ?a=...&b=... query params from compare URLs
-  // These old URLs were indexed by Google — redirect permanently to clean slugs
+  // 301 redirects: strip query params from compare URLs
+  // Old URLs like ?a=Amazon&b=Shopee or ?a=acko&b=policybazaar indexed by Google
   async redirects() {
     return [
       {
         source: "/compare/:slug",
         has: [{ type: "query", key: "a" }],
         destination: "/compare/:slug",
+        permanent: true,
+      },
+      {
+        source: "/compare/:slug",
+        has: [{ type: "query", key: "b" }],
+        destination: "/compare/:slug",
+        permanent: true,
+      },
+      // Fix broken shadcn/ui slug — slash in name created a 404
+      {
+        source: "/compare/shadcn/ui-vs-material-ui",
+        destination: "/compare/shadcn-ui-vs-material-ui",
         permanent: true,
       },
     ];

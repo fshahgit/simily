@@ -85,7 +85,7 @@ export const ALL_COMPARISONS: Comparison[] = [
   { a: "Tailwind", b: "Bootstrap" },
   { a: "Tailwind", b: "CSS Modules" },
   { a: "Tailwind", b: "Material UI" },
-  { a: "shadcn/ui", b: "Material UI" },
+  { a: "Shadcn UI", b: "Material UI" },
 
   // ── Databases ────────────────────────────────────────────────────────────
   { a: "PostgreSQL", b: "MySQL" },
