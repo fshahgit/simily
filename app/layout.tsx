@@ -42,10 +42,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span className="text-slate-400 text-sm font-normal hidden sm:block">— Compare Anything</span>
             </Link>
             <nav className="flex items-center gap-4 sm:gap-6 text-sm text-slate-500">
-              <Link href="/search" className="hover:text-slate-900 transition-colors">Search</Link>
-              <Link href="/popular" className="hover:text-slate-900 transition-colors">Popular</Link>
+              <Link href="/search" className="hover:text-slate-900 transition-colors hidden sm:block">Search</Link>
+              <Link href="/popular" className="hover:text-slate-900 transition-colors hidden sm:block">Popular</Link>
               <Link href="/best" className="hover:text-violet-700 transition-colors font-medium text-violet-600">Best Of</Link>
               <Link href="/articles" className="hover:text-teal-700 transition-colors font-medium text-teal-600">Articles</Link>
+              <Link href="/news" className="hover:text-orange-700 transition-colors font-medium text-orange-500 flex items-center gap-1">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                </span>
+                News
+              </Link>
             </nav>
           </div>
         </header>

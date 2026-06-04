@@ -257,10 +257,104 @@ ${items}
   console.log(`✅ Appended ${topics.length} best-of topics to best.ts`);
 }
 
+// ─── Unsplash images by news category ────────────────────────────────────────
+
+const NEWS_IMAGES = {
+  AI:         ["1677442135703-1787eea5ce01","1676277791608-ac54525aa94d","1620712943543-bcc4688e7485","1639762681485-074b7f938ba0","1655720828018-edd2daec9349"],
+  Tech:       ["1518770660439-4636190af475","1517336714731-489689fd1ca8","1496181133206-80ce9b88a853","1531297484001-80022131f5a1","1605647736739-cd2f4b5612ee"],
+  Blockchain: ["1621504450181-5d356f61d307","1605792657660-596af9009e82","1642104704074-907c0698cbd9","1559526324-593bc073d938","1611974789855-9c2a0a7236a3"],
+  Gadgets:    ["1512941937669-90a1b58e7e9c","1585060544812-6b45742d762f","1546868871-7041f2a55e12","1523206489230-c012c64b2b48","1598327105666-5b89351aff97"],
+  Science:    ["1532094349807-d4b930b60a40","1446776811953-b23d57bd21aa","1507668077129-56e32842fceb","1451187580459-43490279c0fa","1614728423169-3f65fd722b7e"],
+};
+
+function getNewsImage(category) {
+  const imgs = NEWS_IMAGES[category] ?? NEWS_IMAGES["Tech"];
+  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+  const seed = (dayOfYear + Math.floor(Math.random() * imgs.length)) % imgs.length;
+  return `https://images.unsplash.com/photo-${imgs[seed]}?w=800&auto=format&q=80`;
+}
+
+// ─── generate daily news ──────────────────────────────────────────────────────
+
+async function generateNews() {
+  const prompt = `You are a tech news editor at Simily.org. Today is ${TODAY}.
+
+Generate 6 real, high-quality tech news stories that are genuinely newsworthy as of ${TODAY}.
+Focus on: AI developments, big tech moves, blockchain/crypto news, gadget launches, and science breakthroughs.
+
+Each story must be factually grounded — use real company names, real products, and real events you know about.
+
+Return ONLY a valid JSON array of exactly 6 objects, no markdown:
+[
+  {
+    "id": "unique-kebab-id",
+    "title": "Compelling news headline (under 90 chars)",
+    "summary": "2-3 sentences explaining the story clearly. Be specific — mention company names, numbers, and why it matters.",
+    "category": one of ["AI", "Tech", "Blockchain", "Gadgets", "Science"],
+    "publisher": "Real publisher name (e.g. TechCrunch, The Verge, Wired, Reuters)",
+    "sourceUrl": "https://real-publisher.com/relevant-article-path",
+    "readTime": number between 2 and 5
+  }
+]`;
+
+  console.log("Generating daily news with Claude...");
+  const response = await client.messages.create({
+    model: "claude-opus-4-5",
+    max_tokens: 3000,
+    messages: [{ role: "user", content: prompt }],
+  });
+
+  const text = response.content[0].text.trim();
+  const jsonStart = text.indexOf("[");
+  const jsonEnd = text.lastIndexOf("]") + 1;
+  const items = JSON.parse(text.slice(jsonStart, jsonEnd));
+  console.log(`Generated ${items.length} news items`);
+  return items;
+}
+
+// ─── prepend news day to news.ts ──────────────────────────────────────────────
+
+function prependNews(items) {
+  const filePath = path.join(ROOT, "app/lib/news.ts");
+  let content = fs.readFileSync(filePath, "utf8");
+
+  const s = (v) => JSON.stringify(String(v ?? ""));
+
+  const newsEntries = items.map((item) => {
+    const image = getNewsImage(item.category);
+    return `    {
+      id: ${s(item.id)},
+      title: ${s(item.title)},
+      summary: ${s(item.summary)},
+      category: ${s(item.category)},
+      publisher: ${s(item.publisher)},
+      sourceUrl: ${s(item.sourceUrl)},
+      image: ${s(image)},
+      date: "${TODAY}",
+      readTime: ${item.readTime ?? 3},
+    },`;
+  }).join("\n");
+
+  const newDay = `
+  {
+    date: "${TODAY}",
+    items: [
+${newsEntries}
+    ],
+  },`;
+
+  // Insert after `export const ALL_NEWS: NewsDay[] = [`
+  const insertAfter = "export const ALL_NEWS: NewsDay[] = [";
+  content = content.replace(insertAfter, insertAfter + newDay);
+
+  fs.writeFileSync(filePath, content, "utf8");
+  console.log(`✅ Prepended ${items.length} news items to news.ts`);
+}
+
 // ─── main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
-  let articles = [], bestTopics = [];
+  let articles = [], bestTopics = [], newsItems = [];
 
   try {
     articles = await generateArticles();
@@ -278,7 +372,15 @@ async function main() {
     console.error("❌ Best-of error:", err.message);
   }
 
-  console.log(`\n✅ Done — ${articles.length} articles + ${bestTopics.length} best-of topics added for ${TODAY}`);
+  try {
+    newsItems = await generateNews();
+    if (newsItems.length > 0) prependNews(newsItems);
+    console.log(`✅ News done — ${newsItems.length} items added`);
+  } catch (err) {
+    console.error("❌ News error:", err.message);
+  }
+
+  console.log(`\n✅ Done — ${articles.length} articles + ${bestTopics.length} best-of + ${newsItems.length} news for ${TODAY}`);
 }
 
 main();

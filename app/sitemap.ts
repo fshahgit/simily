@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { ALL_COMPARISONS, makeSlug } from "./lib/comparisons";
 import { ALL_BEST_TOPICS } from "./lib/best";
 import { ALL_ARTICLES } from "./lib/articles";
+import { ALL_NEWS } from "./lib/news";
 
 const BASE_URL = "https://www.simily.org";
 
@@ -30,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/news`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
     },
   ];
 
