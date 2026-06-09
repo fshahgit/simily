@@ -7,7 +7,7 @@ import { makeSlug } from "../../lib/comparisons";
 
 const RANK_STYLES = [
   { badge: "🥇", border: "border-yellow-200", bg: "bg-yellow-50", label: "text-yellow-600" },
-  { badge: "🥈", border: "border-slate-200",  bg: "bg-slate-50",  label: "text-slate-500" },
+  { badge: "🥈", border: "border-slate-800", bg: "bg-slate-900/60",  label: "text-slate-500" },
   { badge: "🥉", border: "border-orange-200", bg: "bg-orange-50", label: "text-orange-600" },
 ];
 
@@ -124,7 +124,7 @@ export default function BestClient({
       {/* Ranked picks */}
       <div className="space-y-4">
         {data.picks.map((pick, i) => {
-          const style = RANK_STYLES[i] ?? { badge: `#${i + 1}`, border: "border-slate-200", bg: "bg-white", label: "text-slate-500" };
+          const style = RANK_STYLES[i] ?? { badge: `#${i + 1}`, border: "border-slate-800", bg: "bg-slate-900/60", label: "text-slate-500" };
           return (
             <div
               key={pick.name}
@@ -136,7 +136,7 @@ export default function BestClient({
                 <div className="flex items-center gap-3 flex-1 min-w-0">
                   <LogoAvatar name={pick.name} size={44} />
                   <div className="min-w-0">
-                    <h2 className="text-lg font-bold text-slate-900">{pick.name}</h2>
+                    <h2 className="text-lg font-bold text-white">{pick.name}</h2>
                     <span className={`text-xs font-semibold uppercase tracking-wider ${style.label}`}>
                       {pick.tagline}
                     </span>
@@ -144,7 +144,7 @@ export default function BestClient({
                 </div>
                 <Link
                   href={`/compare/${makeSlug(items[0], pick.name)}?a=${encodeURIComponent(items[0])}&b=${encodeURIComponent(pick.name)}`}
-                  className="hidden sm:inline-flex shrink-0 items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-500 hover:border-violet-300 hover:text-violet-600 transition-all shadow-sm"
+                  className="hidden sm:inline-flex shrink-0 items-center gap-1 rounded-lg border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-slate-400 hover:border-violet-500/40 hover:text-violet-400 transition-all"
                 >
                   Compare →
                 </Link>
@@ -178,7 +178,7 @@ export default function BestClient({
               </div>
 
               {/* Best for */}
-              <div className="rounded-xl bg-white border border-slate-200 px-4 py-2.5 text-sm shadow-sm">
+              <div className="rounded-xl bg-slate-900 border border-slate-800 px-4 py-2.5 text-sm">
                 <span className="text-violet-600 font-semibold">Best for: </span>
                 <span className="text-slate-600">{pick.bestFor}</span>
               </div>
@@ -189,12 +189,12 @@ export default function BestClient({
 
       {/* Verdict */}
       <div className="rounded-2xl border border-violet-200 bg-violet-50 p-6 space-y-2">
-        <h2 className="font-bold text-slate-900 text-lg">Our Verdict</h2>
+        <h2 className="font-bold text-white text-lg">Our Verdict</h2>
         <p className="text-slate-600 text-sm leading-relaxed">{data.verdict}</p>
       </div>
 
       {/* Compare CTA */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
         <h3 className="font-semibold text-slate-800 mb-3 text-center">Compare Two of These Directly</h3>
         <div className="flex flex-wrap gap-2 justify-center">
           {items.slice(0, 6).map((item, i) =>
@@ -202,7 +202,7 @@ export default function BestClient({
               <Link
                 key={`${item}-${item2}`}
                 href={`/compare/${makeSlug(item, item2)}?a=${encodeURIComponent(item)}&b=${encodeURIComponent(item2)}`}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs text-slate-600 hover:border-violet-300 hover:text-violet-600 transition-all"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-slate-400 hover:border-violet-500/40 hover:text-violet-400 transition-all"
               >
                 <LogoAvatar name={item} size={14} />
                 {item} vs {item2}
@@ -230,8 +230,8 @@ export default function BestClient({
               }),
             }}
           />
-          <div className="rounded-2xl border border-slate-200 bg-white px-6 py-2 shadow-sm">
-            <h2 className="pt-4 pb-2 text-lg font-bold text-slate-900">Frequently Asked Questions</h2>
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 px-6 py-2">
+            <h2 className="pt-4 pb-2 text-lg font-bold text-white">Frequently Asked Questions</h2>
             <FaqAccordion faqs={data.faqs} />
           </div>
         </>

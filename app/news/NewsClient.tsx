@@ -22,7 +22,7 @@ function NewsCard({ item, featured }: { item: NewsItem; featured?: boolean }) {
         href={item.sourceUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300"
+        className="group relative block overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 hover:border-violet-500/40 hover:shadow-black/30 transition-all duration-300"
       >
         <div className="relative h-64 sm:h-80 w-full overflow-hidden">
           <Image
@@ -45,9 +45,9 @@ function NewsCard({ item, featured }: { item: NewsItem; featured?: boolean }) {
             <p className="mt-2 text-sm text-slate-300 line-clamp-2">{item.summary}</p>
           </div>
         </div>
-        <div className="px-6 py-4 flex items-center justify-between border-t border-slate-100">
-          <span className="text-xs text-slate-400">Full story at {item.publisher}</span>
-          <span className="text-xs font-semibold text-violet-600 group-hover:translate-x-1 transition-transform inline-block">Read →</span>
+        <div className="px-6 py-4 flex items-center justify-between border-t border-slate-800">
+          <span className="text-xs text-slate-500">Full story at {item.publisher}</span>
+          <span className="text-xs font-semibold text-violet-400 group-hover:translate-x-1 transition-transform inline-block">Read →</span>
         </div>
       </a>
     );
@@ -58,7 +58,7 @@ function NewsCard({ item, featured }: { item: NewsItem; featured?: boolean }) {
       href={item.sourceUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-violet-200 transition-all duration-200"
+      className="group flex gap-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 hover:border-violet-500/40 transition-all duration-200"
     >
       <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 overflow-hidden rounded-xl">
         <Image
@@ -75,7 +75,7 @@ function NewsCard({ item, featured }: { item: NewsItem; featured?: boolean }) {
           </span>
           <span className="text-xs text-slate-400">{item.publisher} · {timeAgo(item.date)}</span>
         </div>
-        <h3 className="font-semibold text-slate-900 text-sm sm:text-base leading-snug group-hover:text-violet-700 transition-colors line-clamp-2">
+        <h3 className="font-semibold text-white text-sm sm:text-base leading-snug group-hover:text-violet-300 transition-colors line-clamp-2">
           {item.title}
         </h3>
         <p className="mt-1 text-xs sm:text-sm text-slate-500 line-clamp-2">{item.summary}</p>
@@ -117,7 +117,7 @@ export default function NewsClient({ items, date }: { items: NewsItem[]; date: s
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">
           <span className="text-2xl">📡</span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900">Tech News</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-white">Tech News</h1>
         </div>
         <p className="text-slate-500 text-sm sm:text-base">
           Daily curated stories in AI, Tech, Blockchain & more · <span className="font-medium text-slate-700">{formattedDate}</span>
@@ -134,7 +134,7 @@ export default function NewsClient({ items, date }: { items: NewsItem[]; date: s
           placeholder="Search today's news..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full rounded-xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-sm text-slate-800 placeholder-slate-400 shadow-sm outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all"
+          className="w-full rounded-xl border border-slate-800 bg-slate-900 py-3 pl-11 pr-4 text-sm text-white placeholder-slate-500 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
         />
       </div>
 
@@ -144,8 +144,8 @@ export default function NewsClient({ items, date }: { items: NewsItem[]; date: s
           onClick={() => setActiveCategory("All")}
           className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
             activeCategory === "All"
-              ? "bg-slate-900 text-white shadow-sm"
-              : "bg-white border border-slate-200 text-slate-600 hover:border-slate-400"
+              ? "bg-white text-slate-900"
+              : "bg-slate-900 border border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-300"
           }`}
         >
           All
@@ -157,7 +157,7 @@ export default function NewsClient({ items, date }: { items: NewsItem[]; date: s
             className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
               activeCategory === cat
                 ? CAT_ACTIVE[cat] + " shadow-sm"
-                : "bg-white border border-slate-200 text-slate-600 hover:border-slate-400"
+                : "bg-slate-900 border border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-300"
             }`}
           >
             {cat}
@@ -184,10 +184,10 @@ export default function NewsClient({ items, date }: { items: NewsItem[]; date: s
       )}
 
       {/* Bottom CTA */}
-      <div className="mt-14 rounded-2xl bg-gradient-to-br from-violet-50 to-slate-50 border border-violet-100 p-8 text-center">
-        <p className="text-sm font-semibold text-violet-600 uppercase tracking-widest mb-2">New every day</p>
-        <h3 className="text-xl font-bold text-slate-900 mb-2">Fresh stories every morning</h3>
-        <p className="text-slate-500 text-sm max-w-sm mx-auto mb-5">
+      <div className="mt-14 rounded-2xl bg-gradient-to-br from-violet-950/40 to-slate-900/60 border border-violet-500/20 p-8 text-center">
+        <p className="text-sm font-semibold text-violet-400 uppercase tracking-widest mb-2">New every day</p>
+        <h3 className="text-xl font-bold text-white mb-2">Fresh stories every morning</h3>
+        <p className="text-slate-400 text-sm max-w-sm mx-auto mb-5">
           Our AI curates the top 5–7 tech stories daily. Bookmark this page to stay ahead.
         </p>
         <Link

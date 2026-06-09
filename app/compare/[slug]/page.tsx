@@ -107,22 +107,22 @@ export default async function ComparePage({ params }: Props) {
       {/* Server-rendered hero — visible to Google without JS */}
       <div className="mx-auto max-w-5xl px-4 pt-8 pb-4">
         <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6">
-          <Link href="/" className="hover:text-slate-700 transition-colors">Home</Link>
+          <Link href="/" className="hover:text-slate-300 transition-colors">Home</Link>
           <span>›</span>
-          <Link href="/compare" className="hover:text-slate-700 transition-colors">Compare</Link>
+          <Link href="/compare" className="hover:text-slate-300 transition-colors">Compare</Link>
           <span>›</span>
-          <span className="text-slate-700 truncate">{headline}</span>
+          <span className="text-slate-300 truncate">{headline}</span>
         </nav>
 
         <div className="text-center space-y-4 mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight">{headline}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white leading-tight">{headline}</h1>
           <p className="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">{description}</p>
           <div className="flex items-center justify-center gap-3 flex-wrap pt-1">
             {items.map((item, i) => (
               <>
-                <div key={item} className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white shadow-sm px-4 py-2">
+                <div key={item} className="flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-900 px-4 py-2">
                   <LogoAvatar name={item} size={22} />
-                  <span className="font-semibold text-slate-800 text-sm">{item}</span>
+                  <span className="font-semibold text-slate-200 text-sm">{item}</span>
                 </div>
                 {i < items.length - 1 && (
                   <span key={`vs-${i}`} className="text-slate-400 font-bold text-sm">vs</span>

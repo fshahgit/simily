@@ -21,12 +21,12 @@ function ComparisonCard({ a, b, category }: Comparison) {
   return (
     <Link
       href={`/compare/${slug}`}
-      className="group flex items-center gap-2.5 rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm transition-all hover:border-violet-300 hover:shadow-md hover:bg-slate-50"
+      className="group flex items-center gap-2.5 rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3.5 transition-all hover:border-violet-500/40 hover:bg-slate-800"
     >
       <LogoAvatar name={a} size={28} />
-      <span className="flex-1 text-sm font-medium text-slate-700 group-hover:text-slate-900 truncate">{a}</span>
+      <span className="flex-1 text-sm font-medium text-slate-300 group-hover:text-white truncate">{a}</span>
       <span className="shrink-0 rounded-full bg-violet-50 border border-violet-200 px-2 py-0.5 text-xs font-bold text-violet-600">VS</span>
-      <span className="flex-1 text-right text-sm font-medium text-slate-700 group-hover:text-slate-900 truncate">{b}</span>
+      <span className="flex-1 text-right text-sm font-medium text-slate-300 group-hover:text-white truncate">{b}</span>
       <LogoAvatar name={b} size={28} />
       <span className="shrink-0 text-slate-300 group-hover:text-violet-500 transition-colors ml-1">→</span>
     </Link>
@@ -101,7 +101,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
     <div>
       {/* Search bar */}
       <div ref={containerRef} className="relative mb-6">
-        <div className={`flex items-center gap-2 rounded-xl border bg-white px-4 py-2.5 shadow-sm transition-all ${searchOpen || query ? "border-violet-400 ring-2 ring-violet-100" : "border-slate-200 hover:border-slate-300"}`}>
+        <div className={`flex items-center gap-2 rounded-xl border bg-slate-900 px-4 py-2.5 transition-all ${searchOpen || query ? "border-violet-500 ring-2 ring-violet-500/20" : "border-slate-800 hover:border-slate-700"}`}>
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-slate-400">
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
           </svg>
@@ -111,7 +111,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
             onChange={(e) => { setQuery(e.target.value); if (!searchOpen) { setSearchOpen(true); setActive(null); setPage(1); } }}
             onFocus={() => { setSearchOpen(true); setActive(null); setPage(1); }}
             placeholder="Search comparisons…"
-            className="flex-1 bg-transparent text-sm text-slate-900 placeholder-slate-400 outline-none"
+            className="flex-1 bg-transparent text-sm text-white placeholder-slate-500 outline-none"
           />
           {query && (
             <button onClick={closeSearch} className="text-slate-400 hover:text-slate-600 cursor-pointer">
@@ -124,7 +124,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
 
         {/* Dropdown */}
         {searchOpen && query.trim().length > 0 && (
-          <div className="absolute left-0 right-0 top-full z-50 mt-1.5 rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden">
+          <div className="absolute left-0 right-0 top-full z-50 mt-1.5 rounded-xl border border-slate-800 bg-slate-900 shadow-xl shadow-black/40 overflow-hidden">
             {searchResults.length === 0 ? (
               <p className="px-4 py-3 text-sm text-slate-400">No comparisons found for &ldquo;{query}&rdquo;</p>
             ) : (
@@ -134,14 +134,14 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
                     <Link
                       href={`/compare/${makeSlug(c.a, c.b)}`}
                       onClick={closeSearch}
-                      className="flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors"
+                      className="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 transition-colors"
                     >
                       <div className="flex items-center gap-1.5 shrink-0">
                         <LogoAvatar name={c.a} size={20} />
                         <LogoAvatar name={c.b} size={20} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="truncate text-sm font-medium text-slate-900">{c.a} vs {c.b}</p>
+                        <p className="truncate text-sm font-medium text-white">{c.a} vs {c.b}</p>
                         <p className="text-xs text-slate-400">{c.category}</p>
                       </div>
                       <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-slate-300">
@@ -160,7 +160,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
       {showFeatured && featured && (
         <Link
           href={`/compare/${makeSlug(featured.a, featured.b)}`}
-          className="group mb-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:border-violet-300 hover:shadow-md sm:flex-row"
+          className="group mb-10 flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 transition-all hover:border-violet-500/40 sm:flex-row"
         >
           {/* Logo panel */}
           <div className="flex shrink-0 items-center justify-center gap-6 bg-gradient-to-br from-violet-50 to-slate-100 px-10 py-8 sm:w-64">
@@ -168,7 +168,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
               <LogoAvatar name={featured.a} size={52} />
               <span className="text-xs font-semibold text-slate-700">{featured.a}</span>
             </div>
-            <span className="rounded-full bg-white border border-violet-200 px-2.5 py-1 text-sm font-bold text-violet-600 shadow-sm">VS</span>
+            <span className="rounded-full bg-slate-900 border border-violet-500/40 px-2.5 py-1 text-sm font-bold text-violet-400">VS</span>
             <div className="flex flex-col items-center gap-2">
               <LogoAvatar name={featured.b} size={52} />
               <span className="text-xs font-semibold text-slate-700">{featured.b}</span>
@@ -182,7 +182,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
               </span>
               <span className="text-xs text-slate-400">Featured comparison</span>
             </div>
-            <h2 className="text-xl font-bold text-slate-900 group-hover:text-violet-600 transition-colors">
+            <h2 className="text-xl font-bold text-white group-hover:text-violet-300 transition-colors">
               {featured.a} vs {featured.b}
             </h2>
             <p className="mt-2 text-sm text-slate-500 leading-relaxed">
@@ -250,7 +250,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 shadow-sm transition-all hover:border-violet-300 hover:text-violet-600 disabled:opacity-30 disabled:cursor-not-allowed"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-slate-900 text-slate-400 transition-all hover:border-violet-500/40 hover:text-violet-400 disabled:opacity-30 disabled:cursor-not-allowed"
           >
             ‹
           </button>
@@ -268,7 +268,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
                 className={`flex h-9 w-9 items-center justify-center rounded-lg border text-sm font-medium transition-all ${
                   isActive
                     ? "bg-violet-600 border-violet-600 text-white shadow-sm"
-                    : "border-slate-200 bg-white text-slate-600 shadow-sm hover:border-violet-300 hover:text-violet-600"
+                    : "border-slate-800 bg-slate-900 text-slate-400 hover:border-violet-500/40 hover:text-violet-400"
                 }`}
               >
                 {p}
@@ -278,7 +278,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
           <button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 shadow-sm transition-all hover:border-violet-300 hover:text-violet-600 disabled:opacity-30 disabled:cursor-not-allowed"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-slate-900 text-slate-400 transition-all hover:border-violet-500/40 hover:text-violet-400 disabled:opacity-30 disabled:cursor-not-allowed"
           >
             ›
           </button>
@@ -288,7 +288,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
       {/* CTA */}
       {!searchOpen && (
         <div className="mt-16 rounded-2xl border border-violet-200 bg-violet-50 p-8 text-center">
-          <h3 className="text-xl font-bold text-slate-900">Don&apos;t see what you need?</h3>
+          <h3 className="text-xl font-bold text-white">Don&apos;t see what you need?</h3>
           <p className="mt-2 text-slate-500">Compare anything — just type two things and our AI does the rest.</p>
           <Link
             href="/"
