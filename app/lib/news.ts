@@ -19,6 +19,95 @@ export interface NewsDay {
 
 export const ALL_NEWS: NewsDay[] = [
   {
+    date: "2026-06-09",
+    items: [
+      {
+        id: "wwdc-2026-keynote-recap",
+        title: "Apple's WWDC 2026 Keynote: Everything Announced — Siri AI, iOS 27 & macOS Golden Gate",
+        summary:
+          "In what may be Tim Cook's final WWDC keynote as CEO, Apple unveiled the next generation of Apple Intelligence and a completely rebuilt Siri powered by Google Gemini. iOS 27 and macOS Golden Gate — named after San Francisco's iconic bridge — land as developer betas today, packed with on-device AI, redesigned Liquid Glass visuals, and deeper third-party AI integration including Claude as a Siri option.",
+        category: "Tech",
+        publisher: "Engadget",
+        sourceUrl: "https://www.engadget.com/2189698/everything-announced-at-apples-wwdc-2026-keynote/",
+        image: "https://images.unsplash.com/photo-1576085898323-218337e3e43c?w=800&auto=format&q=80",
+        date: "2026-06-09",
+        readTime: 6,
+      },
+      {
+        id: "ios-27-beta-1-developer",
+        title: "iOS 27 Beta 1 Is Out Now — Here's What Developers Are Finding",
+        summary:
+          "Apple seeded iOS 27, iPadOS 27, macOS Golden Gate, watchOS 27, tvOS 27, and visionOS 27 beta 1 to developers immediately after the keynote. Early testers report a significantly revamped Spotlight search, iCloud shared albums now supporting full-resolution photos across Android and Windows, and an opacity slider for the divisive Liquid Glass design. Available on iPhone 15 Pro and iPhone 16 or later.",
+        category: "Tech",
+        publisher: "MacRumors",
+        sourceUrl: "https://www.macrumors.com/2026/06/08/apple-releases-ios-27-beta-1/",
+        image: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&auto=format&q=80",
+        date: "2026-06-09",
+        readTime: 4,
+      },
+      {
+        id: "meta-muse-spark-superintelligence-115b",
+        title: "Meta Unveils Muse Spark and Commits $115 Billion to AI in 2026",
+        summary:
+          "Meta's newly formed Superintelligence Labs — led by Chief AI Officer Alexandr Wang — launched Muse Spark, Meta's first flagship multimodal LLM. The model competes directly with GPT-4o and Gemini Ultra on reasoning, health, and agentic benchmarks. Meta simultaneously confirmed $115–135 billion in AI capital expenditure for 2026, nearly double last year's spend and the largest single-year AI infrastructure commitment ever announced.",
+        category: "AI",
+        publisher: "Mean CEO Blog",
+        sourceUrl: "https://blog.mean.ceo/latest-ai-announcements-news-june-2026/",
+        image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&auto=format&q=80",
+        date: "2026-06-09",
+        readTime: 4,
+      },
+      {
+        id: "openai-ads-manager-chatgpt",
+        title: "OpenAI Launches an Ads Manager Inside ChatGPT",
+        summary:
+          "OpenAI has introduced a self-serve Ads Manager within ChatGPT, complete with advertiser tooling and measurement controls — a significant shift for a company that built its brand on subscription revenue. The move signals OpenAI's ambition to monetise its 800 million active users through advertising, directly challenging Google and Meta's dominance in digital ads. Privacy advocates have already raised concerns.",
+        category: "AI",
+        publisher: "Build Fast With AI",
+        sourceUrl: "https://www.buildfastwithai.com/blogs/ai-news-today-june-8-2026",
+        image: "https://images.unsplash.com/photo-1676277791608-ac54525aa94d?w=800&auto=format&q=80",
+        date: "2026-06-09",
+        readTime: 3,
+      },
+      {
+        id: "google-gemini-35-flash-ga",
+        title: "Google Gemini 3.5 Flash Goes GA — Now the Default in Search and the Gemini App",
+        summary:
+          "Google's Gemini 3.5 Flash is now generally available and has replaced the previous model as the default across Google Search's AI Mode and the Gemini consumer app. Priced at $1.50 per million input tokens and $9.00 per million output tokens, Flash combines frontier reasoning with ultra-low latency — making it the fastest production-grade model Google has ever shipped.",
+        category: "AI",
+        publisher: "Google Blog",
+        sourceUrl: "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&q=80",
+        date: "2026-06-09",
+        readTime: 3,
+      },
+      {
+        id: "anthropic-dreaming-agents-self-improving",
+        title: "Anthropic Demos 'Dreaming' Agents That Self-Improve Without Human Input",
+        summary:
+          "Anthropic revealed a self-improving agent system it calls 'dreaming' — where Claude-based agents run unsupervised reflection loops during idle time, refining their own workflows and correcting past errors. The system, part of Anthropic's push into long-running managed agent workflows, represents one of the most concrete public demonstrations of recursive self-improvement in a production AI system to date.",
+        category: "AI",
+        publisher: "WaveSpeed Blog",
+        sourceUrl: "https://wavespeed.ai/blog/posts/june-2026-ai-launch-wave/",
+        image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&auto=format&q=80",
+        date: "2026-06-09",
+        readTime: 4,
+      },
+      {
+        id: "crypto-clarity-act-bitcoin-63k",
+        title: "200+ Crypto Companies Demand Senate Vote on CLARITY Act as Bitcoin Holds at $63K",
+        summary:
+          "Coinbase, Ripple, and over 200 crypto firms are pressuring the US Senate to schedule an immediate floor vote on the CLARITY Act — bipartisan legislation that would establish a comprehensive federal framework for digital assets. Meanwhile Bitcoin stabilised at $63,078 after falling below $60,000 last week, with analysts watching the $66,000 level as the key reclaim for bullish momentum to return.",
+        category: "Blockchain",
+        publisher: "Yahoo Finance",
+        sourceUrl: "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-tuesday-june-9-2026-values-stabilize-as-investors-may-seek-alternatives-114631191.html",
+        image: "https://images.unsplash.com/photo-1605792657660-596af9009e82?w=800&auto=format&q=80",
+        date: "2026-06-09",
+        readTime: 3,
+      },
+    ],
+  },
+  {
     date: "2026-06-05",
     items: [
       {
