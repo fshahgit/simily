@@ -24,20 +24,20 @@ export default function CompareForm() {
         value={a}
         onChange={setA}
         placeholder="e.g. iPhone 16"
-        className="w-full rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-3.5 text-white placeholder-slate-500 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
+        className="w-full rounded-xl border border-slate-200 bg-white/80 px-4 py-3.5 text-slate-900 placeholder-slate-400 outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-500/15 transition-all"
       />
-      <div className="flex items-center justify-center text-sm font-bold text-violet-400 sm:px-1">
+      <div className="flex items-center justify-center text-sm font-bold text-violet-500 sm:px-1">
         VS
       </div>
       <SuggestionsInput
         value={b}
         onChange={setB}
         placeholder="e.g. Samsung Galaxy S25"
-        className="w-full rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-3.5 text-white placeholder-slate-500 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
+        className="w-full rounded-xl border border-slate-200 bg-white/80 px-4 py-3.5 text-slate-900 placeholder-slate-400 outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-500/15 transition-all"
       />
       <button
         type="submit"
-        className="rounded-xl bg-violet-600 px-6 py-3.5 font-semibold text-white transition-colors hover:bg-violet-500 active:bg-violet-700 whitespace-nowrap"
+        className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-violet-500/25 transition-all hover:from-violet-500 hover:to-indigo-500 active:scale-[0.98] whitespace-nowrap"
       >
         Compare →
       </button>

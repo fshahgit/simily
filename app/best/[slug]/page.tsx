@@ -69,7 +69,7 @@ export default async function BestPage({ params }: Props) {
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-600 uppercase tracking-wider">
             {topic.category}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
             {topic.title}
           </h1>
           <p className="text-slate-500 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
@@ -80,7 +80,7 @@ export default async function BestPage({ params }: Props) {
           {/* Items preview */}
           <div className="flex items-center justify-center gap-2 flex-wrap pt-1">
             {topic.items.map((item) => (
-              <div key={item} className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5">
+              <div key={item} className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white/80 px-3 py-1.5">
                 <LogoAvatar name={item} size={18} />
                 <span className="text-xs text-slate-700 font-medium">{item}</span>
               </div>

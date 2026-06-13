@@ -13,7 +13,7 @@ export default function ArticlesPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
       <div className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-white">Articles</h1>
+        <h1 className="text-4xl font-bold text-slate-900">Articles</h1>
         <p className="mt-3 text-gray-400">
           In-depth guides on AI, laptops, apps, and tech — to help you decide faster.
         </p>

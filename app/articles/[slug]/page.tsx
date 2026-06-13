@@ -115,7 +115,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   Phones:  "bg-pink-100 text-pink-700 border-pink-300",
 };
 function categoryClass(cat: string) {
-  return CATEGORY_COLORS[cat] ?? "bg-slate-700/50 text-slate-300 border-slate-700";
+  return CATEGORY_COLORS[cat] ?? "bg-slate-700/50 text-slate-700 border-slate-300";
 }
 
 export default async function ArticlePage({ params }: Props) {
@@ -166,14 +166,14 @@ export default async function ArticlePage({ params }: Props) {
         <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
           <div className="mx-auto max-w-3xl">
             <div className="mb-3 flex flex-wrap items-center gap-2">
-              <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${categoryClass(article.category)}`}>
+              <span className="inline-flex items-center rounded-full border border-white/30 bg-white/15 backdrop-blur px-2.5 py-0.5 text-xs font-medium text-white">
                 {article.category}
               </span>
-              <span className="text-sm text-slate-300">{formatDate(article.date)}</span>
-              <span className="text-slate-500">·</span>
-              <span className="text-sm text-slate-300">{article.readTime} min read</span>
-              <span className="text-slate-500">·</span>
-              <span className="text-sm text-slate-300">By {article.author}</span>
+              <span className="text-sm text-slate-200">{formatDate(article.date)}</span>
+              <span className="text-slate-400">·</span>
+              <span className="text-sm text-slate-200">{article.readTime} min read</span>
+              <span className="text-slate-400">·</span>
+              <span className="text-sm text-slate-200">By {article.author}</span>
             </div>
             <h1 className="text-2xl font-bold leading-tight text-white sm:text-4xl drop-shadow-md">
               {article.title}
@@ -226,7 +226,7 @@ export default async function ArticlePage({ params }: Props) {
           {article.sections.map((section, i) => (
             <section key={i}>
               {section.heading && (
-                <h2 className="mb-5 flex items-center gap-3 text-xl font-bold text-white sm:text-2xl">
+                <h2 className="mb-5 flex items-center gap-3 text-xl font-bold text-slate-900 sm:text-2xl">
                   <span className="h-6 w-1 shrink-0 rounded-full bg-violet-500" />
                   {section.heading}
                 </h2>
@@ -271,7 +271,7 @@ export default async function ArticlePage({ params }: Props) {
                       className="object-cover"
                     />
                   </div>
-                  <figcaption className="bg-slate-950/60 px-4 py-2.5 text-xs text-slate-400 leading-relaxed border-t border-slate-800">
+                  <figcaption className="bg-white/50 px-4 py-2.5 text-xs text-slate-400 leading-relaxed border-t border-slate-200">
                     📷 {section.image.caption}
                   </figcaption>
                 </figure>
@@ -311,7 +311,7 @@ export default async function ArticlePage({ params }: Props) {
           {article.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-400 border border-slate-700"
+              className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-400 border border-slate-300"
             >
               #{tag}
             </span>
@@ -320,7 +320,7 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* Sources / References */}
         {article.sources && article.sources.length > 0 && (
-          <div className="mt-8 rounded-xl border border-slate-800 bg-slate-900/60 p-5">
+          <div className="mt-8 rounded-xl border border-slate-200 bg-white/70 p-5">
             <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
               Sources & References
             </h3>
@@ -348,7 +348,7 @@ export default async function ArticlePage({ params }: Props) {
         {/* Related comparisons */}
         {article.relatedComparisons && article.relatedComparisons.length > 0 && (
           <div className="mt-10">
-            <h2 className="mb-4 text-lg font-bold text-white">Compare These Yourself</h2>
+            <h2 className="mb-4 text-lg font-bold text-slate-900">Compare These Yourself</h2>
             <div className="grid gap-3 sm:grid-cols-3">
               {article.relatedComparisons.map(({ a, b }) => {
                 const compSlug = makeSlug(a, b);
@@ -356,16 +356,16 @@ export default async function ArticlePage({ params }: Props) {
                   <Link
                     key={compSlug}
                     href={`/compare/${compSlug}?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`}
-                    className="group flex flex-col items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-4 text-center text-sm transition-all hover:border-violet-500/40 hover:bg-slate-800"
+                    className="group flex flex-col items-center gap-1.5 rounded-xl border border-slate-200 bg-white/70 px-4 py-4 text-center text-sm transition-all hover:border-violet-200 hover:bg-slate-100"
                   >
                     <div className="flex items-center gap-1.5">
                       <LogoAvatar name={a} size={18} />
-                      <span className="font-medium text-slate-300 group-hover:text-white">{a}</span>
+                      <span className="font-medium text-slate-700 group-hover:text-slate-900">{a}</span>
                     </div>
                     <span className="text-xs text-violet-600 font-bold">VS</span>
                     <div className="flex items-center gap-1.5">
                       <LogoAvatar name={b} size={18} />
-                      <span className="font-medium text-slate-300 group-hover:text-white">{b}</span>
+                      <span className="font-medium text-slate-700 group-hover:text-slate-900">{b}</span>
                     </div>
                   </Link>
                 );
@@ -376,24 +376,24 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* More articles */}
         <div className="mt-12 border-t border-slate-200 pt-10">
-          <h2 className="mb-5 text-lg font-bold text-white">More Articles</h2>
+          <h2 className="mb-5 text-lg font-bold text-slate-900">More Articles</h2>
           <div className="space-y-3">
             {moreArticles.map((a) => (
               <Link
                 key={a.slug}
                 href={`/articles/${a.slug}`}
-                className="group flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-900/60 p-4 transition-all hover:border-violet-500/40 hover:bg-slate-800"
+                className="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white/70 p-4 transition-all hover:border-violet-200 hover:bg-slate-100"
               >
                 <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-lg">
                   <Image src={a.heroImage} alt={a.title} fill className="object-cover" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-semibold text-white group-hover:text-violet-300 transition-colors">
+                  <p className="truncate text-sm font-semibold text-slate-900 group-hover:text-violet-700 transition-colors">
                     {a.title}
                   </p>
                   <p className="mt-0.5 text-xs text-slate-400">{a.readTime} min read · {a.category}</p>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-slate-300 group-hover:text-violet-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-slate-700 group-hover:text-violet-500 transition-colors">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </Link>
@@ -405,7 +405,7 @@ export default async function ArticlePage({ params }: Props) {
         <div className="mt-8">
           <Link
             href="/articles"
-            className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
           >
             ← Back to all articles
           </Link>

@@ -23,11 +23,11 @@ export default function RelatedComparisons({ a, b }: Props) {
             <Link
               key={slug}
               href={`/compare/${slug}?a=${encodeURIComponent(ra)}&b=${encodeURIComponent(rb)}`}
-              className="flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3 transition-all hover:border-violet-500/40 hover:bg-slate-800 group"
+              className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/70 px-4 py-3 transition-all hover:border-violet-200 hover:bg-slate-100 group"
             >
               <LogoAvatar name={ra} size={28} />
               <div className="flex flex-col min-w-0">
-                <span className="text-xs font-semibold text-slate-300 truncate group-hover:text-violet-300 transition-colors">
+                <span className="text-xs font-semibold text-slate-700 truncate group-hover:text-violet-700 transition-colors">
                   {ra} vs {rb}
                 </span>
                 <span className="text-xs text-slate-400 mt-0.5">AI Comparison</span>

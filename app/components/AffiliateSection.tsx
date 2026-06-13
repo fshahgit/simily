@@ -65,9 +65,9 @@ export default function AffiliateSection({ a, b, c }: AffiliateSectionProps) {
   const cols = items.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
 
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+    <div className="rounded-2xl border border-slate-200 bg-white/70 p-6">
       <div className="flex items-center gap-2 mb-5">
-        <h3 className="font-bold text-white text-lg">Where to Get It</h3>
+        <h3 className="font-bold text-slate-900 text-lg">Where to Get It</h3>
         <span className="rounded-full bg-green-50 px-2 py-0.5 text-xs font-semibold text-green-600 border border-green-200">
           Best links
         </span>
@@ -75,7 +75,7 @@ export default function AffiliateSection({ a, b, c }: AffiliateSectionProps) {
 
       <div className={`grid gap-4 ${cols}`}>
         {items.map((item) => (
-          <div key={item.name} className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 space-y-3">
+          <div key={item.name} className="rounded-xl border border-slate-200 bg-white/70 p-4 space-y-3">
             <div className="flex items-center gap-2">
               <LogoAvatar name={item.name} size={28} />
               <span className="font-semibold text-slate-800 text-sm">{item.name}</span>

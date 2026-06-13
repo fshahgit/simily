@@ -116,7 +116,7 @@ export default function PopularPage() {
     <div className="mx-auto max-w-4xl px-4 py-16">
       {/* Header */}
       <div className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-white">Popular Comparisons</h1>
+        <h1 className="text-4xl font-bold text-slate-900">Popular Comparisons</h1>
         <p className="mt-3 text-slate-500">
           Browse {allComparisons.length} AI-powered comparisons across {categories.length} categories
         </p>

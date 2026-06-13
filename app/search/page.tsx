@@ -34,7 +34,7 @@ export default function SearchPage() {
     <div className="mx-auto max-w-4xl px-4 py-12 space-y-8">
       {/* Header */}
       <div className="text-center space-y-3">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white">Search Comparisons</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-slate-900">Search Comparisons</h1>
         <p className="text-slate-500 text-sm">Find any comparison or best-of guide instantly</p>
       </div>
 
@@ -54,7 +54,7 @@ export default function SearchPage() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for React, Notion, iPhone, Swiggy…"
           autoFocus
-          className="w-full rounded-2xl border border-slate-800 bg-slate-900 py-4 pl-12 pr-4 text-white placeholder-slate-500 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all text-base"
+          className="w-full rounded-2xl border border-slate-200 bg-white/80 py-4 pl-12 pr-4 text-slate-900 placeholder-slate-400 outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-500/15 transition-all text-base"
         />
         {query && (
           <button
@@ -70,7 +70,7 @@ export default function SearchPage() {
 
       {!hasResults && q && (
         <div className="text-center py-16 space-y-3">
-          <p className="text-slate-500">No results for <span className="text-white font-medium">&ldquo;{query}&rdquo;</span></p>
+          <p className="text-slate-500">No results for <span className="text-slate-900 font-medium">&ldquo;{query}&rdquo;</span></p>
           <p className="text-slate-400 text-sm">Try a different search or</p>
           <Link
             href={`/compare?a=${encodeURIComponent(query)}`}
@@ -92,7 +92,7 @@ export default function SearchPage() {
               <Link
                 key={topic.slug}
                 href={`/best/${topic.slug}`}
-                className="group flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3 transition-all hover:border-violet-500/40 hover:bg-slate-800"
+                className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white/70 px-4 py-3 transition-all hover:border-violet-200 hover:bg-slate-100"
               >
                 <div className="flex shrink-0 items-center gap-1">
                   {topic.items.slice(0, 3).map((item) => (
@@ -100,7 +100,7 @@ export default function SearchPage() {
                   ))}
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-semibold text-white truncate group-hover:text-violet-300 transition-colors">
+                  <p className="text-sm font-semibold text-slate-900 truncate group-hover:text-violet-700 transition-colors">
                     {topic.title}
                   </p>
                   <p className="text-xs text-slate-400">{topic.items.length} options ranked</p>
@@ -124,12 +124,12 @@ export default function SearchPage() {
                 <Link
                   key={slug}
                   href={`/compare/${slug}?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`}
-                  className="group flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3 transition-all hover:border-violet-500/40 hover:bg-slate-800"
+                  className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white/70 px-4 py-3 transition-all hover:border-violet-200 hover:bg-slate-100"
                 >
                   <LogoAvatar name={a} size={26} />
                   <span className="text-xs font-bold text-slate-400">VS</span>
                   <LogoAvatar name={b} size={26} />
-                  <span className="text-sm font-medium text-slate-300 truncate group-hover:text-white transition-colors">
+                  <span className="text-sm font-medium text-slate-700 truncate group-hover:text-slate-900 transition-colors">
                     {a} vs {b}
                   </span>
                   <span className="ml-auto text-xs text-violet-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">

@@ -74,7 +74,7 @@ function AddToCompareButton({
     return (
       <button
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 rounded-xl border border-dashed border-slate-700 px-4 py-2 text-sm text-slate-400 transition-all hover:border-violet-400 hover:text-violet-600 bg-slate-900 shadow-none"
+        className="inline-flex items-center gap-1.5 rounded-xl border border-dashed border-slate-300 px-4 py-2 text-sm text-slate-400 transition-all hover:border-violet-400 hover:text-violet-600 bg-white/80 shadow-none"
       >
         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
           <line x1="12" y1="5" x2="12" y2="19" />
@@ -93,7 +93,7 @@ function AddToCompareButton({
         onSelect={(val) => { setValue(val); }}
         placeholder="e.g. Svelte, Angular…"
         autoFocus
-        className="rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-white placeholder-slate-500 outline-none focus:border-violet-500 w-44 transition-colors shadow-none"
+        className="rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-violet-400 w-44 transition-colors shadow-none"
       />
       <button
         type="submit"
@@ -173,7 +173,7 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
         {items.map((item, i) => (
           <div key={item} className="flex items-center gap-2 sm:gap-4">
             {i > 0 && (
-              <span className="shrink-0 rounded-full border border-slate-800 bg-slate-900 px-2.5 py-1 text-xs font-bold text-slate-500 shadow-none">
+              <span className="shrink-0 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 text-xs font-bold text-slate-500 shadow-none">
                 VS
               </span>
             )}
@@ -185,7 +185,7 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
               {items.length > 2 && (
                 <button
                   onClick={() => handleRemoveItem(item)}
-                  className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity rounded-full bg-slate-900 border border-slate-800 shadow-none p-0.5 text-slate-400 hover:text-red-500 hover:border-red-300"
+                  className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity rounded-full bg-white/80 border border-slate-200 shadow-none p-0.5 text-slate-400 hover:text-red-500 hover:border-red-300"
                   title="Remove"
                 >
                   <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -199,7 +199,7 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
 
         {canAdd && (
           <div className="flex items-center gap-2 sm:gap-4">
-            <span className="shrink-0 rounded-full border border-slate-800 bg-slate-900 px-2.5 py-1 text-xs font-bold text-slate-500 shadow-none">
+            <span className="shrink-0 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 text-xs font-bold text-slate-500 shadow-none">
               VS
             </span>
             <AddToCompareButton onAdd={handleAddItem} disabled={!canAdd} />
@@ -220,13 +220,13 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
       <div className="mx-auto max-w-5xl px-4 py-12 space-y-10">
         {headerSection}
         <div className="flex flex-col items-center justify-center gap-4 py-24">
-          <div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-800 border-t-violet-600" />
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-violet-600" />
           <p className="text-slate-500 text-sm">
             AI is analyzing{" "}
             {items.map((item, i) => (
               <span key={item}>
                 {i > 0 && " vs "}
-                <span className="text-slate-200 font-medium">{item}</span>
+                <span className="text-slate-700 font-medium">{item}</span>
               </span>
             ))}
             {"…"}
@@ -269,17 +269,17 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
           <p className="text-xs uppercase tracking-widest text-violet-600 font-semibold mb-3">Overall Winner</p>
           <div className="flex items-center justify-center gap-3">
             <LogoAvatar name={data.winner} size={40} />
-            <p className="text-2xl font-bold text-white">{data.winner}</p>
+            <p className="text-2xl font-bold text-slate-900">{data.winner}</p>
           </div>
           <p className="mt-2 text-sm text-slate-500">{data.winnerReason}</p>
         </div>
       </div>
 
       {/* Category scores */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900 overflow-hidden shadow-none">
+      <div className="rounded-2xl border border-slate-200 bg-white/80 overflow-hidden shadow-none">
         {itemsCount === 2 ? (
           <>
-            <div className="grid grid-cols-3 border-b border-slate-800 px-3 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-slate-500 bg-slate-950/60">
+            <div className="grid grid-cols-3 border-b border-slate-200 px-3 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-slate-500 bg-white/50">
               <div className="flex items-center gap-1.5">
                 <LogoAvatar name={items[0]} size={18} />
                 <span className="truncate max-w-[60px] sm:max-w-none">{items[0]}</span>
@@ -294,7 +294,7 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
               const scoreA = cat.scores[0];
               const scoreB = cat.scores[1];
               return (
-                <div key={cat.name} className="grid grid-cols-3 items-center gap-2 sm:gap-4 border-b border-slate-800 px-3 sm:px-6 py-3 sm:py-4 last:border-0">
+                <div key={cat.name} className="grid grid-cols-3 items-center gap-2 sm:gap-4 border-b border-slate-200 px-3 sm:px-6 py-3 sm:py-4 last:border-0">
                   <div className="space-y-1">
                     <div className="flex items-center gap-1.5">
                       <div className="h-2 flex-1 rounded-full bg-slate-200">
@@ -324,7 +324,7 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
         ) : (
           <>
             <div
-              className="border-b border-slate-800 bg-slate-950/60 px-3 sm:px-6 py-3 grid gap-2 sm:gap-3 overflow-x-auto"
+              className="border-b border-slate-200 bg-white/50 px-3 sm:px-6 py-3 grid gap-2 sm:gap-3 overflow-x-auto"
               style={{ gridTemplateColumns: `90px repeat(${itemsCount}, 1fr)` }}
             >
               <span className="text-xs sm:text-sm font-semibold text-slate-500">Category</span>
@@ -338,7 +338,7 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
               ))}
             </div>
             {data.categories.map((cat) => (
-              <div key={cat.name} className="border-b border-slate-800 last:border-0">
+              <div key={cat.name} className="border-b border-slate-200 last:border-0">
                 <div
                   className="grid gap-2 sm:gap-3 px-3 sm:px-6 py-3 sm:py-4 items-start overflow-x-auto"
                   style={{ gridTemplateColumns: `90px repeat(${itemsCount}, 1fr)` }}
@@ -373,11 +373,11 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
       {/* Pros & Cons */}
       <div className={`grid gap-4 ${prosConsCols}`}>
         {data.items.map((item, i) => (
-          <div key={item.name} className="rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-none">
+          <div key={item.name} className="rounded-2xl border border-slate-200 bg-white/80 p-6 space-y-4 shadow-none">
             <div className="flex items-center gap-3">
               <div className={`w-1.5 h-8 rounded-full ${ITEM_COLORS[i % ITEM_COLORS.length]} shrink-0`} />
               <LogoAvatar name={item.name} size={32} />
-              <h3 className="font-bold text-white">{item.name}</h3>
+              <h3 className="font-bold text-slate-900">{item.name}</h3>
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-green-600 font-semibold mb-2">Pros</p>
@@ -404,13 +404,13 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
       </div>
 
       {/* Verdict */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-3 shadow-none">
-        <h3 className="font-bold text-white text-lg">Who Should Choose What?</h3>
+      <div className="rounded-2xl border border-slate-200 bg-white/80 p-6 space-y-3 shadow-none">
+        <h3 className="font-bold text-slate-900 text-lg">Who Should Choose What?</h3>
         {data.items.map((item, i) => (
           <div key={item.name} className="flex gap-3 items-start">
             <span className={`mt-1.5 h-2 w-2 rounded-full shrink-0 ${ITEM_COLORS[i % ITEM_COLORS.length]}`} />
             <p className="text-slate-600 text-sm">
-              <span className="text-white font-semibold">{item.name}:</span> {item.chooseIf}
+              <span className="text-slate-900 font-semibold">{item.name}:</span> {item.chooseIf}
             </p>
           </div>
         ))}
@@ -436,16 +436,16 @@ export default function ComparisonClient({ a, b, c, initialData }: { a: string; 
               }),
             }}
           />
-          <div className="rounded-2xl border border-slate-800 bg-slate-900 px-6 py-2 shadow-none">
-            <h2 className="pt-4 pb-2 text-lg font-bold text-white">Frequently Asked Questions</h2>
+          <div className="rounded-2xl border border-slate-200 bg-white/80 px-6 py-2 shadow-none">
+            <h2 className="pt-4 pb-2 text-lg font-bold text-slate-900">Frequently Asked Questions</h2>
             <FaqAccordion faqs={data.faqs} />
           </div>
         </>
       )}
 
       {/* New comparison CTA */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-none">
-        <h3 className="font-semibold text-white mb-4 text-center">Try Another Comparison</h3>
+      <div className="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-none">
+        <h3 className="font-semibold text-slate-900 mb-4 text-center">Try Another Comparison</h3>
         <CompareForm />
       </div>
     </div>

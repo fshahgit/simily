@@ -20,7 +20,7 @@ export default function BestPage() {
     <div className="mx-auto max-w-5xl px-4 py-12 space-y-8">
       {/* Hero */}
       <div className="text-center space-y-3">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white">Best Of Guides</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-slate-900">Best Of Guides</h1>
         <p className="text-slate-500 max-w-xl mx-auto text-sm sm:text-base">
           AI-ranked guides to help you pick the right tool, app, or service — without the fluff.
         </p>
