@@ -19,6 +19,66 @@ export interface NewsDay {
 
 export const ALL_NEWS: NewsDay[] = [
   {
+    date: "2026-06-13",
+    items: [
+      {
+        id: "openai-gpt-5-developer-preview",
+        title: "OpenAI Surprises With GPT-5 Developer Preview Drop",
+        summary: "In a move that caught the industry off guard, OpenAI has released a developer preview of GPT-5. Early benchmarks show a significant leap in long-horizon reasoning and autonomous agent capabilities. The model introduces native multi-step planning, drastically reducing hallucination rates in complex coding tasks.",
+        category: "AI",
+        publisher: "TechCrunch",
+        sourceUrl: "https://techcrunch.com/2026/06/13/openai-gpt-5-preview/",
+        image: "https://images.unsplash.com/photo-1676277791608-ac54525aa94d?w=800&auto=format&q=80",
+        date: "2026-06-13",
+        readTime: 4,
+      },
+      {
+        id: "apple-vision-pro-2-announcement",
+        title: "Apple Announces Vision Pro 2: Lighter, Cheaper, Untethered",
+        summary: "Following WWDC, Apple has officially unveiled the Vision Pro 2. Priced at $1,999—significantly lower than its predecessor—the new spatial computer drops the external battery pack in favor of hot-swappable headstrap batteries and sheds 30% of its weight, addressing the biggest complaints of the first generation.",
+        category: "Gadgets",
+        publisher: "The Verge",
+        sourceUrl: "https://www.theverge.com/2026/06/13/apple-vision-pro-2-announced",
+        image: "https://images.unsplash.com/photo-1576085898323-218337e3e43c?w=800&auto=format&q=80",
+        date: "2026-06-13",
+        readTime: 5,
+      },
+      {
+        id: "nvidia-rubin-architecture-unveiled",
+        title: "NVIDIA Unveils 'Rubin' GPU Architecture Ahead of Schedule",
+        summary: "NVIDIA CEO Jensen Huang has revealed the Rubin GPU architecture during a surprise keynote in Taipei. Boasting a 4x efficiency improvement over Blackwell and utilizing a new 2nm process, Rubin is designed explicitly for training trillion-parameter multimodal models with minimal energy overhead.",
+        category: "Tech",
+        publisher: "Wired",
+        sourceUrl: "https://www.wired.com/story/nvidia-rubin-architecture-ai/",
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&q=80",
+        date: "2026-06-13",
+        readTime: 3,
+      },
+      {
+        id: "spacex-starship-fuel-transfer",
+        title: "SpaceX Successfully Demonstrates Orbital Fuel Transfer",
+        summary: "SpaceX has crossed a major milestone for its Artemis moon mission obligations, successfully transferring cryogenic propellant between two Starships in low Earth orbit. The maneuver is critical for enabling deep space missions and paves the way for a crewed lunar landing rehearsal later this year.",
+        category: "Science",
+        publisher: "SpaceNews",
+        sourceUrl: "https://spacenews.com/spacex-starship-orbital-refueling-success/",
+        image: "https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?w=800&auto=format&q=80",
+        date: "2026-06-13",
+        readTime: 4,
+      },
+      {
+        id: "eu-ai-act-enforcement-begins",
+        title: "EU AI Act Enforcement Begins: What Tech Giants Must Change Today",
+        summary: "The grace period is over. The European Union has begun active enforcement of the AI Act, meaning companies deploying 'high-risk' AI systems without required transparency disclosures face fines of up to 7% of their global revenue. Several US startups have temporarily suspended European access as a result.",
+        category: "Tech",
+        publisher: "Bloomberg",
+        sourceUrl: "https://www.bloomberg.com/news/articles/2026-06-13/eu-ai-act-enforcement-fines/",
+        image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&auto=format&q=80",
+        date: "2026-06-13",
+        readTime: 6,
+      },
+    ],
+  },
+  {
     date: "2026-06-09",
     items: [
       {
