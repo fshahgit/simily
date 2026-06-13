@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import NavLinks from "./components/NavLinks";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -41,19 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span className="text-slate-900">Simily</span>
               <span className="text-slate-400 text-sm font-normal hidden sm:block">— Compare Anything</span>
             </Link>
-            <nav className="flex items-center gap-4 sm:gap-6 text-sm font-medium text-slate-500">
-              <Link href="/search" className="hover:text-slate-900 transition-colors hidden sm:block">Search</Link>
-              <Link href="/popular" className="hover:text-slate-900 transition-colors hidden sm:block">Popular</Link>
-              <Link href="/best" className="text-violet-600 hover:text-violet-700 transition-colors">Best Of</Link>
-              <Link href="/articles" className="text-teal-600 hover:text-teal-700 transition-colors">Articles</Link>
-              <Link href="/news" className="text-orange-500 hover:text-orange-600 transition-colors flex items-center gap-1.5">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-400"></span>
-                </span>
-                News
-              </Link>
-            </nav>
+            <NavLinks />
           </div>
         </header>
         <main className="flex-1">{children}</main>
