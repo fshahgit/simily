@@ -4,7 +4,7 @@ import { ALL_BEST_TOPICS } from "./lib/best";
 import { ALL_ARTICLES } from "./lib/articles";
 import { ALL_NEWS } from "./lib/news";
 
-const BASE_URL = "https://www.simily.org";
+const BASE_URL = "https://simily.org";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

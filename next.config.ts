@@ -32,6 +32,13 @@ const nextConfig: NextConfig = {
         destination: "/compare/shadcn-ui-vs-material-ui",
         permanent: true,
       },
+      // www → non-www canonical redirect
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.simily.org" }],
+        destination: "https://simily.org/:path*",
+        permanent: true,
+      },
     ];
   },
 };

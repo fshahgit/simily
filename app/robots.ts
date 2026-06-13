@@ -6,8 +6,11 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
       disallow: [
-        "/*/opengraph-image",   // Block Next.js OG image endpoints
-        "/api/",                // Block API routes
+        "/api/",
+        "/opengraph-image",
+        "/compare/*/opengraph-image",
+        "/articles/*/opengraph-image",
+        "/best/*/opengraph-image",
       ],
     },
     sitemap: "https://simily.org/sitemap.xml",
