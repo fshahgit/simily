@@ -77,6 +77,18 @@ The entire site uses a **premium light glassmorphism** aesthetic:
 - `KV_REST_API_URL` — Upstash Redis URL
 - `KV_REST_API_TOKEN` — Upstash Redis token
 
+## Image Rule — CRITICAL
+Every article and news item MUST use a **topic-specific** Unsplash image, not a generic one.
+
+**Process:**
+1. Search Unsplash (unsplash.com/s/photos/<topic-keywords>) for each article/section topic
+2. Pick a photo that visually matches the content (e.g. EV charging for battery article, AR headset for neural wearables)
+3. Use the photo ID from the URL: `https://images.unsplash.com/photo-XXXXXXXX`
+4. Format: `https://images.unsplash.com/photo-XXXXXXXX?w=1200&auto=format&q=80` (hero) or `?w=900&auto=format&q=80` (section)
+
+**Never reuse the same photo ID across different articles.**
+**Never use a photo that doesn't match the article topic.**
+
 ## Next.js Version Note
 This is Next.js 15 with breaking changes from older versions.
 - `params` in page components is a **Promise** — always `await params`

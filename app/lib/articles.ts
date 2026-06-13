@@ -44,7 +44,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Blockchain",
     readTime: 8,
     coverEmoji: "📡",
-    heroImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1674027444485-cec3da58eef4?w=1200&auto=format&q=80",
     tags: ["DePIN", "Blockchain", "Crypto", "Infrastructure", "Web3"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -66,8 +66,8 @@ export const ALL_ARTICLES: Article[] = [
         heading: "The AI Compute Squeeze",
         body: "The AI boom of the last few years created a severe shortage of GPUs. DePIN networks like Render and Akash stepped in to fill the void, allowing anyone with a high-end graphics card to rent out their idle compute power to AI startups. In 2026, decentralized compute accounts for nearly 15% of all non-enterprise AI training.",
         image: {
-          src: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=900&auto=format&q=80",
-          alt: "Server racks glowing with blue lights",
+          src: "https://images.unsplash.com/photo-1626162987518-4fee900a9323?w=900&auto=format&q=80",
+          alt: "Abstract blockchain network visualization",
           caption: "Decentralized compute networks are providing critical GPU resources for AI startups priced out of traditional cloud services."
         }
       },
@@ -86,7 +86,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Tech",
     readTime: 6,
     coverEmoji: "🔋",
-    heroImage: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=1200&auto=format&q=80",
     tags: ["EV", "Batteries", "Solid-State", "Automotive", "Clean Tech"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -124,7 +124,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Gadgets",
     readTime: 7,
     coverEmoji: "🧠",
-    heroImage: "https://images.unsplash.com/photo-1550050517-802524a8fc37?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1707167144619-a574a217136d?w=1200&auto=format&q=80",
     tags: ["BCI", "Wearables", "Neural Interface", "AR", "Gadgets"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -146,8 +146,8 @@ export const ALL_ARTICLES: Article[] = [
         heading: "The Ultimate Interface for AR",
         body: "The primary driver for this technology is Augmented Reality. Navigating a spatial interface by waving your hands in the air is tiring (the infamous 'gorilla arm' problem). With a neural wearable, you can scroll, click, and type with microscopic, imperceptible micro-gestures—or purely through intent. It makes using AR glasses in public completely invisible to onlookers.",
         image: {
-          src: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=900&auto=format&q=80",
-          alt: "Person wearing sleek AR glasses",
+          src: "https://images.unsplash.com/photo-1707167144646-cea7d2027ef7?w=900&auto=format&q=80",
+          alt: "AR smart glasses wearable device",
           caption: "Smart glasses equipped with neural sensors allow users to navigate interfaces silently and invisibly."
         }
       },
@@ -166,7 +166,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 6,
     coverEmoji: "🤖",
-    heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&auto=format&q=80",
     tags: ["AI", "SaaS", "Autonomous Agents", "Enterprise", "B2B"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -204,7 +204,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Gadgets",
     readTime: 8,
     coverEmoji: "🥽",
-    heroImage: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1706990769341-d450bb0c52b7?w=1200&auto=format&q=80",
     tags: ["Apple", "Vision Pro", "AR", "VR", "Spatial Computing"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -226,8 +226,8 @@ export const ALL_ARTICLES: Article[] = [
         heading: "A Price That Makes Sense",
         body: "At $1,999, the Vision Pro 2 is still a premium device, but it's no longer 'buy a used car' expensive. It sits in the same price bracket as a high-end MacBook Pro, which is exactly how Apple is positioning it: as a primary work machine for power users.",
         image: {
-          src: "https://images.unsplash.com/photo-1626387346567-68fb4cce161c?w=900&auto=format&q=80",
-          alt: "Person working with virtual screens",
+          src: "https://images.unsplash.com/photo-1696429175928-793a1cdef1d3?w=900&auto=format&q=80",
+          alt: "Apple Vision Pro headset close up",
           caption: "With multiple virtual 4K displays and a physical keyboard, the Vision Pro 2 is becoming a legitimate replacement for a multi-monitor desktop setup."
         }
       },
