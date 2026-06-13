@@ -77,6 +77,17 @@ The entire site uses a **premium light glassmorphism** aesthetic:
 - `KV_REST_API_URL` — Upstash Redis URL
 - `KV_REST_API_TOKEN` — Upstash Redis token
 
+## News URL Rule — CRITICAL
+For news sourceUrl, NEVER invent article-specific URLs like `/2026/06/13/story-name/` — these will 404.
+Instead use the publisher's **topic/tag/category page** which always works:
+- TechCrunch AI news → `https://techcrunch.com/category/artificial-intelligence/`
+- The Verge Apple → `https://www.theverge.com/apple`
+- Wired tech → `https://www.wired.com/tag/tech/`
+- Bloomberg tech → `https://www.bloomberg.com/technology`
+- SpaceNews SpaceX → `https://spacenews.com/tag/spacex/`
+- Ars Technica → `https://arstechnica.com/`
+- Reuters tech → `https://www.reuters.com/technology/`
+
 ## Image Rule — CRITICAL
 Every article and news item MUST use a **topic-specific** Unsplash image, not a generic one.
 

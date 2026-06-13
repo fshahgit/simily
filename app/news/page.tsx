@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import NewsClient from "./NewsClient";
-import { getLatestNews } from "../lib/news";
+import { ALL_NEWS } from "../lib/news";
 
 export const metadata: Metadata = {
   title: "Tech News — Daily AI, Blockchain & Tech Stories | Simily",
@@ -17,9 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function NewsPage() {
-  const latest = getLatestNews();
-
-  if (!latest) {
+  if (!ALL_NEWS.length) {
     return (
       <div className="mx-auto max-w-5xl px-4 py-20 text-center text-slate-500">
         No news today — check back tomorrow.
@@ -27,5 +25,5 @@ export default function NewsPage() {
     );
   }
 
-  return <NewsClient items={latest.items} date={latest.date} />;
+  return <NewsClient allDays={ALL_NEWS} />;
 }
