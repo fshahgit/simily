@@ -424,7 +424,7 @@ export const ALL_ARTICLES: Article[] = [
         body: "The Acer Aspire 5 consistently ranks as one of the best value laptops you can buy. The latest model packs an AMD Ryzen 5 processor, 16GB RAM, and a 512GB SSD into a sturdy chassis for around $450–$500.\n\nThe display is a Full HD IPS panel — good colours, decent brightness, perfectly fine for coursework and Netflix. Battery life hits around 8 hours in real-world use. Not class-leading, but enough to get through a full day of lectures without hunting for a socket.",
         quote: "At $479, the Acer Aspire 5 does 90% of what a MacBook Air does at 40% of the price. The 10% you lose is in feel, battery life, and longevity.",
         image: {
-          src: "https://images.unsplash.com/photo-1588702547919-fd4e4b67c80f?w=900&auto=format&q=80",
+          src: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=900&auto=format&q=80",
           alt: "Budget laptop on a student desk",
           caption: "A solid budget laptop can handle all student essentials — the key is avoiding the spec traps (8GB RAM, eMMC storage).",
         },
@@ -615,7 +615,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 6,
     coverEmoji: "⌨️",
-    heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1680783954745-3249be59e527?w=1200&auto=format&q=80",
     tags: ["AI Coding", "Cursor", "GitHub Copilot", "Developer Tools", "Productivity"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -922,7 +922,7 @@ export const ALL_ARTICLES: Article[] = [
         heading: "Bali — Worth the Hype (If You Know Where to Go)",
         body: "Bali has become more expensive and more crowded — but it's still extraordinary if you avoid the tourist traps. Ubud, in the central highlands, remains one of Asia's most atmospheric towns: rice terraces, Hindu temples, yoga retreats, and genuinely excellent food.\n\nSeminyak and Canggu have become overrun with Instagram-bait restaurants, but the surf is still world-class and the sunsets are still free. Budget $50–$80/day for Bali — more than Vietnam or Cambodia, but still a fraction of equivalent quality in Europe or Australia.",
         image: {
-          src: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=900&auto=format&q=80",
+          src: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?w=900&auto=format&q=80",
           alt: "Bali rice terraces at sunrise",
           caption: "Ubud's Tegalalang rice terraces — still one of Bali's most breathtaking sights, best visited at 7am before the tour groups arrive.",
         },
@@ -1455,7 +1455,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Finance",
     readTime: 7,
     coverEmoji: "📈",
-    heroImage: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=1200&auto=format&q=80",
     tags: ["Investing", "Groww", "Zerodha", "Upstox", "Mutual Funds", "India", "SIP"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1715,7 +1715,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Finance",
     readTime: 6,
     coverEmoji: "📊",
-    heroImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?w=1200&auto=format&q=80",
     tags: ["high-yield savings", "best savings accounts", "online banking 2026", "APY rates", "personal finance"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1789,7 +1789,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 9,
     coverEmoji: "📊",
-    heroImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?w=1200&auto=format&q=80",
     tags: ["AI agents", "automation", "productivity", "Devin", "autonomous AI"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1900,7 +1900,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 8,
     coverEmoji: "📊",
-    heroImage: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1716637644831-e046c73be197?w=1200&auto=format&q=80",
     tags: ["AI assistants", "productivity", "smart home", "automation", "Gemini", "Apple Intelligence"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1939,7 +1939,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 7,
     coverEmoji: "📊",
-    heroImage: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1694903110330-cc64b7e1d21d?w=1200&auto=format&q=80",
     tags: ["note-taking", "productivity apps", "AI writing", "knowledge management", "Notion", "Obsidian"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -1978,7 +1978,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Laptops",
     readTime: 9,
     coverEmoji: "📊",
-    heroImage: "https://images.unsplash.com/photo-1484788984921-03950022c38b?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1200&auto=format&q=80",
     tags: ["laptops", "hybrid work", "remote work", "video conferencing", "business laptops", "productivity"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -2118,7 +2118,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Finance",
     readTime: 8,
     coverEmoji: "📊",
-    heroImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=1200&auto=format&q=80",
     tags: ["AI finance", "budgeting apps", "personal finance", "money management", "fintech"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -2155,7 +2155,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Travel",
     readTime: 7,
     coverEmoji: "📊",
-    heroImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=1200&auto=format&q=80",
     tags: ["sustainable travel", "eco tourism", "climate travel", "regenerative tourism", "responsible travel"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -2192,7 +2192,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Career",
     readTime: 8,
     coverEmoji: "📊",
-    heroImage: "https://images.unsplash.com/photo-1521898284481-a5ec348cb555?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&auto=format&q=80",
     tags: ["career change", "AI career tools", "job search", "professional development", "upskilling"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -2229,7 +2229,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 9,
     coverEmoji: "📊",
-    heroImage: "https://images.unsplash.com/photo-1676277791608-ac54525aa94d?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1773332611476-6ec2ba68049f?w=1200&auto=format&q=80",
     tags: ["AI video", "Sora", "Runway", "content creation", "generative AI"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -2266,7 +2266,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "Health",
     readTime: 8,
     coverEmoji: "📊",
-    heroImage: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1557935728-e6d1eaabe558?w=1200&auto=format&q=80",
     tags: ["wearables", "health tech", "fitness tracking", "AI health", "smartwatch alternatives"],
     author: "Simily Editorial",
     keyTakeaways: [

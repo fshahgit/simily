@@ -100,6 +100,14 @@ Every article and news item MUST use a **topic-specific** Unsplash image, not a 
 **Never reuse the same photo ID across different articles.**
 **Never use a photo that doesn't match the article topic.**
 
+5. Only use the **classic numeric** Unsplash format `photo-1677442135703-1787eea5ce01` (a long number, a dash, then a hex string). The newer short-ID format (`photo-bS6bgSp1f64`) does NOT render via `images.unsplash.com` — avoid it.
+6. Verify each new image returns HTTP 200 before committing (a wrong hash gives a 404 broken image).
+
+**Enforcement:** `scripts/check-images.mjs` runs automatically on every build (`prebuild`).
+It FAILS the build if any article image is reused, or if a news image repeats within
+the same day. Run `npm run check:images` yourself before committing. A duplicate image
+will block the Vercel deploy, so fix duplicates before pushing.
+
 ## Next.js Version Note
 This is Next.js 15 with breaking changes from older versions.
 - `params` in page components is a **Promise** — always `await params`

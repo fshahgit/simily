@@ -30,11 +30,33 @@ const CATEGORY_IMAGES = {
   Entertainment: ["1540747913346-19212a4b32a2","1522869635100-9f4c5e86aa37","1574375927818-3af57bd817dd","1485846234645-a62644f84728","1478720568477-152d9b92543c"],
 };
 
-function getHeroImage(category) {
-  const imgs = CATEGORY_IMAGES[category] ?? CATEGORY_IMAGES["AI"];
-  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
-  const id = imgs[dayOfYear % imgs.length];
-  return `https://images.unsplash.com/photo-${id}?w=1200&auto=format&q=80`;
+// Numeric prefix is the unique Unsplash photo id.
+function photoPrefix(id) {
+  return String(id).split("-")[0];
+}
+
+// Pick a hero image NOT already used anywhere (global uniqueness for articles).
+// `used` is a Set of numeric prefixes that this run mutates so multiple
+// articles generated today don't collide with each other either.
+function getHeroImage(category, used) {
+  const pool = CATEGORY_IMAGES[category] ?? CATEGORY_IMAGES["AI"];
+  // Try the category pool first, then every other category as a fallback.
+  const fallback = Object.values(CATEGORY_IMAGES).flat();
+  for (const id of [...pool, ...fallback]) {
+    if (!used.has(photoPrefix(id))) {
+      used.add(photoPrefix(id));
+      return `https://images.unsplash.com/photo-${id}?w=1200&auto=format&q=80`;
+    }
+  }
+  // Every known image is taken — warn loudly. The prebuild image check will
+  // fail the deploy, prompting a top-up of CATEGORY_IMAGES with fresh IDs.
+  console.warn(`⚠️  No unused hero image left for category "${category}" — add fresh IDs to CATEGORY_IMAGES.`);
+  return `https://images.unsplash.com/photo-${pool[0]}?w=1200&auto=format&q=80`;
+}
+
+// Build the set of image prefixes already present in a content file.
+function usedImagePrefixes(content) {
+  return new Set([...content.matchAll(/photo-(\d+)/g)].map((m) => m[1]));
 }
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
@@ -175,6 +197,9 @@ function appendArticles(articles) {
   const filePath = path.join(ROOT, "app/lib/articles.ts");
   let content = fs.readFileSync(filePath, "utf8");
 
+  // Seed with every image already used so new heroes are globally unique.
+  const usedImages = usedImagePrefixes(content);
+
   // Insert before the closing ]; of ALL_ARTICLES
   const insertBefore = "\n];\n\nexport function getArticle";
 
@@ -205,7 +230,7 @@ function appendArticles(articles) {
     category: ${s(a.category)},
     readTime: ${a.readTime ?? 6},
     coverEmoji: "📊",
-    heroImage: ${JSON.stringify(getHeroImage(a.category))},
+    heroImage: ${JSON.stringify(getHeroImage(a.category, usedImages))},
     tags: [${tags}],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -267,11 +292,19 @@ const NEWS_IMAGES = {
   Science:    ["1532094349807-d4b930b60a40","1446776811953-b23d57bd21aa","1507668077129-56e32842fceb","1451187580459-43490279c0fa","1614728423169-3f65fd722b7e"],
 };
 
-function getNewsImage(category) {
-  const imgs = NEWS_IMAGES[category] ?? NEWS_IMAGES["Tech"];
-  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
-  const seed = (dayOfYear + Math.floor(Math.random() * imgs.length)) % imgs.length;
-  return `https://images.unsplash.com/photo-${imgs[seed]}?w=800&auto=format&q=80`;
+// Pick a news image not already used by another story in the SAME day.
+// `usedToday` is a Set of numeric prefixes this run mutates.
+function getNewsImage(category, usedToday) {
+  const pool = NEWS_IMAGES[category] ?? NEWS_IMAGES["Tech"];
+  const fallback = Object.values(NEWS_IMAGES).flat();
+  for (const id of [...pool, ...fallback]) {
+    if (!usedToday.has(photoPrefix(id))) {
+      usedToday.add(photoPrefix(id));
+      return `https://images.unsplash.com/photo-${id}?w=800&auto=format&q=80`;
+    }
+  }
+  console.warn(`⚠️  No unused news image left for category "${category}" today.`);
+  return `https://images.unsplash.com/photo-${pool[0]}?w=800&auto=format&q=80`;
 }
 
 // ─── generate daily news ──────────────────────────────────────────────────────
@@ -320,8 +353,9 @@ function prependNews(items) {
 
   const s = (v) => JSON.stringify(String(v ?? ""));
 
+  const usedToday = new Set();
   const newsEntries = items.map((item) => {
-    const image = getNewsImage(item.category);
+    const image = getNewsImage(item.category, usedToday);
     return `    {
       id: ${s(item.id)},
       title: ${s(item.title)},
