@@ -54,6 +54,20 @@ function getHeroImage(category, used) {
   return `https://images.unsplash.com/photo-${pool[0]}?w=1200&auto=format&q=80`;
 }
 
+// Pick a unique section image (w=900), deduped against the same run-wide set
+// so it never collides with a hero or another article's images.
+function getSectionImageUrl(category, used) {
+  const pool = CATEGORY_IMAGES[category] ?? CATEGORY_IMAGES["AI"];
+  const fallback = Object.values(CATEGORY_IMAGES).flat();
+  for (const id of [...pool, ...fallback]) {
+    if (!used.has(photoPrefix(id))) {
+      used.add(photoPrefix(id));
+      return `https://images.unsplash.com/photo-${id}?w=900&auto=format&q=80`;
+    }
+  }
+  return null; // no image rather than a duplicate
+}
+
 // Build the set of image prefixes already present in a content file.
 function usedImagePrefixes(content) {
   return new Set([...content.matchAll(/photo-(\d+)/g)].map((m) => m[1]));
@@ -207,8 +221,16 @@ function appendArticles(articles) {
     const s = (v) => JSON.stringify(String(v ?? ""));
     const tags = a.tags?.map((t) => s(t)).join(", ") ?? "";
     const takeaways = a.keyTakeaways?.map((t) => `      ${s(t)}`).join(",\n") ?? "";
+    // Attach one unique, authored section image (on the 2nd section if present).
+    const secImg = getSectionImageUrl(a.category, usedImages);
+    const imgIdx = (a.sections ?? []).length > 1 ? 1 : 0;
     const sections = (a.sections ?? [])
-      .map((sec) => `      { heading: ${s(sec.heading)}, body: ${s(sec.body)} }`)
+      .map((sec, idx) => {
+        const imgField = secImg && idx === imgIdx
+          ? `, image: { src: ${s(secImg)}, alt: ${s(a.title)}, caption: ${s(sec.heading ?? a.title)} }`
+          : "";
+        return `      { heading: ${s(sec.heading)}, body: ${s(sec.body)}${imgField} }`;
+      })
       .join(",\n");
     const sources = (a.sources ?? [])
       .map((src) => `      { title: ${s(src.title)}, url: ${s(src.url)}, publisher: ${s(src.publisher)} }`)

@@ -103,6 +103,12 @@ Every article and news item MUST use a **topic-specific** Unsplash image, not a 
 5. Only use the **classic numeric** Unsplash format `photo-1677442135703-1787eea5ce01` (a long number, a dash, then a hex string). The newer short-ID format (`photo-bS6bgSp1f64`) does NOT render via `images.unsplash.com` — avoid it.
 6. Verify each new image returns HTTP 200 before committing (a wrong hash gives a 404 broken image).
 
+**Section images:** The article page renders ONLY images authored in the article
+data (`section.image = { src, alt, caption }`). There is no automatic/generic
+section-image pool — if a section has no `image`, it shows no image. So every
+inline image you want MUST be authored in the data with a unique, topic-matched
+photo ID. Each `section.image.src` is covered by the duplicate check below.
+
 **Enforcement:** `scripts/check-images.mjs` runs automatically on every build (`prebuild`).
 It FAILS the build if any article image is reused, or if a news image repeats within
 the same day. Run `npm run check:images` yourself before committing. A duplicate image
