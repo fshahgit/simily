@@ -2379,7 +2379,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 9,
     coverEmoji: "🤖",
-    heroImage: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1732025270716-f44f1f4beea0?w=1200&auto=format&q=80",
     tags: ["Anthropic", "Fable 5", "AI models", "Claude", "LLM", "GPT-5"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -2397,8 +2397,8 @@ export const ALL_ARTICLES: Article[] = [
         heading: "What Is Fable 5?",
         body: "Fable 5 is the latest model in Anthropic's Claude family, sitting above Opus 4 and Sonnet 4 in capability and cost. It is designed for the most demanding tasks: multi-step research, complex code generation across entire repositories, scientific reasoning, and nuanced long-form writing.\n\nAnthropically describes it as their first model where safety and capability reinforce each other rather than trade off. The constitutional AI training has been significantly revised so that the model's refusals and guardrails are grounded in explicit reasoning rather than pattern matching — meaning it can explain why it won't do something, and can often find a safer way to accomplish the underlying goal.",
         image: {
-          src: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=900&auto=format&q=80",
-          alt: "Neural network visualization representing advanced AI",
+          src: "https://images.unsplash.com/photo-1724141098116-95c3b044b89e?w=900&auto=format&q=80",
+          alt: "Anthropic AI research concept — glowing circuit patterns",
           caption: "Fable 5 represents Anthropic's most ambitious attempt to prove that safety and raw capability are not in conflict.",
         },
       },
@@ -2440,7 +2440,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 8,
     coverEmoji: "🤖",
-    heroImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1655720035861-ba4fd21a598d?w=1200&auto=format&q=80",
     tags: ["agentic AI", "automation", "future of work", "AI agents", "workforce"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -2457,8 +2457,8 @@ export const ALL_ARTICLES: Article[] = [
         heading: "What Makes an AI Agent Different",
         body: "Traditional AI responds to a prompt and stops. An agent receives a goal, breaks it into sub-tasks, chooses its own tools, executes each step, evaluates the results, and corrects course when something goes wrong. The loop continues until the goal is achieved or the agent flags a decision point requiring human input.\n\nThe key enabling technologies that came together in 2025-2026 include: reliable long-context memory, tool use APIs that let models interact with real software, improved self-correction capabilities, and dramatically lower latency that makes multi-step loops economically viable.",
         image: {
-          src: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=900&auto=format&q=80",
-          alt: "Futuristic network of connected nodes representing AI agents",
+          src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&q=80",
+          alt: "Circuit board close-up representing autonomous AI systems",
           caption: "Agentic AI systems connect multiple tools and data sources to complete complex tasks autonomously.",
         },
       },
@@ -2509,8 +2509,8 @@ export const ALL_ARTICLES: Article[] = [
         heading: "Coding & Technical Tasks",
         body: "This is where the gap is clearest. Fable 5 outperforms GPT-5 on every standard coding benchmark. On HumanEval, Fable 5 scores 92.4% to GPT-5's 91.1%. On SWE-Bench (real GitHub issues), Fable 5 resolves 48.2% of issues versus GPT-5's 44.7%.\n\nIn practice, developers report that Fable 5 handles larger codebases more coherently. When given an entire repository to work with, it maintains consistent variable naming, respects existing patterns, and produces fewer hallucinated function calls. GPT-5 is still excellent but shows more inconsistency across 50k+ line codebases.",
         image: {
-          src: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=900&auto=format&q=80",
-          alt: "Code on a screen with dark background",
+          src: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=900&auto=format&q=80",
+          alt: "Developer writing code with AI assistance on dual monitors",
           caption: "Fable 5 leads on complex, multi-file coding tasks — GPT-5 remains competitive on single-function completions.",
         },
       },
@@ -2551,7 +2551,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 7,
     coverEmoji: "🤖",
-    heroImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1563207153-f403bf289096?w=1200&auto=format&q=80",
     tags: ["humanoid robots", "robotics", "automation", "Tesla Optimus", "Figure", "warehousing"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -2568,8 +2568,8 @@ export const ALL_ARTICLES: Article[] = [
         heading: "Why Humanoids Are Winning in Warehouses",
         body: "The conventional wisdom was that purpose-built robots would always beat humanoids in specific tasks. That logic still holds for highly structured environments. But warehouses, despite appearances, are not highly structured — they are full of irregular packages, floor obstacles, height variation, and tasks that change day to day.\n\nHumanoids win in exactly this environment. Their bipedal form factor lets them use infrastructure built for humans: stairs, ladders, standard shelf heights, and hand trucks. Retraining them for a new task often takes hours of demonstration rather than weeks of engineering. When the task changes, the robot adapts.",
         image: {
-          src: "https://images.unsplash.com/photo-1561144257-e32e8506e3b3?w=900&auto=format&q=80",
-          alt: "Industrial warehouse with automated systems",
+          src: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=900&auto=format&q=80",
+          alt: "Large automated warehouse with robotic logistics systems",
           caption: "Modern warehouses are proving to be the ideal first deployment environment for humanoid robots.",
         },
       },
@@ -2596,7 +2596,7 @@ export const ALL_ARTICLES: Article[] = [
     category: "AI",
     readTime: 10,
     coverEmoji: "💻",
-    heroImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&auto=format&q=80",
+    heroImage: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=1200&auto=format&q=80",
     tags: ["AI coding", "Cursor", "GitHub Copilot", "Windsurf", "Claude Code", "developer tools"],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -2614,8 +2614,8 @@ export const ALL_ARTICLES: Article[] = [
         heading: "Cursor: Best Overall",
         body: "Cursor has maintained its lead by ruthlessly focusing on the developer experience of working with AI on real codebases. The Composer feature — which lets you describe a change in natural language and have it applied across multiple files simultaneously — remains unmatched.\n\nWith Fable 5 now available as a backend option in Cursor, the combination produces the best results we've seen on complex refactoring tasks. Cursor's indexing of your entire repo means the AI has full context when making changes, dramatically reducing hallucinated function calls or missed imports.\n\nPricing: $20/month Pro, $40/month Business. The Pro tier includes 500 fast requests/month with Fable 5 or GPT-5.",
         image: {
-          src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&auto=format&q=80",
-          alt: "Developer working with code on multiple screens",
+          src: "https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=900&auto=format&q=80",
+          alt: "Developer using AI coding assistant on a laptop",
           caption: "Cursor's multi-file editing with full codebase context is the most significant productivity leap for professional developers.",
         },
       },
