@@ -2683,10 +2683,20 @@ export const ALL_ARTICLES: Article[] = [
       {
         heading: "Perplexity Comet: Best for Research",
         body: "Comet, from Perplexity, is built around the company's core strength: answering questions with cited sources. As a browser, it shines when you're researching anything — a purchase, a medical question, a technical topic. Comet reads the pages you visit and the pages it finds, then synthesizes an answer with inline citations you can verify.\n\nThe standout feature is its sidebar assistant that maintains context across your entire session. Ask a follow-up question three tabs later and it remembers what you were looking at. For knowledge workers, students, and anyone who researches before they decide, Comet is the most immediately useful of the three. It's free with Pro features at $20/month.",
+        image: {
+          src: "https://images.unsplash.com/photo-1516382799247-87df95d790b7?w=900&auto=format&q=80",
+          alt: "Person researching on a laptop with a search interface open",
+          caption: "Perplexity Comet turns the open-tabs research grind into a single cited answer in the sidebar.",
+        },
       },
       {
         heading: "Google Gemini Browser: Best for Integration",
         body: "Google's answer folds Gemini directly into a Chrome-based browser, and its advantage is obvious: it already knows your digital life. It can pull from your Gmail, your Calendar, your Google Docs, and Search history to answer questions and complete tasks with full personal context.\n\nAsk it to 'find the receipt from that flight I booked last month and add the return date to my calendar,' and it can actually do it. The deep Workspace integration makes it the most powerful for people already living inside Google's ecosystem. The tradeoff, of course, is that it requires giving Google even deeper access to everything you do.",
+        image: {
+          src: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=900&auto=format&q=80",
+          alt: "Laptop showing a connected suite of productivity apps",
+          caption: "Gemini's edge is context: it can act across Gmail, Docs, and Calendar in one request.",
+        },
       },
       {
         heading: "ChatGPT Atlas: Best for Agentic Tasks",
@@ -2696,6 +2706,11 @@ export const ALL_ARTICLES: Article[] = [
       {
         heading: "The Privacy Tradeoff",
         body: "All three browsers share one uncomfortable truth: to be useful, they have to watch everything. An AI assistant that reads your pages, remembers your sessions, and acts on your accounts is, by definition, processing an enormous amount of personal data.\n\nPerplexity and OpenAI have published policies stating browsing data isn't used to train models by default, with local processing for sensitive actions. Google's model keeps data within your existing Google account boundary — which is reassuring or alarming depending on how you feel about Google already. Before adopting any AI browser, it's worth reading exactly what each one does with your data, because the convenience is real but so is the exposure.",
+        image: {
+          src: "https://images.unsplash.com/photo-1569087682520-45253cc2e0ee?w=900&auto=format&q=80",
+          alt: "Digital privacy and security concept with a lock symbol",
+          caption: "Every AI browser sees your full browsing activity — privacy is the real cost of the convenience.",
+        },
       },
       {
         heading: "Which Should You Use?",

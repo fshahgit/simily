@@ -221,13 +221,30 @@ function appendArticles(articles) {
     const s = (v) => JSON.stringify(String(v ?? ""));
     const tags = a.tags?.map((t) => s(t)).join(", ") ?? "";
     const takeaways = a.keyTakeaways?.map((t) => `      ${s(t)}`).join(",\n") ?? "";
-    // Attach one unique, authored section image (on the 2nd section if present).
-    const secImg = getSectionImageUrl(a.category, usedImages);
-    const imgIdx = (a.sections ?? []).length > 1 ? 1 : 0;
-    const sections = (a.sections ?? [])
+    // Author 3 unique section images per article, spread across the body, so
+    // every post has 3-4 reference images total (hero + sections). Each image
+    // is deduped run-wide so nothing repeats within or across articles.
+    const secs = a.sections ?? [];
+    // Spread image slots evenly through the available sections (skip the first
+    // intro section when possible), capped at 3.
+    const slots = [];
+    if (secs.length >= 2) {
+      const candidates = secs.map((_, i) => i).filter((i) => i > 0);
+      const want = Math.min(3, candidates.length);
+      for (let k = 0; k < want; k++) {
+        slots.push(candidates[Math.floor((k * candidates.length) / want)]);
+      }
+    }
+    const slotImages = {};
+    for (const idx of slots) {
+      const url = getSectionImageUrl(a.category, usedImages);
+      if (url) slotImages[idx] = url;
+    }
+    const sections = secs
       .map((sec, idx) => {
-        const imgField = secImg && idx === imgIdx
-          ? `, image: { src: ${s(secImg)}, alt: ${s(a.title)}, caption: ${s(sec.heading ?? a.title)} }`
+        const url = slotImages[idx];
+        const imgField = url
+          ? `, image: { src: ${s(url)}, alt: ${s(sec.heading ?? a.title)}, caption: ${s(sec.heading ?? a.title)} }`
           : "";
         return `      { heading: ${s(sec.heading)}, body: ${s(sec.body)}${imgField} }`;
       })

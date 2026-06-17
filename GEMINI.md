@@ -91,6 +91,11 @@ Instead use the publisher's **topic/tag/category page** which always works:
 ## Image Rule — CRITICAL
 Every article and news item MUST use a **topic-specific** Unsplash image, not a generic one.
 
+**Every article MUST have 3-4 reference images total:** 1 hero + at least 3 authored
+`section.image` entries spread through the body. Each image must visually match the
+section it sits in (e.g. a privacy section → a security/lock image, a research section
+→ someone researching). No vague filler. Never fewer than 3 in-body images.
+
 **Process:**
 1. Search Unsplash (unsplash.com/s/photos/<topic-keywords>) for each article/section topic
 2. Pick a photo that visually matches the content (e.g. EV charging for battery article, AR headset for neural wearables)
