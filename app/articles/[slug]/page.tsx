@@ -103,19 +103,8 @@ function formatDate(iso: string) {
   });
 }
 
-const CATEGORY_COLORS: Record<string, string> = {
-  AI:      "bg-violet-100 text-violet-700 border-violet-300",
-  Laptops: "bg-blue-100 text-blue-700 border-blue-300",
-  Travel:  "bg-emerald-100 text-emerald-700 border-emerald-300",
-  Finance: "bg-amber-100 text-amber-700 border-amber-300",
-  Health:  "bg-rose-100 text-rose-700 border-rose-300",
-  Career:  "bg-orange-100 text-orange-700 border-orange-300",
-  India:   "bg-orange-100 text-orange-800 border-orange-300",
-  Apps:    "bg-teal-100 text-teal-700 border-teal-300",
-  Phones:  "bg-pink-100 text-pink-700 border-pink-300",
-};
-function categoryClass(cat: string) {
-  return CATEGORY_COLORS[cat] ?? "bg-slate-700/50 text-slate-700 border-slate-300";
+function categoryClass(_cat: string) {
+  return "bg-violet-100 text-violet-700 border-violet-200";
 }
 
 export default async function ArticlePage({ params }: Props) {
