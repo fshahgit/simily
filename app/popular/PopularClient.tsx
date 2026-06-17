@@ -202,8 +202,8 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
           onClick={() => handleCategory(null)}
           className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${
             active === null && !searchOpen
-              ? "bg-white/80 text-slate-900 border-slate-900"
-              : "bg-slate-100 text-slate-600 border-slate-200 hover:border-slate-400"
+              ? "bg-violet-600 text-white border-violet-600"
+              : "bg-white text-slate-600 border-slate-200 hover:border-violet-300 hover:text-violet-600"
           }`}
         >
           All
@@ -215,7 +215,7 @@ export default function PopularClient({ comparisons, categoryNames }: Props) {
             className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${
               active === cat
                 ? "bg-violet-600 text-white border-violet-600"
-                : "bg-violet-50 text-violet-600 border-violet-200 hover:border-violet-400"
+                : "bg-white text-slate-600 border-slate-200 hover:border-violet-300 hover:text-violet-600"
             }`}
           >
             {cat}

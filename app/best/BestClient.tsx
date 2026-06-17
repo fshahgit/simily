@@ -7,37 +7,9 @@ import { type BestTopic, BEST_CATEGORIES } from "../lib/best";
 
 const PAGE_SIZE = 8;
 
-const CAT_COLORS: Record<string, string> = {
-  "AI":                 "bg-violet-100 text-violet-700 border-violet-200",
-  "Dev Tools":          "bg-blue-100 text-blue-700 border-blue-200",
-  "Productivity":       "bg-amber-100 text-amber-700 border-amber-200",
-  "Laptops & Hardware": "bg-slate-100 text-slate-700 border-slate-200",
-  "Design":             "bg-pink-100 text-pink-700 border-pink-200",
-  "Communication":      "bg-teal-100 text-teal-700 border-teal-200",
-  "Cloud":              "bg-sky-100 text-sky-700 border-sky-200",
-  "Entertainment":      "bg-orange-100 text-orange-700 border-orange-200",
-  "Security":           "bg-red-100 text-red-700 border-red-200",
-  "Website Builders":   "bg-emerald-100 text-emerald-700 border-emerald-200",
-  "By Region":          "bg-teal-100 text-teal-700 border-teal-200",
-};
-
-const CAT_ACTIVE: Record<string, string> = {
-  "AI":                 "bg-violet-600 text-white border-violet-600",
-  "Dev Tools":          "bg-blue-600 text-white border-blue-600",
-  "Productivity":       "bg-amber-500 text-white border-amber-500",
-  "Laptops & Hardware": "bg-slate-600 text-white border-slate-600",
-  "Design":             "bg-pink-600 text-white border-pink-600",
-  "Communication":      "bg-teal-600 text-white border-teal-600",
-  "Cloud":              "bg-sky-600 text-white border-sky-600",
-  "Entertainment":      "bg-orange-600 text-white border-orange-600",
-  "Security":           "bg-red-600 text-white border-red-600",
-  "Website Builders":   "bg-emerald-600 text-white border-emerald-600",
-  "By Region":          "bg-teal-600 text-white border-teal-600",
-};
-
-function catClass(cat: string, active = false) {
-  const map = active ? CAT_ACTIVE : CAT_COLORS;
-  return map[cat] ?? (active ? "bg-slate-600 text-white border-slate-600" : "bg-slate-700/50 text-slate-700 border-slate-300");
+function catClass(_cat: string, active = false) {
+  if (active) return "bg-violet-600 text-white border-violet-600";
+  return "bg-white text-slate-600 border-slate-200 hover:border-violet-300 hover:text-violet-600";
 }
 
 function TopicCard({ topic }: { topic: BestTopic }) {
@@ -159,7 +131,7 @@ export default function BestClient({ topics }: Props) {
       {/* Category filters */}
       <div className="mb-6 flex flex-wrap items-center gap-2">
         <span className="mr-1 text-sm font-medium text-slate-500">Browse:</span>
-        <button onClick={() => handleCategory(null)} className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${active === null && !searchOpen ? "bg-slate-900 text-white border-slate-900" : "bg-white/80 text-slate-400 border-slate-200 hover:border-slate-300 hover:text-slate-700"}`}>All</button>
+        <button onClick={() => handleCategory(null)} className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer ${active === null && !searchOpen ? "bg-violet-600 text-white border-violet-600" : "bg-white text-slate-600 border-slate-200 hover:border-violet-300 hover:text-violet-600"}`}>All</button>
         {BEST_CATEGORIES.map((cat) => (
           <button key={cat} onClick={() => handleCategory(active === cat ? null : cat)} className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all cursor-pointer hover:opacity-90 ${catClass(cat, active === cat)}`}>{cat}</button>
         ))}
