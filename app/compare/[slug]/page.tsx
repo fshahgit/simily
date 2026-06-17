@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Anthropic from "@anthropic-ai/sdk";
 import ComparisonClient from "./ComparisonClient";
 import RelatedComparisons from "../../components/RelatedComparisons";
 import LogoAvatar from "../../components/LogoAvatar";
@@ -6,6 +7,8 @@ import Script from "next/script";
 import Link from "next/link";
 import { ALL_COMPARISONS, makeSlug } from "../../lib/comparisons";
 import { Redis } from "@upstash/redis";
+
+export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -24,9 +27,6 @@ function resolveItems(slug: string): { itemA: string; itemB: string; itemC?: str
   };
 }
 
-export async function generateStaticParams() {
-  return ALL_COMPARISONS.map(({ a, b }) => ({ slug: makeSlug(a, b) }));
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -53,15 +53,84 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-async function getCachedComparison(items: string[]) {
+const CACHE_TTL = 60 * 60 * 24 * 30; // 30 days
+
+async function getOrGenerateComparison(items: string[]) {
+  const key = `compare:v3:${items.map((i) => i.toLowerCase().trim()).join(":")}`;
+  let redis: Redis | null = null;
+
   try {
-    const redis = new Redis({
+    redis = new Redis({
       url: process.env.KV_REST_API_URL!,
       token: process.env.KV_REST_API_TOKEN!,
     });
-    const key = `compare:v3:${items.map((i) => i.toLowerCase().trim()).join(":")}`;
     const cached = await redis.get(key);
-    return cached ?? null;
+    if (cached) return cached;
+  } catch {
+    // Redis unavailable — fall through to generate
+  }
+
+  // Not cached — generate server-side so Google gets full content
+  try {
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    const itemsList = items.map((i) => `"${i}"`).join(" vs ");
+    const itemsArray = items.map((i) => `"${i}"`).join(", ");
+
+    const message = await client.messages.create({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 3000,
+      messages: [{
+        role: "user",
+        content: `You are an expert analyst. Compare ${itemsList} in a structured, unbiased, helpful way.
+
+Return a JSON object with this exact structure:
+{
+  "summary": "A 2-3 sentence overview of the key differences",
+  "winner": "The name of the overall winner, or 'Tie' if equal",
+  "winnerReason": "One sentence explaining why it wins overall",
+  "categories": [
+    {
+      "name": "Category name (e.g. Performance, Price, Ease of Use)",
+      "scores": [
+        { "name": "item name", "score": 8, "note": "Short note about this item in this category" }
+      ],
+      "winner": "Name of winner in this category or 'Tie'"
+    }
+  ],
+  "items": [
+    {
+      "name": "item name",
+      "pros": ["Pro 1", "Pro 2", "Pro 3"],
+      "cons": ["Con 1", "Con 2"],
+      "chooseIf": "One sentence: who should choose this option"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "A specific question someone would search for when choosing between ${itemsArray}",
+      "answer": "A helpful, direct answer in 2-3 sentences"
+    }
+  ]
+}
+
+Rules:
+- The "scores" array in each category must include ALL ${items.length} items: ${itemsArray}
+- The "items" array must include ALL ${items.length} items: ${itemsArray}
+- Include 5-7 relevant categories
+- Scores are out of 10
+- Include exactly 5 FAQs mirroring real search queries
+- Be specific, factual, and useful
+- Return only valid JSON, no markdown`,
+      }],
+    });
+
+    const text = message.content[0].type === "text" ? message.content[0].text : "";
+    const data = JSON.parse(text);
+
+    if (redis) {
+      await redis.set(key, data, { ex: CACHE_TTL }).catch(() => {});
+    }
+    return data;
   } catch {
     return null;
   }
@@ -81,9 +150,9 @@ export default async function ComparePage({ params }: Props) {
 
   const items = [itemA, itemB, ...(itemC ? [itemC] : [])];
 
-  // Fetch cached comparison data so it's server-rendered for SEO
+  // Generate or fetch from cache server-side — Google always gets full HTML
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const initialData = (await getCachedComparison(items)) as any ?? undefined;
+  const initialData = (await getOrGenerateComparison(items)) as any ?? undefined;
 
   const jsonLd = {
     "@context": "https://schema.org",
