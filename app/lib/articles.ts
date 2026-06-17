@@ -2649,6 +2649,76 @@ export const ALL_ARTICLES: Article[] = [
       { a: "Claude", b: "ChatGPT" },
     ],
   },
+  {
+    slug: "ai-browser-war-perplexity-comet-vs-gemini-2026",
+    title: "The AI Browser War Is Here: Perplexity Comet vs Gemini vs ChatGPT Atlas",
+    description: "AI-native browsers are the hottest battleground in tech right now. We compare Perplexity Comet, Google's Gemini browser, and OpenAI's ChatGPT Atlas to see which one actually changes how you use the web.",
+    date: "2026-06-17",
+    category: "AI",
+    readTime: 9,
+    coverEmoji: "🌐",
+    heroImage: "https://images.unsplash.com/photo-1721314787850-5745fdfb06b4?w=1200&auto=format&q=80",
+    tags: ["AI browser", "Perplexity Comet", "Gemini", "ChatGPT Atlas", "web browsers", "agentic AI"],
+    author: "Simily Editorial",
+    keyTakeaways: [
+      "AI browsers replace the search-and-click model with an agent that reads, summarizes, and acts on web pages for you.",
+      "Perplexity Comet leads on research workflows and source transparency.",
+      "Google's Gemini browser wins on deep integration with Search, Gmail, and Workspace.",
+      "OpenAI's ChatGPT Atlas is the most capable at multi-step agentic tasks across sites.",
+      "Privacy is the central tradeoff — these browsers see everything you do online.",
+    ],
+    sections: [
+      {
+        body: "For thirty years, the web browser barely changed: a address bar, some tabs, and a search engine to point you somewhere. In 2026, that model is being torn up. A new class of AI-native browsers doesn't just show you web pages — it reads them, reasons about them, and acts on your behalf. Three products are leading this shift, and the competition between them is the most consequential browser war since Chrome dethroned Internet Explorer.",
+      },
+      {
+        heading: "What Is an AI Browser, Really?",
+        body: "A traditional browser is passive — it renders what a website sends and waits for you to click. An AI browser is active. It has a built-in assistant that can see every page you're on, understand its content, and take actions: summarizing a long article, comparing products across five tabs, filling out a form, or completing a multi-step task like booking a flight.\n\nThe key shift is from 'search and read' to 'ask and receive.' Instead of opening ten tabs to research a decision, you ask the browser a question and it does the reading for you — then shows its sources.",
+        image: {
+          src: "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?w=900&auto=format&q=80",
+          alt: "Person browsing the web on a laptop with multiple tabs open",
+          caption: "AI browsers collapse the open-ten-tabs research ritual into a single conversational query.",
+        },
+      },
+      {
+        heading: "Perplexity Comet: Best for Research",
+        body: "Comet, from Perplexity, is built around the company's core strength: answering questions with cited sources. As a browser, it shines when you're researching anything — a purchase, a medical question, a technical topic. Comet reads the pages you visit and the pages it finds, then synthesizes an answer with inline citations you can verify.\n\nThe standout feature is its sidebar assistant that maintains context across your entire session. Ask a follow-up question three tabs later and it remembers what you were looking at. For knowledge workers, students, and anyone who researches before they decide, Comet is the most immediately useful of the three. It's free with Pro features at $20/month.",
+      },
+      {
+        heading: "Google Gemini Browser: Best for Integration",
+        body: "Google's answer folds Gemini directly into a Chrome-based browser, and its advantage is obvious: it already knows your digital life. It can pull from your Gmail, your Calendar, your Google Docs, and Search history to answer questions and complete tasks with full personal context.\n\nAsk it to 'find the receipt from that flight I booked last month and add the return date to my calendar,' and it can actually do it. The deep Workspace integration makes it the most powerful for people already living inside Google's ecosystem. The tradeoff, of course, is that it requires giving Google even deeper access to everything you do.",
+      },
+      {
+        heading: "ChatGPT Atlas: Best for Agentic Tasks",
+        body: "OpenAI's ChatGPT Atlas is the most ambitious of the three on autonomous action. Built on top of GPT-5's agentic capabilities, Atlas can take a high-level instruction and execute it across multiple websites — comparing prices across retailers, filling shopping carts, gathering data into a document, or navigating multi-step signup flows.\n\nWhere Comet is a research tool and Gemini is an integration play, Atlas is an agent. It's the closest thing to 'tell the browser what you want done and walk away.' That power comes with the most friction around trust: granting a browser permission to act on your behalf across the web is a significant step, and Atlas's permission prompts reflect that.",
+        callout: "The real question with every AI browser isn't capability — it's trust. These tools see every page you visit, every form you fill, and every login you use.",
+      },
+      {
+        heading: "The Privacy Tradeoff",
+        body: "All three browsers share one uncomfortable truth: to be useful, they have to watch everything. An AI assistant that reads your pages, remembers your sessions, and acts on your accounts is, by definition, processing an enormous amount of personal data.\n\nPerplexity and OpenAI have published policies stating browsing data isn't used to train models by default, with local processing for sensitive actions. Google's model keeps data within your existing Google account boundary — which is reassuring or alarming depending on how you feel about Google already. Before adopting any AI browser, it's worth reading exactly what each one does with your data, because the convenience is real but so is the exposure.",
+      },
+      {
+        heading: "Which Should You Use?",
+        body: "Choose Perplexity Comet if your main use is research, learning, and making informed decisions with verifiable sources. Choose the Gemini browser if you live in Gmail, Docs, and Calendar and want an assistant with full context on your digital life. Choose ChatGPT Atlas if you want genuine autonomous task completion and are comfortable granting an agent broad permissions.\n\nFor most people, the honest recommendation is to try Comet first — it delivers the clearest everyday value with the lowest trust cost, and it's free to start.",
+        list: [
+          "Best for research & decisions: Perplexity Comet (free, Pro $20/mo)",
+          "Best for Google ecosystem users: Gemini browser",
+          "Best for autonomous multi-site tasks: ChatGPT Atlas",
+          "Most privacy-conscious starting point: Comet, with training opt-out on by default",
+        ],
+      },
+    ],
+    sources: [
+      { title: "Perplexity Comet", url: "https://www.perplexity.ai/comet", publisher: "Perplexity" },
+      { title: "Google Gemini", url: "https://gemini.google.com/", publisher: "Google" },
+      { title: "OpenAI", url: "https://openai.com/", publisher: "OpenAI" },
+    ],
+    relatedComparisons: [
+      { a: "Perplexity", b: "ChatGPT" },
+      { a: "Google", b: "OpenAI" },
+      { a: "Claude", b: "Gemini" },
+    ],
+  },
 ];
 
 export function getArticle(slug: string): Article | undefined {
