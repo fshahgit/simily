@@ -8,7 +8,7 @@ import { getLatestNews } from "./lib/news";
 import { ALL_BEST_TOPICS } from "./lib/best";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "https://www.simily.org" },
+  alternates: { canonical: "https://simily.org" },
 };
 
 const popularComparisons = [

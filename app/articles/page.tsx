@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Articles — Simily",
   description:
     "In-depth articles on AI tools, laptops, apps, and tech — written to help you make smarter decisions.",
-  alternates: { canonical: "https://www.simily.org/articles" },
+  alternates: { canonical: "https://simily.org/articles" },
 };
 
 export default function ArticlesPage() {

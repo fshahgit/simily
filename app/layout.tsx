@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Simily — Compare Anything with AI",
     description: "AI-powered comparisons for products, tools, concepts, and more.",
-    url: "https://www.simily.org",
+    url: "https://simily.org",
     siteName: "Simily",
     type: "website",
     images: [{ url: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=630&fit=crop&auto=format&q=80", width: 1200, height: 630, alt: "Simily — Compare Anything with AI" }],
