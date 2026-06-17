@@ -7,6 +7,7 @@
     "prebuild": "node scripts/check-images.mjs",
     "build": "next build",
     "check:images": "node scripts/check-images.mjs",
+    "backfill:images": "node scripts/backfill-images.mjs",
     "start": "next start",
     "lint": "eslint"
   },

@@ -20,8 +20,14 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 
-// The numeric prefix of an Unsplash slug is the unique photo id.
-const PHOTO_RE = /photo-(\d+)(?:-[a-z0-9]+)?/g;
+// A unique image identifier is EITHER an Unsplash photo id (numeric prefix)
+// OR a locally-generated path under /article-images/.
+const PHOTO_RE = /photo-(\d+)(?:-[a-z0-9]+)?|\/article-images\/([a-z0-9-]+\.jpg)/g;
+
+// Normalize a regex match to its identity string.
+function idOf(m) {
+  return m[1] ? `unsplash:${m[1]}` : `local:${m[2]}`;
+}
 
 let failed = false;
 
@@ -33,7 +39,7 @@ let failed = false;
 
   lines.forEach((line, i) => {
     for (const m of line.matchAll(PHOTO_RE)) {
-      const id = m[1];
+      const id = idOf(m);
       if (!seen.has(id)) seen.set(id, []);
       seen.get(id).push(i + 1);
     }
@@ -44,11 +50,30 @@ let failed = false;
     failed = true;
     console.error("\n❌ articles.ts — every article must use a unique image:\n");
     for (const [id, ls] of dups) {
-      console.error(`  photo-${id} reused on lines ${ls.join(", ")}`);
+      console.error(`  ${id} reused on lines ${ls.join(", ")}`);
     }
   } else {
     const total = [...seen.values()].reduce((n, ls) => n + ls.length, 0);
     console.log(`✅ articles.ts — ${total} images, all unique.`);
+  }
+}
+
+// ── 1b. Articles — unique slugs ──────────────────────────────────────────────
+{
+  const abs = path.join(ROOT, "app/lib/articles.ts");
+  const content = fs.readFileSync(abs, "utf8");
+  const slugs = new Map();
+  const re = /\n  \{\n    slug: "([^"]+)"/g;
+  for (const m of content.matchAll(re)) {
+    slugs.set(m[1], (slugs.get(m[1]) ?? 0) + 1);
+  }
+  const dups = [...slugs.entries()].filter(([, n]) => n > 1);
+  if (dups.length > 0) {
+    failed = true;
+    console.error("\n❌ articles.ts — duplicate slugs (one shadows the other):");
+    for (const [slug, n] of dups) console.error(`  "${slug}" appears ${n}×`);
+  } else {
+    console.log(`✅ articles.ts — ${slugs.size} unique slugs.`);
   }
 }
 
@@ -69,14 +94,14 @@ let failed = false;
 
     const seen = new Map();
     for (const m of block.matchAll(PHOTO_RE)) {
-      const id = m[1];
+      const id = idOf(m);
       seen.set(id, (seen.get(id) ?? 0) + 1);
     }
     const dups = [...seen.entries()].filter(([, n]) => n > 1);
     if (dups.length > 0) {
       failed = true;
       console.error(`\n❌ news.ts — day ${date} reuses images within the same day:`);
-      for (const [id, n] of dups) console.error(`  photo-${id} used ${n}× on ${date}`);
+      for (const [id, n] of dups) console.error(`  ${id} used ${n}× on ${date}`);
     }
   }
   if (!failed) console.log(`✅ news.ts — no image reused within any single day.`);

@@ -8,6 +8,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { generateImage } from "./gen-image.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -207,26 +208,28 @@ Return ONLY a valid JSON array of exactly 5 objects, no markdown:
 
 // ─── append articles to articles.ts ──────────────────────────────────────────
 
-function appendArticles(articles) {
+async function appendArticles(articles) {
   const filePath = path.join(ROOT, "app/lib/articles.ts");
   let content = fs.readFileSync(filePath, "utf8");
 
-  // Seed with every image already used so new heroes are globally unique.
+  // Seed with every Unsplash image already used so fallbacks stay unique.
   const usedImages = usedImagePrefixes(content);
 
   // Insert before the closing ]; of ALL_ARTICLES
   const insertBefore = "\n];\n\nexport function getArticle";
 
-  const newEntries = articles.map((a) => {
+  const newEntries = [];
+  for (const a of articles) {
     const s = (v) => JSON.stringify(String(v ?? ""));
     const tags = a.tags?.map((t) => s(t)).join(", ") ?? "";
     const takeaways = a.keyTakeaways?.map((t) => `      ${s(t)}`).join(",\n") ?? "";
-    // Author 3 unique section images per article, spread across the body, so
-    // every post has 3-4 reference images total (hero + sections). Each image
-    // is deduped run-wide so nothing repeats within or across articles.
+
+    // ── Hero: AI-generated, topic-relevant; Unsplash pool as fallback ──────
+    let heroUrl = await generateImage(a.title, `${a.slug}-hero`, { width: 1200, height: 630 });
+    if (!heroUrl) heroUrl = getHeroImage(a.category, usedImages);
+
+    // ── 3 section images, spread through the body (skip the intro section) ──
     const secs = a.sections ?? [];
-    // Spread image slots evenly through the available sections (skip the first
-    // intro section when possible), capped at 3.
     const slots = [];
     if (secs.length >= 2) {
       const candidates = secs.map((_, i) => i).filter((i) => i > 0);
@@ -237,9 +240,13 @@ function appendArticles(articles) {
     }
     const slotImages = {};
     for (const idx of slots) {
-      const url = getSectionImageUrl(a.category, usedImages);
+      const sec = secs[idx];
+      const subject = `${sec.heading ?? a.title} — ${a.title}`;
+      let url = await generateImage(subject, `${a.slug}-s${idx}`, { width: 900, height: 500 });
+      if (!url) url = getSectionImageUrl(a.category, usedImages); // fallback only on failure
       if (url) slotImages[idx] = url;
     }
+
     const sections = secs
       .map((sec, idx) => {
         const url = slotImages[idx];
@@ -260,7 +267,7 @@ function appendArticles(articles) {
     const conclusionSection = a.conclusion ? `      { heading: "Conclusion", body: ${s(a.conclusion)} }` : null;
     const allSections = [introSection, sections, conclusionSection].filter(Boolean).join(",\n");
 
-    return `
+    newEntries.push(`
   {
     slug: ${s(a.slug)},
     title: ${s(a.title)},
@@ -269,7 +276,7 @@ function appendArticles(articles) {
     category: ${s(a.category)},
     readTime: ${a.readTime ?? 6},
     coverEmoji: "📊",
-    heroImage: ${JSON.stringify(getHeroImage(a.category, usedImages))},
+    heroImage: ${JSON.stringify(heroUrl)},
     tags: [${tags}],
     author: "Simily Editorial",
     keyTakeaways: [
@@ -284,8 +291,8 @@ ${sources}
     relatedComparisons: [
 ${related}
     ],
-  },`;
-  });
+  },`);
+  }
 
   content = content.replace(insertBefore, newEntries.join("") + insertBefore);
   fs.writeFileSync(filePath, content, "utf8");
@@ -431,7 +438,7 @@ async function main() {
 
   try {
     articles = await generateArticles();
-    if (articles.length > 0) appendArticles(articles);
+    if (articles.length > 0) await appendArticles(articles);
     console.log(`✅ Articles done — ${articles.length} added`);
   } catch (err) {
     console.error("❌ Articles error:", err.message);
