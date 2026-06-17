@@ -170,7 +170,7 @@ export default function NewsClient({ allDays }: { allDays: NewsDay[] }) {
       <div className="flex flex-wrap gap-2 mb-8">
         <button
           onClick={() => setActiveCategory("All")}
-          className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${activeCategory === "All" ? "bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-sm" : "bg-white/80 border border-slate-200 text-slate-400 hover:border-slate-300 hover:text-slate-700"}`}
+          className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${activeCategory === "All" ? "bg-violet-600 text-white border border-violet-600" : "bg-white border border-slate-200 text-slate-600 hover:border-violet-300 hover:text-violet-600"}`}
         >
           All
         </button>
@@ -178,7 +178,7 @@ export default function NewsClient({ allDays }: { allDays: NewsDay[] }) {
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${activeCategory === cat ? CAT_ACTIVE[cat] + " shadow-sm" : "bg-white/80 border border-slate-200 text-slate-400 hover:border-slate-300 hover:text-slate-700"}`}
+            className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${activeCategory === cat ? "bg-violet-600 text-white border border-violet-600" : "bg-white border border-slate-200 text-slate-600 hover:border-violet-300 hover:text-violet-600"}`}
           >
             {cat}
           </button>

@@ -554,16 +554,16 @@ export const NEWS_CATEGORIES: NewsCategory[] = ["AI", "Tech", "Blockchain", "Gad
 
 export const CAT_COLORS: Record<NewsCategory, string> = {
   AI: "bg-violet-100 text-violet-700",
-  Tech: "bg-blue-100 text-blue-700",
-  Blockchain: "bg-orange-100 text-orange-700",
-  Gadgets: "bg-teal-100 text-teal-700",
-  Science: "bg-emerald-100 text-emerald-700",
+  Tech: "bg-violet-100 text-violet-700",
+  Blockchain: "bg-violet-100 text-violet-700",
+  Gadgets: "bg-violet-100 text-violet-700",
+  Science: "bg-violet-100 text-violet-700",
 };
 
 export const CAT_ACTIVE: Record<NewsCategory, string> = {
   AI: "bg-violet-600 text-white",
-  Tech: "bg-blue-600 text-white",
-  Blockchain: "bg-orange-500 text-white",
-  Gadgets: "bg-teal-600 text-white",
-  Science: "bg-emerald-600 text-white",
+  Tech: "bg-violet-600 text-white",
+  Blockchain: "bg-violet-600 text-white",
+  Gadgets: "bg-violet-600 text-white",
+  Science: "bg-violet-600 text-white",
 };
