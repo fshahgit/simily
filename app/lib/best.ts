@@ -652,6 +652,19 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     "Prometheus + Loki"
     ],
   },
+  {
+    slug: "best-endpoint-security-software-2026",
+    title: "Best Endpoint Security Software for Business Protection",
+    description: "Evaluate top endpoint detection and response (EDR) solutions that protect devices from malware, ransomware, and advanced threats across distributed workforces.",
+    category: "Security",
+    items: [
+    "CrowdStrike Falcon",
+    "SentinelOne",
+    "Microsoft Defender for Endpoint",
+    "Sophos Intercept X",
+    "Carbon Black"
+    ],
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
