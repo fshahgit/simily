@@ -665,6 +665,58 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     "Carbon Black"
     ],
   },
+  {
+    slug: "best-ai-voice-cloning-tool",
+    title: "Best AI Voice Cloning Tools for Content Creators",
+    description: "Compare the top AI voice cloning platforms for podcasters, YouTubers, and digital creators. We evaluate voice quality, language support, ethical safeguards, and pricing.",
+    category: "AI",
+    items: [
+    "ElevenLabs",
+    "Resemble AI",
+    "Murf AI",
+    "Respeecher",
+    "Descript Overdub"
+    ],
+  },
+  {
+    slug: "best-personal-finance-app",
+    title: "Best Personal Finance Apps for Budgeting and Investing",
+    description: "Find the right app to track spending, manage budgets, and grow your wealth. We compare features, bank integrations, and investment tracking capabilities.",
+    category: "Productivity",
+    items: [
+    "YNAB",
+    "Monarch Money",
+    "Copilot Money",
+    "Rocket Money",
+    "Empower"
+    ],
+  },
+  {
+    slug: "best-zero-trust-security-platform",
+    title: "Best Zero Trust Security Platforms for Enterprises",
+    description: "Evaluate leading zero trust network access solutions that protect distributed workforces. Covers identity verification, device posture checks, and integration ecosystems.",
+    category: "Security",
+    items: [
+    "Zscaler",
+    "Cloudflare Access",
+    "Palo Alto Prisma",
+    "Okta Identity Cloud",
+    "Netskope"
+    ],
+  },
+  {
+    slug: "best-ai-video-generator",
+    title: "Best AI Video Generators for Marketing and Social Media",
+    description: "Compare AI-powered video creation tools that transform text and images into engaging video content. We assess output quality, customization options, and rendering speed.",
+    category: "AI",
+    items: [
+    "Runway Gen-4",
+    "Pika Labs",
+    "Synthesia",
+    "HeyGen",
+    "InVideo AI"
+    ],
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
