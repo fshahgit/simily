@@ -743,6 +743,19 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     "JumpCloud"
     ],
   },
+  {
+    slug: "best-serverless-database-2026",
+    title: "Best Serverless Database for Modern Applications",
+    description: "Compare serverless database solutions offering auto-scaling, pay-per-use pricing, and seamless integration with edge computing and serverless functions.",
+    category: "Cloud",
+    items: [
+    "PlanetScale",
+    "Neon",
+    "Supabase",
+    "CockroachDB Serverless",
+    "Turso"
+    ],
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
