@@ -769,6 +769,19 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     "Google Cloud GPUs"
     ],
   },
+  {
+    slug: "best-ai-personal-finance-app-2026",
+    title: "Best AI Personal Finance App for Budgeting and Investing",
+    description: "Discover AI-powered finance apps that automate budgeting, provide investment insights, and help you reach financial goals faster.",
+    category: "Security",
+    items: [
+    "Copilot Money",
+    "Monarch Money",
+    "YNAB",
+    "Rocket Money",
+    "Cleo"
+    ],
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
