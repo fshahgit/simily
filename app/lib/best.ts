@@ -782,6 +782,32 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     "Cleo"
     ],
   },
+  {
+    slug: "best-vector-database-2026",
+    title: "Best Vector Database for AI and Semantic Search",
+    description: "A comprehensive comparison of vector databases optimized for embedding storage, similarity search, and RAG applications in production AI systems.",
+    category: "Dev Tools",
+    items: [
+    "Pinecone",
+    "Weaviate",
+    "Milvus",
+    "Qdrant",
+    "Chroma"
+    ],
+  },
+  {
+    slug: "best-ai-finance-tracker-2026",
+    title: "Best AI Finance Tracker for Personal Budgeting",
+    description: "Discover the leading AI-powered personal finance apps that automatically categorize spending, predict bills, and provide intelligent savings recommendations.",
+    category: "Security",
+    items: [
+    "Copilot Money",
+    "Monarch Money",
+    "YNAB",
+    "Rocket Money",
+    "Cleo"
+    ],
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
