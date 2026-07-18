@@ -808,6 +808,32 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     "Cleo"
     ],
   },
+  {
+    slug: "best-secrets-manager-2026",
+    title: "Best Secrets Manager for Development Teams",
+    description: "Compare enterprise-grade secrets management tools for securely storing API keys, credentials, and sensitive configuration across your infrastructure.",
+    category: "Security",
+    items: [
+    "HashiCorp Vault",
+    "Doppler",
+    "AWS Secrets Manager",
+    "Infisical",
+    "1Password Secrets Automation"
+    ],
+  },
+  {
+    slug: "best-workflow-automation-tool-2026",
+    title: "Best Workflow Automation Tool for No-Code Integration",
+    description: "Discover the top platforms for connecting apps and automating repetitive tasks without writing code, from simple triggers to complex multi-step workflows.",
+    category: "Productivity",
+    items: [
+    "Zapier",
+    "Make",
+    "n8n",
+    "Pipedream",
+    "Activepieces"
+    ],
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
