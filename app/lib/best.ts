@@ -834,6 +834,19 @@ export const ALL_BEST_TOPICS: BestTopic[] = [
     "Activepieces"
     ],
   },
+  {
+    slug: "best-ai-video-editor-2026",
+    title: "Best AI Video Editor for Content Creators",
+    description: "Explore AI-powered video editing tools that automate cutting, add captions, remove backgrounds, and streamline post-production workflows.",
+    category: "Entertainment",
+    items: [
+    "Descript",
+    "Runway",
+    "CapCut",
+    "Wondershare Filmora",
+    "Pictory"
+    ],
+  },
 ];
 
 export function getBestTopic(slug: string): BestTopic | undefined {
