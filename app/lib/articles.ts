@@ -4198,6 +4198,42 @@ export const ALL_ARTICLES: Article[] = [
       { a: "BUIDL (BlackRock)", b: "BENJI (Franklin Templeton)" }
     ],
   },
+  {
+    slug: "spacex-starship-commercial-flights-2026",
+    title: "SpaceX Starship Commercial Flights: Everything You Need to Know (2026)",
+    description: "With SpaceX announcing commercial Starship Earth-to-Earth flights for late 2027, we cover everything travelers need to know about booking, pricing, safety considerations, and what the experience will actually be like flying suborbital between continents.",
+    date: "2026-07-24",
+    category: "Travel",
+    readTime: 7,
+    coverEmoji: "📊",
+    heroImage: "/article-images/spacex-starship-commercial-flights-2026-hero.jpg",
+    tags: ["SpaceX Starship", "suborbital travel", "commercial spaceflight", "future of travel"],
+    author: "Simily Editorial",
+    keyTakeaways: [
+      "Initial Earth-to-Earth routes will connect Los Angeles to Tokyo and Dubai to Singapore",
+      "Expected ticket prices start around $50,000 for early flights, projected to drop to $10,000 within 5 years",
+      "Flight time between any two points on Earth will be under 60 minutes",
+      "Passengers will require medical screening but not astronaut-level training"
+    ],
+    sections: [
+      { body: "SpaceX's Starship program has achieved what once seemed impossible: routine, rapid orbital flights that will soon carry paying passengers between continents in under an hour. Following successful cargo missions and the first crewed lunar flyby in early 2026, the company has announced plans to begin commercial Earth-to-Earth passenger service by late 2027, with booking details expected this fall.\n\nThis development represents the most significant change in long-distance travel since the jet age. While tickets won't be cheap initially, the trajectory mirrors early commercial aviation, with prices expected to become more accessible over time. Here's everything we know about what these flights will entail, who can fly, and how the experience compares to traditional aviation." },
+      { heading: "How Starship Earth-to-Earth Flights Will Work", body: "Starship Earth-to-Earth flights utilize suborbital trajectories that arc through space rather than flying through the atmosphere. After vertical launch from a sea platform, the vehicle reaches speeds exceeding 25,000 km/h and altitudes above 100 km before descending to land at another sea platform near the destination city.\n\nThe actual flight time between departure and arrival platforms will be under 60 minutes for any two points on Earth. New York to Tokyo, currently a 14-hour journey, becomes a 40-minute flight. London to Sydney drops from 22 hours to under an hour. This time savings is transformational for business travelers and could reshape global commerce.\n\nPassengers will experience several minutes of weightlessness at the top of the trajectory, along with views of Earth's curvature and the blackness of space. The launch and reentry phases involve significant G-forces, though SpaceX claims the profile will be limited to 3-4 G's, comparable to aggressive roller coasters and well within healthy adult tolerances." },
+      { heading: "Announced Routes, Pricing, and Booking Details", body: "SpaceX has announced four initial routes for the 2027 launch: Los Angeles to Tokyo, New York to London, Dubai to Singapore, and Shanghai to São Paulo. These routes were selected based on existing business travel demand, regulatory progress with relevant aviation authorities, and the availability of offshore launch platform locations.\n\nInitial ticket pricing is expected around $50,000 for the standard passenger class, with premium options including larger personal space and enhanced viewing windows at higher price points. SpaceX projects prices will fall to approximately $10,000 within five years as flight frequency increases and operational costs decrease. By 2035, leadership suggests prices could approach premium first-class airline ticket levels.\n\nBookings will open through a dedicated SpaceX travel portal with an initial waitlist system. Priority will go to commercial partners and those who've previously booked SpaceX experiences. Medical prescreening will be required, completed online initially with an in-person assessment closer to flight date. SpaceX has partnered with several luxury travel agencies who will also handle bookings." },
+      { heading: "Safety Record and Passenger Requirements", body: "Starship's safety record has improved dramatically through 2025-2026, with over 50 successful landings and multiple crewed missions to lunar orbit. The vehicle now carries human-rating certification from the FAA for both orbital and suborbital passenger flights. SpaceX reports a reliability rate exceeding 99% for recent flights.\n\nPassenger requirements are less stringent than many expected. Age limits are set at 18-75 for initial flights, with exceptions considered on a case-by-case basis. Medical conditions that disqualify passengers include severe heart conditions, recent major surgery, pregnancy, and certain inner ear disorders. Passengers must be able to climb stairs unassisted and tolerate G-forces within the specified range.\n\nTraining requirements amount to approximately 4 hours of preparation, primarily safety briefings and familiarization with the cabin environment. Unlike orbital tourism, passengers do not need days of centrifuge training or extensive preparation. The experience is designed to be accessible to healthy adults without specialized training." },
+      { heading: "The Passenger Experience: From Terminal to Arrival", body: "Passengers will check in at dedicated spaceports built near each launch platform location. The experience blends airport luxury lounge amenities with specialized preparation facilities. After check-in, passengers undergo final medical checks and suit fitting, wearing flight suits designed to provide additional G-force protection.\n\nTransfer to the launch platform occurs via high-speed ferry, adding approximately one hour to the total journey time. Passengers board Starship through an elevator system and are seated in reclining positions optimized for the launch and reentry phases. The cabin will accommodate approximately 50 passengers initially, with panoramic windows providing views throughout the journey.\n\nThe flight itself involves intense acceleration during launch, followed by the surreal experience of weightlessness and space views at apogee, then reentry forces before the vertical landing. Upon landing, passengers depart to a similar ferry transfer to the destination spaceport. Total door-to-door time for intercontinental journeys will be approximately 3-4 hours, including all ground transportation and processing." },
+      { heading: "Conclusion", body: "SpaceX Starship commercial flights represent a genuine inflection point in human transportation. While initial prices place this firmly in luxury travel territory, the trajectory toward accessibility mirrors aviation history. For business travelers, ultra-high-net-worth individuals, and space enthusiasts, 2027 will mark the beginning of a new era. For everyone else, the next decade should bring these revolutionary journey times within reach, fundamentally altering how we think about distance and global connectivity." }
+    ],
+    sources: [
+      { title: "SpaceX Starship Commercial Program Announcement", url: "https://www.spacex.com/starship-commercial", publisher: "SpaceX" },
+      { title: "FAA Human-Rating Certification for Starship", url: "https://www.faa.gov/space/starship-certification", publisher: "Federal Aviation Administration" },
+      { title: "The Economics of Point-to-Point Rocket Travel", url: "https://www.bloomberg.com/features/spacex-earth-travel", publisher: "Bloomberg" }
+    ],
+    relatedComparisons: [
+      { a: "SpaceX Starship Travel", b: "Supersonic Business Jets" },
+      { a: "Virgin Galactic", b: "Blue Origin Tourism" },
+      { a: "First Class Airlines", b: "Starship Commercial" }
+    ],
+  },
 ];
 
 export function getArticle(slug: string): Article | undefined {
